@@ -1,3 +1,9 @@
+# Singer files
+config/
+*.config.json
+catalog.json
+state.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

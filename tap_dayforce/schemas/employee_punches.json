@@ -1,0 +1,129 @@
+{
+  "type": ["null", "object"],
+  "additionalProperties": false,
+  "properties": {
+    "PunchXRefCode": {
+      "type": ["null", "string"]
+    },
+    "EmployeeXRefCode": {
+      "type": ["null", "string"]
+    },
+    "PunchStatus": {
+      "type": ["null", "string"]
+    },
+    "TimeStart": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "TimeEnd": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "TimeStartRaw": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "TimeEndRaw": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "NetHours": {
+      "type": ["null", "number"]
+    },
+    "LocationXRefCode": {
+      "type": ["null", "string"]
+    },
+    "PositionXRefCode": {
+      "type": ["null", "string"]
+    },
+    "DepartmentXRefCode": {
+      "type": ["null", "string"]
+    },
+    "JobXRefCode": {
+      "type": ["null", "string"]
+    },
+    "StartExceptionCode": {
+      "type": ["null", "string"]
+    },
+    "EndExceptionCode": {
+      "type": ["null", "string"]
+    },
+    "EmployeeComment": {
+      "type": ["null", "string"]
+    },
+    "ManagerComment": {
+      "type": ["null", "string"]
+    },
+    "BusinessDate": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "IsDeleted": {
+      "type": ["null", "boolean"]
+    },
+    "IsOnCall": {
+      "type": ["null", "boolean"]
+    },
+    "FuturePunch": {
+      "type": ["null", "boolean"]
+    },
+    "AssumedTimeStart": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "AssumedTimeEnd": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "LastModifiedTimestampUtc": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "MealBreaks": {
+      "type": ["null", "array"],
+      "items": {
+        "type": ["null", "object"],
+        "properties": {
+          "PunchXRefCode": {
+            "type": ["null", "string"]
+          },
+          "Type": {
+            "type": ["null", "string"]
+          },
+          "TimeStart": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "TimeEnd": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "TimeStartRaw": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "TimeEndRaw": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "NetHours": {
+            "type": ["null", "number"]
+          },
+          "StartExceptionCode": {
+            "type": ["null", "string"]
+          },
+          "EndExceptionCode": {
+            "type": ["null", "string"]
+          },
+          "IsAutoInjected": {
+            "type": ["null", "boolean"]
+          },
+          "LastModifiedTimestampUtc": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  }
+}

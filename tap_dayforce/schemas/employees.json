@@ -1,0 +1,1247 @@
+{
+  "type": ["null", "object"],
+  "additionalProperties": false,
+  "properties": {
+    "AvatarUri": {
+      "type": ["null", "string"]
+    },
+    "BadgeNumber": {
+      "type": ["null", "string"]
+    },
+    "BioExempt": {
+      "type": ["null", "boolean"]
+    },
+    "BirthDate": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "BirthCountry": {
+      "type": ["null", "string"]
+    },
+    "BirthState": {
+      "type": ["null", "string"]
+    },
+    "BirthCity": {
+      "type": ["null", "string"]
+    },
+    "ChecksumTimestamp": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "ClockSupervisor": {
+      "type": ["null", "boolean"]
+    },
+    "COBRANotificationSentDate": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "COBRANotificationStatus": {
+      "type": ["null", "boolean"]
+    },
+    "Culture": {
+      "type": ["null", "object"],
+      "properties": {
+        "XRefCode": {
+          "type": ["null", "string"]
+        },
+        "ShortName": {
+          "type": ["null", "string"]
+        },
+        "LongName": {
+          "type": ["null", "string"]
+        },
+        "LastModifiedTimestamp": {
+          "type": ["null", "string"],
+          "format": "date-time"
+        }
+      }
+    },
+    "DateOfDeath": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "EligibleForRehire": {
+      "type": ["null", "string"]
+    },
+    "EmployeePin": {
+      "type": ["null", "string"]
+    },
+    "EstimatedReturnDate": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "ExportDate": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "FederatedId": {
+      "type": ["null", "string"]
+    },
+    "Gender": {
+      "type": ["null", "string"]
+    },
+    "HireDate": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "HomePhone": {
+      "type": ["null", "string"]
+    },
+    "IsAboriginal": {
+      "type": ["null", "string"]
+    },
+    "IsVisibleMinority": {
+      "type": ["null", "string"]
+    },
+    "LastPayrollNewHireExportDate": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "Nationality": {
+      "type": ["null", "string"]
+    },
+    "NewHireApprovalDate": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "NewHireApproved": {
+      "type": ["null", "boolean"]
+    },
+    "NewHireApprovedBy": {
+      "type": ["null", "string"]
+    },
+    "OriginalHireDate": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "PhotoExempt": {
+      "type": ["null", "boolean"]
+    },
+    "PPACAOverrideDate": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "RegisteredDisabled": {
+      "type": ["null", "string"]
+    },
+    "RequiresExitInterview": {
+      "type": ["null", "boolean"]
+    },
+    "SeniorityDate": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "StartDate": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "TaxExempt": {
+      "type": ["null", "boolean"]
+    },
+    "TaxpayerId": {
+      "type": ["null", "string"]
+    },
+    "TerminationDate": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "VeteranSeparationDate": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "FirstTimeAccessEmailSentCount": {
+      "type": ["null", "integer"]
+    },
+    "FirstTimeAccessVerificationAttempts": {
+      "type": ["null", "integer"]
+    },
+    "SentFirstTimeAccessEmail": {
+      "type": ["null", "boolean"]
+    },
+    "EmployeeBadge": {
+      "type": ["null", "object"],
+      "properties": {
+        "BadgeNumber": {
+          "type": ["null", "string"]
+        },
+        "EffectiveStart": {
+          "type": ["null", "string"],
+          "format": "date-time"
+        },
+        "EffectiveEnd": {
+          "type": ["null", "string"],
+          "format": "date-time"
+        },
+        "LastModifiedTimestamp": {
+          "type": ["null", "string"],
+          "format": "date-time"
+        }
+      }
+    },
+    "LastActiveManagers": {
+      "type": ["null", "object"],
+      "properties": {
+        "Items": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["null", "object"],
+            "properties": {
+              "EffectiveStart": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "EffectiveEnd": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "ManagerXRefCode": {
+                "type": ["null", "string"]
+              },
+              "ManagerFirstName": {
+                "type": ["null", "string"]
+              },
+              "ManagerMiddleName": {
+                "type": ["null", "string"]
+              },
+              "ManagerLastName": {
+                "type": ["null", "string"]
+              },
+              "DerivationMethod": {
+                "type": ["null", "integer"]
+              },
+              "LastModifiedTimestamp": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        }
+      }
+    },
+    "PreStartDate": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "PayrollKey": {
+      "type": ["null", "string"]
+    },
+    "LoginId": {
+      "type": ["null", "string"]
+    },
+    "EmployeeNumber": {
+      "type": ["null", "string"]
+    },
+    "EmploymentStatuses": {
+      "type": ["null", "object"],
+      "properties": {
+        "Items": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["null", "object"],
+            "properties": {
+              "EmployeeNumber": {
+                "type": ["null", "string"]
+              },
+              "EffectiveStart": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "EffectiveEnd": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "EmploymentStatus": {
+                "type": ["null", "object"],
+                "properties": {
+                  "IsBenefitArrearsEnabled": {
+                    "type": ["null", "boolean"]
+                  },
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "EmploymentStatusGroup": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "PayType": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "PayGroup": {
+                "type": ["null", "object"],
+                "properties": {
+                  "PayFrequency": {
+                    "type": ["null", "object"],
+                    "properties": {
+                      "PayFrequencyType": {
+                        "type": ["null", "string"]
+                      },
+                      "XRefCode": {
+                        "type": ["null", "string"]
+                      },
+                      "ShortName": {
+                        "type": ["null", "string"]
+                      },
+                      "LongName": {
+                        "type": ["null", "string"]
+                      },
+                      "LastModifiedTimestamp": {
+                        "type": ["null", "string"],
+                        "format": "date-time"
+                      }
+                    }
+                  },
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "PayTypeGroup": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "PayClass": {
+                "type": ["null", "object"],
+                "properties": {
+                  "LedgerCode": {
+                    "type": ["null", "string"]
+                  },
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "PunchPolicy": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "PayPolicy": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "PayHolidayGroup": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "EmployeeGroup": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "EntitlementPolicy": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "ShiftRotation": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "ShiftRotationDayOffset": {
+                "type": ["null", "integer"]
+              },
+              "ShiftRotationStartDate": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "CreateShiftRotationShift": {
+                "type": ["null", "boolean"]
+              },
+              "TimeOffPolicy": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "ShiftTradePolicy": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "AttendancePolicy": {
+                "type": ["null", "object"],
+                "properties": {
+                  "TrackingBasedOn": {
+                    "type": ["null", "integer"]
+                  },
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "SchedulePolicy": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "OvertimeGroup": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "PayrollPolicy": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "JobStepPolicy": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "AlternateRate": {
+                "type": ["null", "number"]
+              },
+              "AverageDailyHours": {
+                "type": ["null", "number"]
+              },
+              "AverageOvertimeRate": {
+                "type": ["null", "number"]
+              },
+              "BaseRate": {
+                "type": ["null", "number"]
+              },
+              "BaseRateManuallySet": {
+                "type": ["null", "boolean"]
+              },
+              "BaseSalary": {
+                "type": ["null", "number"]
+              },
+              "PeriodicSalary": {
+                "type": ["null", "number"]
+              },
+              "DailyRate": {
+                "type": ["null", "number"]
+              },
+              "EmploymentStatusReason": {
+                "type": ["null", "object"],
+                "properties": {
+                  "IsCompChangeReason": {
+                    "type": ["null", "boolean"]
+                  },
+                  "IsLeaveReason": {
+                    "type": ["null", "boolean"]
+                  },
+                  "IsPositionChangeReason": {
+                    "type": ["null", "boolean"]
+                  },
+                  "IsTerminationReason": {
+                    "type": ["null", "boolean"]
+                  },
+                  "IsVoluntaryReason": {
+                    "type": ["null", "boolean"]
+                  },
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "NormalWeeklyHours": {
+                "type": ["null", "number"]
+              },
+              "NormalSemiMonthlyHoursTop": {
+                "type": ["null", "number"]
+              },
+              "NormalSemiMonthlyHoursBottom": {
+                "type": ["null", "number"]
+              },
+              "ScheduleChangePolicy": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "AuthorizationPolicy": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "WorkContractPremiumPolicy": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "LastPayEditDate": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "VacationRate": {
+                "type": ["null", "number"]
+              },
+              "TargetBonus": {
+                "type": ["null", "number"]
+              },
+              "LastModifiedTimestamp": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Roles": {
+      "type": ["null", "object"],
+      "properties": {
+        "Items": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["null", "object"],
+            "properties": {
+              "IsDefault": {
+                "type": ["null", "boolean"]
+              },
+              "Role": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "EffectiveStart": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "IsPrestartRole": {
+                "type": ["null", "boolean"]
+              },
+              "EffectiveEnd": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "LastModifiedTimestamp": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        }
+      }
+    },
+    "EmployeeManagers": {
+      "type": ["null", "object"],
+      "properties": {
+        "Items": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["null", "object"],
+            "properties": {
+              "EffectiveStart": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "EffectiveEnd": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "ManagerXRefCode": {
+                "type": ["null", "string"]
+              },
+              "ManagerFirstName": {
+                "type": ["null", "string"]
+              },
+              "ManagerMiddleName": {
+                "type": ["null", "string"]
+              },
+              "ManagerLastName": {
+                "type": ["null", "string"]
+              },
+              "DerivationMethod": {
+                "type": ["null", "integer"]
+              },
+              "LastModifiedTimestamp": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        }
+      }
+    },
+    "CompensationSummary": {
+      "type": ["null", "object"],
+      "properties": {
+        "Items": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["null", "object"],
+            "properties": {
+              "EmployeeNumber": {
+                "type": ["null", "string"]
+              },
+              "EffectiveEnd": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "EffectiveStart": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "PayGrade": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "PayType": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "PayGroup": {
+                "type": ["null", "object"],
+                "properties": {
+                  "PayFrequency": {
+                    "type": ["null", "object"],
+                    "properties": {
+                      "PayFrequencyType": {
+                        "type": ["null", "string"]
+                      },
+                      "XRefCode": {
+                        "type": ["null", "string"]
+                      },
+                      "ShortName": {
+                        "type": ["null", "string"]
+                      },
+                      "LongName": {
+                        "type": ["null", "string"]
+                      },
+                      "LastModifiedTimestamp": {
+                        "type": ["null", "string"],
+                        "format": "date-time"
+                      }
+                    }
+                  },
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "PayClass": {
+                "type": ["null", "object"],
+                "properties": {
+                  "LedgerCode": {
+                    "type": ["null", "string"]
+                  },
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "EmploymentStatusReason": {
+                "type": ["null", "object"],
+                "properties": {
+                  "IsCompChangeReason": {
+                    "type": ["null", "boolean"]
+                  },
+                  "IsLeaveReason": {
+                    "type": ["null", "boolean"]
+                  },
+                  "IsPositionChangeReason": {
+                    "type": ["null", "boolean"]
+                  },
+                  "IsTerminationReason": {
+                    "type": ["null", "boolean"]
+                  },
+                  "IsVoluntaryReason": {
+                    "type": ["null", "boolean"]
+                  },
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "AlternateRate": {
+                "type": ["null", "number"]
+              },
+              "AverageDailyHours": {
+                "type": ["null", "number"]
+              },
+              "AverageOvertimeRate": {
+                "type": ["null", "number"]
+              },
+              "BaseRate": {
+                "type": ["null", "number"]
+              },
+              "BaseRateManuallySet": {
+                "type": ["null", "boolean"]
+              },
+              "BaseSalary": {
+                "type": ["null", "number"]
+              },
+              "DailyRate": {
+                "type": ["null", "number"]
+              },
+              "NormalWeeklyHours": {
+                "type": ["null", "number"]
+              },
+              "NormalSemiMonthlyHoursTop": {
+                "type": ["null", "number"]
+              },
+              "NormalSemiMonthlyHoursBottom": {
+                "type": ["null", "number"]
+              },
+              "LastPayEditDate": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "VacationRate": {
+                "type": ["null", "number"]
+              },
+              "MinimumRate": {
+                "type": ["null", "number"]
+              },
+              "ControlRate": {
+                "type": ["null", "number"]
+              },
+              "MaximumRate": {
+                "type": ["null", "number"]
+              },
+              "RateMidPoint": {
+                "type": ["null", "number"]
+              },
+              "MinimumSalary": {
+                "type": ["null", "number"]
+              },
+              "ControlSalary": {
+                "type": ["null", "number"]
+              },
+              "MaximumSalary": {
+                "type": ["null", "number"]
+              },
+              "SalaryMidPoint": {
+                "type": ["null", "number"]
+              },
+              "CompRatio": {
+                "type": ["null", "number"]
+              },
+              "ChangePercent": {
+                "type": ["null", "number"]
+              },
+              "ChangeValue": {
+                "type": ["null", "number"]
+              },
+              "PreviousBaseSalary": {
+                "type": ["null", "number"]
+              },
+              "PreviousBaseRate": {
+                "type": ["null", "number"]
+              },
+              "PayPolicy": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "RatePolicy": {
+                "type": ["null", "object"],
+                "properties": {
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "LastModifiedTimestamp": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Locations": {
+      "type": ["null", "object"],
+      "properties": {
+        "Items": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["null", "object"],
+            "properties": {
+              "IsPrimary": {
+                "type": ["null", "boolean"]
+              },
+              "Location": {
+                "type": ["null", "object"],
+                "properties": {
+                  "LegalEntity": {
+                    "type": ["null", "object"],
+                    "properties": {
+                      "LegalIdNumber": {
+                        "type": ["null", "string"]
+                      },
+                      "XRefCode": {
+                        "type": ["null", "string"]
+                      },
+                      "ShortName": {
+                        "type": ["null", "string"]
+                      },
+                      "LongName": {
+                        "type": ["null", "string"]
+                      },
+                      "LastModifiedTimestamp": {
+                        "type": ["null", "string"],
+                        "format": "date-time"
+                      }
+                    }
+                  },
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "EffectiveStart": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "EffectiveEnd": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "IsDefault": {
+                "type": ["null", "boolean"]
+              },
+              "LastModifiedTimestamp": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        }
+      }
+    },
+    "XRefCode": {
+      "type": ["null", "string"]
+    },
+    "CommonName": {
+      "type": ["null", "string"]
+    },
+    "DisplayName": {
+      "type": ["null", "string"]
+    },
+    "FirstName": {
+      "type": ["null", "string"]
+    },
+    "LastName": {
+      "type": ["null", "string"]
+    },
+    "Initials": {
+      "type": ["null", "string"]
+    },
+    "MaidenName": {
+      "type": ["null", "string"]
+    },
+    "MiddleName": {
+      "type": ["null", "string"]
+    },
+    "PreferredLastName": {
+      "type": ["null", "string"]
+    },
+    "SecondLastName": {
+      "type": ["null", "string"]
+    },
+    "Suffix": {
+      "type": ["null", "string"]
+    },
+    "Title": {
+      "type": ["null", "string"]
+    },
+    "LastModifiedTimestamp": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "SyncTimestampUtc": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    }
+  }
+}
