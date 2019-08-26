@@ -1,7 +1,8 @@
 # tap-dayforce
+[![PyPI version](https://badge.fury.io/py/tap-dayforce.svg)](https://badge.fury.io/py/tap-dayforce)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Python Versions](https://img.shields.io/badge/python-3.6%20%7C%203.7-blue.svg)](https://pypi.python.org/pypi/ansicolortags/)
-[![Build Status](https://travis-ci.com/goodeggs/tap-pagerduty.svg?branch=master)](https://travis-ci.com/goodeggs/tap-pagerduty)
+[![Build Status](https://travis-ci.com/goodeggs/tap-pagerduty.svg?branch=master)](https://travis-ci.com/goodeggs/tap-dayforce.svg?branch=master)
 
 A [Singer](https://www.singer.io/) tap for extracting data from the [Dayforce REST API v1](https://developers.dayforce.com/Build/RESTful-general-URL-structure.aspx).
 
