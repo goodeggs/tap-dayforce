@@ -37,9 +37,7 @@ The tap accepts a JSON-formatted configuration file as arguments. This configura
 3. `client_name`: A valid client name (e.g. Company Name) that will be inserted into the request URL.
 2. `email`: A valid email address to be inserted into the `From` header of the HTTP Request headers.
 
-It's important to note that the Role attached to the User Account used in the configuration file must have at minimum the "Web Services" feature, as well as the "Read Data" sub-feature enabled:
-
-![](etc/dayforce_web_services_user_permissions.png)
+It's important to note that the Role attached to the User Account used in the configuration file must have at minimum the "Web Services" feature, as well as the "Read Data" sub-feature enabled.
 
 An bare-bones Dayforce configuration may file may look like the following:
 
@@ -130,4 +128,49 @@ $ tail -1 state.json > state.json.tmp
 $ mv state.json.tmp state.json
 ```
 
-## Development
+## Contributing
+
+The first step to contributing is getting a copy of the source code. First, [fork `tap-dayforce` on GitHub](https://github.com/goodeggs/tap-dayforce/fork). Then, `cd` into the directory where you want your copy of the source code to live and clone the source code:
+
+```bash
+$ git clone git@github.com:YourGitHubName/tap-dayforce.git
+```
+
+Now that you have a copy of the source code on your local machine, you can leverage [Pipenv](https://docs.pipenv.org/en/latest/) and the corresponding `Pipfile` to install of the development dependencies within a virtual environment:
+
+```bash
+$ pipenv install --three --dev
+```
+
+This command will create an isolated virtual environment for your `tap-dayforce` project and install all the development dependencies defined within the `Pipfile` inside of the environment. You can then enter a shell within the environment:
+
+```bash
+$ pipenv shell
+```
+
+Or, you can run individual commands within the environment without entering the shell:
+
+```bash
+$ pipenv run <command>
+```
+
+For example, to format your code using [isort](https://github.com/timothycrosley/isort) and [flake8](http://flake8.pycqa.org/en/latest/index.html) before commiting changes, run the following commands:
+
+```bash
+$ pipenv run make isort
+$ pipenv run make flake8
+```
+
+You can also run the entire testing suite before committing using [tox](https://tox.readthedocs.io/en/latest/):
+
+```bash
+$ pipenv run tox
+```
+
+Finally, you can run your local version of the tap within the virtual environment using a command like the following:
+
+```bash
+$ pipenv run tap-dayforce --config=config/dayforce.config.json --catalog=catalog.json
+```
+
+Once you've confirmed that your changes work and the testing suite passes, feel free to put out a PR!
