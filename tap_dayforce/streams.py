@@ -66,7 +66,6 @@ class DayforceStream:
         '''
         url = f"{self.BASE_URL}/{self.client_name}/v1/{resource}"
         headers = self._construct_headers()
-        # LOGGER.info(f"Making request to {url} with params {params}")
         response = requests.get(url, auth=(self.username, self.password), headers=headers, params=params)
         if response.status_code == 429:
             retry_after = int(response.headers.get('Retry-After')) + 1
@@ -121,12 +120,23 @@ class DayforceResponse:
         if self._iteration == 1:
             return self
 
-        if (self.response.get("Paging", {}).get("Next") == "") or (self.response.get("Paging") is None):
+        # If Pagination is not available on endpoint.
+        if self.response.get("Paging") is None:
+            raise StopIteration
+        # If Pagination section has a blank "Next" value.
+        elif self.response.get("Paging").get("Next") == "":
             raise StopIteration
         else:
             next_page = self.response.get("Paging").get("Next")
-            resource = next_page.split(f"{self.client.BASE_URL}/{self.client.client_name}/v1/")[1]
-            self.response = self.client._get(resource=resource, params=self.params)
+            headers = self.client._construct_headers()
+            response = requests.get(next_page, auth=(self.client.username, self.client.password), headers=headers)
+            if response.status_code == 429:
+                retry_after = int(response.headers.get('Retry-After')) + 1
+                LOGGER.warn(f"Rate limit reached. Trying again in {retry_after} seconds: {response.text}")
+                time.sleep(retry_after)
+                response = requests.get(next_page, auth=(self.client.username, self.client.password), headers=headers)
+            response.raise_for_status()
+            self.response = response.json()
             return self
 
     def get(self, key, default=None):
