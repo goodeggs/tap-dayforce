@@ -11,6 +11,24 @@ from .version import __version__
 
 LOGGER = singer.get_logger()
 
+WHITELISTED_COLLECTIONS = {
+    'CompensationSummary',
+    'EmploymentStatuses'
+}
+
+WHITELISTED_FIELDS = {
+    'BaseRate',
+    'BaseSalary',
+    'PreviousBaseRate',
+    'PreviousBaseSalary',
+    'ChangeValue',
+    'ChangePercent'
+}
+
+WHITELISTED_PAY_POLICY_CODES = {
+    'USA_CA_HNE'
+}
+
 
 class DayforceStream:
     BASE_URL = "https://ustestr56-services.dayforcehcm.com/api"
@@ -183,6 +201,15 @@ class EmployeesStream(DayforceStream):
                 for employee in self._get_records(resource='Employees', params=self.params):
                     resp = self._get(resource=f"Employees/{employee.get('XRefCode')}", params=self.params)
                     data = resp.get('Data')
+                    # Custom blacklisting for sensitive pay information.
+                    for collection in WHITELISTED_COLLECTIONS:
+                        for i, item in enumerate(data.get(collection).get("Items")):
+                            if item.get("PayPolicy") is None:
+                                for field in WHITELISTED_FIELDS:
+                                    data[collection]["Items"][i].pop(field, None)
+                            elif item.get("PayPolicy").get("XRefCode") not in WHITELISTED_PAY_POLICY_CODES:
+                                for field in WHITELISTED_FIELDS:
+                                    data[collection]["Items"][i].pop(field, None)
                     data['SyncTimestampUtc'] = new_bookmark
                     with singer.Transformer() as transformer:
                         transformed_record = transformer.transform(data=data, schema=self.schema)
