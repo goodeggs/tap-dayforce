@@ -269,6 +269,7 @@ class EmployeePunchesStream(DayforceStream):
                             counter.increment()
                     start += step
 
+
 class EmployeeRawPunchesStream(DayforceStream):
     tap_stream_id = 'employee_raw_punches'
     stream = 'employee_raw_punches'
