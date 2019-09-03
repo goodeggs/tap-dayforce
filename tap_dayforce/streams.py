@@ -270,4 +270,52 @@ class EmployeePunchesStream(DayforceStream):
                     start += step
 
 
-AVAILABLE_STREAMS = {EmployeesStream, EmployeePunchesStream}
+class EmployeeRawPunchesStream(DayforceStream):
+    tap_stream_id = 'employee_raw_punches'
+    stream = 'employee_raw_punches'
+    replication_key = 'LastModifiedTimestampUtc'
+    valid_replication_keys = ['LastModifiedTimestampUtc']
+    key_properties = 'RawPunchXRefCode'
+    replication_method = 'FULL_TABLE'
+    required_params = ['filterTransactionStartTimeUTC']
+    valid_params = [
+        'filterTransactionStartTimeUTC',
+        'filterTransactionEndTimeUTC',
+        'employeeXRefCode',
+        'employeeBadge',
+        'punchState',
+        'punchTypes',
+        'pageSize'
+    ]
+
+    def __init__(self, config: Dict, state: Dict):
+        super().__init__(config, state)
+
+        if 'filterTransactionEndTimeUTC' not in self.params.keys():
+            filter_transaction_end_time = {
+                "filterTransactionEndTimeUTC": singer.utils.strftime(singer.utils.now(), '%Y-%m-%dT%H:%M:%SZ')
+            }
+            self.params.update(filter_transaction_end_time)
+
+    def sync(self):
+        start = singer.utils.strptime_to_utc(self.params.get('filterTransactionStartTimeUTC'))
+        end = singer.utils.strptime_to_utc(self.params.get('filterTransactionEndTimeUTC'))
+        step = timedelta(days=7)
+
+        with singer.metrics.job_timer(job_type=f"sync_{self.tap_stream_id}"):
+            with singer.metrics.record_counter(endpoint=self.tap_stream_id) as counter:
+                while start < end:
+                    range = {
+                        "filterTransactionStartTimeUTC": singer.utils.strftime(start),
+                        "filterTransactionEndTimeUTC": min(singer.utils.strftime(start + step), singer.utils.strftime(end))
+                    }
+                    self.params.update(range)
+                    for punch in self._get_records(resource='EmployeeRawPunches', params=self.params):
+                        with singer.Transformer() as transformer:
+                            transformed_record = transformer.transform(data=punch, schema=self.schema)
+                            singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
+                            counter.increment()
+                    start += step
+
+
+AVAILABLE_STREAMS = {EmployeesStream, EmployeePunchesStream, EmployeeRawPunchesStream}
