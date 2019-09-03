@@ -231,6 +231,121 @@
     "EmployeeNumber": {
       "type": ["null", "string"]
     },
+    "Contacts": {
+      "type": ["null", "object"],
+      "properties": {
+        "Items": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["null", "object"],
+            "properties": {
+              "ContactInformationType": {
+                "type": ["null", "object"],
+                "properties": {
+                  "ContactInformationTypeGroup": {
+                    "type": ["null", "object"],
+                    "properties": {
+                      "XRefCode": {
+                        "type": ["null", "string"]
+                      },
+                      "ShortName": {
+                        "type": ["null", "string"]
+                      },
+                      "LongName": {
+                        "type": ["null", "string"]
+                      },
+                      "LastModifiedTimestamp": {
+                        "type": ["null", "string"],
+                        "format": "date-time"
+                      }
+                    }
+                  },
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "ContactNumber": {
+                "type": ["null", "string"]
+              },
+              "Country": {
+                "type": ["null", "object"],
+                "properties": {
+                  "Name": {
+                    "type": ["null", "string"]
+                  },
+                  "XRefCode": {
+                    "type": ["null", "string"]
+                  },
+                  "ShortName": {
+                    "type": ["null", "string"]
+                  },
+                  "LongName": {
+                    "type": ["null", "string"]
+                  },
+                  "LastModifiedTimestamp": {
+                    "type": ["null", "string"],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "EffectiveEnd": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "EffectiveStart": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              },
+              "ElectronicAddress": {
+                "type": ["null", "string"]
+              },
+              "Extension": {
+                "type": ["null", "string"]
+              },
+              "IsForSystemCommunications": {
+                "type": ["null", "boolean"]
+              },
+              "IsPreferredContactMethod": {
+                "type": ["null", "boolean"]
+              },
+              "IsUnlistedNumber": {
+                "type": ["null", "boolean"]
+              },
+              "FormattedNumber": {
+                "type": ["null", "string"]
+              },
+              "IsVerified": {
+                "type": ["null", "boolean"]
+              },
+              "IsRejected": {
+                "type": ["null", "boolean"]
+              },
+              "ShowRejectedWarning": {
+                "type": ["null", "boolean"]
+              },
+              "NumberOfVerificationRequests": {
+                "type": ["null", "integer"]
+              },
+              "LastModifiedTimestamp": {
+                "type": ["null", "string"],
+                "format": "date-time"
+              }
+            }
+          }
+        }
+      }
+    },
     "WorkAssignments": {
       "type": ["null", "object"],
       "properties": {
