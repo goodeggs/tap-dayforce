@@ -1,8 +1,22 @@
+import logging
+import os
+
+import rollbar
 import singer
+from rollbar.logger import RollbarHandler
 
 from .streams import AVAILABLE_STREAMS
 
+ROLLBAR_ACCESS_TOKEN = os.environ["ROLLBAR_ACCESS_TOKEN"]
+ROLLBAR_ENVIRONMENT = os.environ["ROLLBAR_ENVIRONMENT"]
+
 LOGGER = singer.get_logger()
+
+rollbar.init(ROLLBAR_ACCESS_TOKEN, ROLLBAR_ENVIRONMENT)
+rollbar_handler = RollbarHandler()
+# Only send level WARNING and above to Rollbar.
+rollbar_handler.setLevel(logging.WARNING)
+LOGGER.addHandler(rollbar_handler)
 
 
 def discover(config, state={}):
@@ -37,9 +51,15 @@ def sync(config, catalog, state):
 def main():
     args = singer.utils.parse_args(required_config_keys=["username", "password", "client_name", "email"])
     if args.discover:
-        discover(config=args.config)
+        try:
+            discover(config=args.config)
+        except Exception:
+            LOGGER.exception('Caught exception during Discovery..')
     else:
-        sync(config=args.config, catalog=args.catalog, state=args.state)
+        try:
+            sync(config=args.config, catalog=args.catalog, state=args.state)
+        except Exception:
+            LOGGER.exception('Caught exception during Sync..')
 
 
 if __name__ == "__main__":
