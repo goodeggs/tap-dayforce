@@ -40,7 +40,8 @@ setup(
     },
     install_requires=[
         'requests==2.22.0',
-        'singer-python==5.7.0'
+        'singer-python==5.7.0',
+        'rollbar==0.14.7'
     ],
     python_requires='>=3.6',
     entry_points={
