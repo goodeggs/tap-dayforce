@@ -31,7 +31,7 @@ WHITELISTED_PAY_POLICY_CODES = {
 
 
 class DayforceStream:
-    BASE_URL = "https://ustestr56-services.dayforcehcm.com/api"
+    BASE_URL = "https://usr56-services.dayforcehcm.com/Api"
 
     def __init__(self, config: Dict, state: Dict):
         self.username = config.get('username')
@@ -82,7 +82,7 @@ class DayforceStream:
         '''Constructs a standard way of making
         a GET request to the Dayforce REST API.
         '''
-        url = f"{self.BASE_URL}/{self.client_name}/v1/{resource}"
+        url = f"{self.BASE_URL}/{self.client_name}/V1/{resource}"
         headers = self._construct_headers()
         response = requests.get(url, auth=(self.username, self.password), headers=headers, params=params)
         if response.status_code == 429:
