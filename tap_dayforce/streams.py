@@ -11,6 +11,8 @@ from .version import __version__
 
 LOGGER = singer.get_logger()
 
+BOOKMARK_DATETIME_STR_FMT = "%Y-%m-%dT%H:%M:%SZ"
+
 WHITELISTED_COLLECTIONS = {
     'CompensationSummary',
     'EmploymentStatuses'
@@ -181,7 +183,7 @@ class EmployeesStream(DayforceStream):
 
     def sync(self):
 
-        new_bookmark = singer.utils.strftime(singer.utils.now(), '%Y-%m-%dT%H:%M:%SZ')
+        new_bookmark = singer.utils.strftime(singer.utils.now(), BOOKMARK_DATETIME_STR_FMT)
         current_bookmark = singer.bookmarks.get_bookmark(state=self.state,
                                                          tap_stream_id=self.tap_stream_id,
                                                          key=self.replication_key)
@@ -221,10 +223,10 @@ class EmployeesStream(DayforceStream):
 class EmployeePunchesStream(DayforceStream):
     tap_stream_id = 'employee_punches'
     stream = 'employee_punches'
-    replication_key = 'LastModifiedTimestampUtc'
-    valid_replication_keys = ['LastModifiedTimestampUtc']
+    replication_key = 'SyncTimestampUtc'
+    valid_replication_keys = ['SyncTimestampUtc']
     key_properties = 'PunchXRefCode'
-    replication_method = 'FULL_TABLE'
+    replication_method = 'INCREMENTAL'
     required_params = ['filterTransactionStartTimeUTC']
     valid_params = [
         'filterTransactionStartTimeUTC',
@@ -244,13 +246,28 @@ class EmployeePunchesStream(DayforceStream):
     def __init__(self, config: Dict, state: Dict):
         super().__init__(config, state)
 
-        if 'filterTransactionEndTimeUTC' not in self.params.keys():
-            filter_transaction_end_time = {
-                "filterTransactionEndTimeUTC": singer.utils.strftime(singer.utils.now(), '%Y-%m-%dT%H:%M:%SZ')
-            }
-            self.params.update(filter_transaction_end_time)
-
     def sync(self):
+
+        new_bookmark = singer.utils.strftime(singer.utils.now(), BOOKMARK_DATETIME_STR_FMT)
+
+        self.params.update({
+            "filterTransactionEndTimeUTC": new_bookmark
+        })
+
+        current_bookmark = singer.bookmarks.get_bookmark(state=self.state,
+                                                         tap_stream_id=self.tap_stream_id,
+                                                         key=self.replication_key)
+
+        if current_bookmark is not None:
+            self.params.update({
+                "filterTransactionStartTimeUTC": current_bookmark
+            })
+
+        self.state = singer.bookmarks.write_bookmark(state=self.state,
+                                                     tap_stream_id=self.tap_stream_id,
+                                                     key=self.replication_key,
+                                                     val=new_bookmark)
+
         start = singer.utils.strptime_to_utc(self.params.get('filterTransactionStartTimeUTC'))
         end = singer.utils.strptime_to_utc(self.params.get('filterTransactionEndTimeUTC'))
         step = timedelta(days=7)
@@ -264,6 +281,7 @@ class EmployeePunchesStream(DayforceStream):
                     }
                     self.params.update(range)
                     for punch in self._get_records(resource='EmployeePunches', params=self.params):
+                        punch["SyncTimestampUtc"] = new_bookmark
                         with singer.Transformer() as transformer:
                             transformed_record = transformer.transform(data=punch, schema=self.schema)
                             singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
@@ -274,10 +292,10 @@ class EmployeePunchesStream(DayforceStream):
 class EmployeeRawPunchesStream(DayforceStream):
     tap_stream_id = 'employee_raw_punches'
     stream = 'employee_raw_punches'
-    replication_key = 'LastModifiedTimestampUtc'
-    valid_replication_keys = ['LastModifiedTimestampUtc']
+    replication_key = 'SyncTimestampUtc'
+    valid_replication_keys = ['SyncTimestampUtc']
     key_properties = 'RawPunchXRefCode'
-    replication_method = 'FULL_TABLE'
+    replication_method = 'INCREMENTAL'
     required_params = ['filterTransactionStartTimeUTC']
     valid_params = [
         'filterTransactionStartTimeUTC',
@@ -292,13 +310,28 @@ class EmployeeRawPunchesStream(DayforceStream):
     def __init__(self, config: Dict, state: Dict):
         super().__init__(config, state)
 
-        if 'filterTransactionEndTimeUTC' not in self.params.keys():
-            filter_transaction_end_time = {
-                "filterTransactionEndTimeUTC": singer.utils.strftime(singer.utils.now(), '%Y-%m-%dT%H:%M:%SZ')
-            }
-            self.params.update(filter_transaction_end_time)
-
     def sync(self):
+
+        new_bookmark = singer.utils.strftime(singer.utils.now(), BOOKMARK_DATETIME_STR_FMT)
+
+        self.params.update({
+            "filterTransactionEndTimeUTC": new_bookmark
+        })
+
+        current_bookmark = singer.bookmarks.get_bookmark(state=self.state,
+                                                         tap_stream_id=self.tap_stream_id,
+                                                         key=self.replication_key)
+
+        if current_bookmark is not None:
+            self.params.update({
+                "filterTransactionStartTimeUTC": current_bookmark
+            })
+
+        self.state = singer.bookmarks.write_bookmark(state=self.state,
+                                                     tap_stream_id=self.tap_stream_id,
+                                                     key=self.replication_key,
+                                                     val=new_bookmark)
+
         start = singer.utils.strptime_to_utc(self.params.get('filterTransactionStartTimeUTC'))
         end = singer.utils.strptime_to_utc(self.params.get('filterTransactionEndTimeUTC'))
         step = timedelta(days=7)
@@ -312,6 +345,7 @@ class EmployeeRawPunchesStream(DayforceStream):
                     }
                     self.params.update(range)
                     for punch in self._get_records(resource='EmployeeRawPunches', params=self.params):
+                        punch["SyncTimestampUtc"] = new_bookmark
                         with singer.Transformer() as transformer:
                             transformed_record = transformer.transform(data=punch, schema=self.schema)
                             singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
