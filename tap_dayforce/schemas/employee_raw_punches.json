@@ -133,6 +133,10 @@
     },
     "Accuracy": {
       "type": ["null", "integer"]
+    },
+    "SyncTimestampUtc": {
+      "type": ["null", "string"],
+      "format": "date-time"
     }
   }
 }
