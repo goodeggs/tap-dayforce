@@ -1,7 +1,7 @@
 import inspect
 import os
 import time
-from datetime import timedelta, datetime
+from datetime import datetime, timedelta
 from typing import Dict, Generator
 
 import requests
@@ -388,12 +388,12 @@ class ReportStream(DayforceStream):
         resp = self._get(resource=f"ReportMetadata/{report_xrefcode}")
         column_metadata = resp.get("Data")[0].get("ColumnMetadata")
         schema = {
-          "type": ["null", "object"],
-          "additionalProperties": False,
-          "properties": {}
+            "type": ["null", "object"],
+            "additionalProperties": False,
+            "properties": {}
         }
         for column in column_metadata:
-            field = column.get("CodeName").replace(".","_")
+            field = column.get("CodeName").replace(".", "_")
             if column.get("DataType") not in self.DATA_TYPE_MAPPING.keys():
                 raise TypeError(f"Column {column.get('DisplayName')} has data type {column.get('DataType')} which is not implemented.")
             else:
@@ -419,7 +419,6 @@ class ReportStream(DayforceStream):
                         counter.increment()
 
             singer.write_version(stream_name=self.stream, version=singer_version)
-
 
 
 AVAILABLE_STREAMS = {EmployeesStream, EmployeePunchesStream, EmployeeRawPunchesStream, ReportStream}

@@ -5,8 +5,7 @@ import rollbar
 import singer
 from rollbar.logger import RollbarHandler
 
-from .streams import AVAILABLE_STREAMS
-from .streams import ReportStream
+from .streams import AVAILABLE_STREAMS, ReportStream
 
 ROLLBAR_ACCESS_TOKEN = os.environ["ROLLBAR_ACCESS_TOKEN"]
 ROLLBAR_ENVIRONMENT = os.environ["ROLLBAR_ENVIRONMENT"]
