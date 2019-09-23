@@ -6,6 +6,7 @@ import singer
 from rollbar.logger import RollbarHandler
 
 from .streams import AVAILABLE_STREAMS
+from .streams import ReportStream
 
 ROLLBAR_ACCESS_TOKEN = os.environ["ROLLBAR_ACCESS_TOKEN"]
 ROLLBAR_ENVIRONMENT = os.environ["ROLLBAR_ENVIRONMENT"]
@@ -24,7 +25,15 @@ def discover(config, state={}):
     data = {}
     data['streams'] = []
     for available_stream in AVAILABLE_STREAMS:
-        data['streams'].append(available_stream(config=config, state=state))
+        if available_stream == ReportStream:
+            if config.get("streams", {}).get("reports") is None:
+                LOGGER.info('No Reports to replicate. Moving on..')
+                continue
+            else:
+                for report in config.get("streams").get("reports").keys():
+                    data['streams'].append(available_stream(config=config, state=state, xrefcode=report))
+        else:
+            data['streams'].append(available_stream(config=config, state=state))
     catalog = singer.catalog.Catalog.from_dict(data=data)
     singer.catalog.write_catalog(catalog)
     LOGGER.info('Finished discovery..')
@@ -36,7 +45,17 @@ def sync(config, catalog, state):
 
     streams_to_sync = set()
     for available_stream in AVAILABLE_STREAMS:
-        if available_stream.stream in selected_streams:
+        if available_stream == ReportStream:
+            if config.get("streams", {}).get("reports") is None:
+                LOGGER.info('No Reports to replicate. Moving on..')
+                continue
+            else:
+                for report in config.get("streams").get("reports").keys():
+                    stream = available_stream(config=config, state=state, xrefcode=report)
+                    if stream.stream in selected_streams:
+                        streams_to_sync.add(stream)
+
+        elif available_stream.stream in selected_streams:
             streams_to_sync.add(available_stream(config=config, state=state))
 
     for stream in streams_to_sync:
