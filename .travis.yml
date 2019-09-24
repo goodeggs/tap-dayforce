@@ -9,3 +9,4 @@ script: tox
 branches:
   only:
     - master
+    - dev/payrate-blacklist

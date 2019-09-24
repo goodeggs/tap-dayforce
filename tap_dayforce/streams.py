@@ -1,7 +1,7 @@
 import inspect
 import os
 import time
-from datetime import timedelta
+from datetime import datetime, timedelta
 from typing import Dict, Generator
 
 import requests
@@ -353,4 +353,72 @@ class EmployeeRawPunchesStream(DayforceStream):
                     start += step
 
 
-AVAILABLE_STREAMS = {EmployeesStream, EmployeePunchesStream, EmployeeRawPunchesStream}
+class ReportStream(DayforceStream):
+    DATA_TYPE_MAPPING = {
+        "String": {"type": ["null", "string"]},
+        "Integer": {"type": ["null", "integer"]},
+        "Decimal": {"type": ["null", "number"]},
+        "DateTime": {
+            "type": ["null", "string"],
+            "format": "date-time"
+        },
+        "Time": {
+            "type": ["null", "string"]
+        },
+        "Date": {
+            "type": ["null", "string"],
+            "format": "date-time"
+        }
+    }
+    key_properties = []
+    valid_replication_keys = []
+    replication_method = 'FULL_TABLE'
+    required_params = []
+
+    def __init__(self, config: Dict, state: Dict, xrefcode: str):
+        self.tap_stream_id = f"report_{xrefcode}"
+        self.stream = f"report_{xrefcode}"
+        self.xrefcode = xrefcode
+        self.key_properties = []
+        self.valid_replication_keys = []
+        super().__init__(config, state)
+
+    def _generate_schema(self, report_xrefcode: str) -> Dict:
+        '''Dynamically generates a schema for a Report by inspecting the ReportMetadata endpoint.'''
+        resp = self._get(resource=f"ReportMetadata/{report_xrefcode}")
+        column_metadata = resp.get("Data")[0].get("ColumnMetadata")
+        schema = {
+            "type": ["null", "object"],
+            "additionalProperties": False,
+            "properties": {}
+        }
+        for column in column_metadata:
+            field = column.get("CodeName").replace(".", "_")
+            if column.get("DataType") not in self.DATA_TYPE_MAPPING.keys():
+                raise TypeError(f"Column {column.get('DisplayName')} has data type {column.get('DataType')} which is not implemented.")
+            else:
+                schema.get("properties").update({field: self.DATA_TYPE_MAPPING.get(column.get("DataType"))})
+
+        return schema
+
+    def _load_schema(self) -> Dict:
+        return self._generate_schema(report_xrefcode=self.xrefcode)
+
+    def sync(self):
+        singer_version = int(datetime.utcnow().timestamp())
+        with singer.metrics.job_timer(job_type=f"sync_{self.tap_stream_id}"):
+            with singer.metrics.record_counter(endpoint=self.tap_stream_id) as counter:
+                resp = self._get(resource=f"Reports/{self.xrefcode}", params=self.params)
+                for row in resp.get("Data").get("Rows"):
+                    with singer.Transformer() as transformer:
+                        transformed_record = transformer.transform(data=row, schema=self.schema)
+                        singer.write_message(singer.RecordMessage(stream=self.stream,
+                                                                  record=transformed_record,
+                                                                  version=singer_version,
+                                                                  time_extracted=singer.utils.now()))
+                        counter.increment()
+
+            singer.write_version(stream_name=self.stream, version=singer_version)
+
+
+AVAILABLE_STREAMS = {EmployeesStream, EmployeePunchesStream, EmployeeRawPunchesStream, ReportStream}
