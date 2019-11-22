@@ -34,7 +34,7 @@ WHITELISTED_PAY_POLICY_CODES = {
 
 
 class DayforceStream:
-    BASE_URL = "https://usr56-services.dayforcehcm.com/Api"
+    BASE_URL = "https://usr57-services.dayforcehcm.com/Api"
 
     def __init__(self, config: Dict, state: Dict):
         self.username = config.get('username')
