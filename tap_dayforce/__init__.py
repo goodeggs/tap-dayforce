@@ -71,13 +71,15 @@ def main():
     if args.discover:
         try:
             discover(config=args.config)
-        except Exception:
+        except:
             LOGGER.exception('Caught exception during Discovery..')
+            rollbar.report_exc_info()
     else:
         try:
             sync(config=args.config, catalog=args.catalog, state=args.state)
-        except Exception:
+        except:
             LOGGER.exception('Caught exception during Sync..')
+            rollbar.report_exc_info()
 
 
 if __name__ == "__main__":
