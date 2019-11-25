@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 from typing import Dict, Generator
 
 import requests
+import rollbar
 import singer
 
 from .version import __version__
@@ -201,22 +202,28 @@ class EmployeesStream(DayforceStream):
             with singer.metrics.record_counter(endpoint=self.tap_stream_id) as counter:
                 for page in self._get_records(resource='Employees', params=self.params):
                     for employee in page.get("Data"):
-                        resp = self._get(resource=f"Employees/{employee.get('XRefCode')}", params=self.params)
-                        data = resp.get('Data')
-                        # Custom blacklisting for sensitive pay information.
-                        for collection in WHITELISTED_COLLECTIONS:
-                            for i, item in enumerate(data.get(collection).get("Items")):
-                                if item.get("PayPolicy") is None:
-                                    for field in WHITELISTED_FIELDS:
-                                        data[collection]["Items"][i].pop(field, None)
-                                elif item.get("PayPolicy").get("XRefCode") not in WHITELISTED_PAY_POLICY_CODES:
-                                    for field in WHITELISTED_FIELDS:
-                                        data[collection]["Items"][i].pop(field, None)
-                        data['SyncTimestampUtc'] = new_bookmark
-                        with singer.Transformer() as transformer:
-                            transformed_record = transformer.transform(data=data, schema=self.schema)
-                            singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
-                            counter.increment()
+                        if not employee:
+                            msg = f"Dayforce returned an empty {self.tap_stream_id} record. Skipping it.."
+                            LOGGER.warning(msg)
+                            rollbar.report_message(msg, 'warning')
+                            continue
+                        else:
+                            resp = self._get(resource=f"Employees/{employee.get('XRefCode')}", params=self.params)
+                            data = resp.get('Data')
+                            # Custom blacklisting for sensitive pay information.
+                            for collection in WHITELISTED_COLLECTIONS:
+                                for i, item in enumerate(data.get(collection).get("Items")):
+                                    if item.get("PayPolicy") is None:
+                                        for field in WHITELISTED_FIELDS:
+                                            data[collection]["Items"][i].pop(field, None)
+                                    elif item.get("PayPolicy").get("XRefCode") not in WHITELISTED_PAY_POLICY_CODES:
+                                        for field in WHITELISTED_FIELDS:
+                                            data[collection]["Items"][i].pop(field, None)
+                            data['SyncTimestampUtc'] = new_bookmark
+                            with singer.Transformer() as transformer:
+                                transformed_record = transformer.transform(data=data, schema=self.schema)
+                                singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
+                                counter.increment()
 
 
 class EmployeePunchesStream(DayforceStream):
@@ -281,11 +288,17 @@ class EmployeePunchesStream(DayforceStream):
                     self.params.update(range)
                     for page in self._get_records(resource='EmployeePunches', params=self.params):
                         for punch in page.get("Data"):
-                            punch["SyncTimestampUtc"] = new_bookmark
-                            with singer.Transformer() as transformer:
-                                transformed_record = transformer.transform(data=punch, schema=self.schema)
-                                singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
-                                counter.increment()
+                            if not punch:
+                                msg = f"Dayforce returned an empty {self.tap_stream_id} record. Skipping it.."
+                                LOGGER.warning(msg)
+                                rollbar.report_message(msg, 'warning')
+                                continue
+                            else:
+                                punch["SyncTimestampUtc"] = new_bookmark
+                                with singer.Transformer() as transformer:
+                                    transformed_record = transformer.transform(data=punch, schema=self.schema)
+                                    singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
+                                    counter.increment()
                     start += step
 
 
@@ -346,11 +359,17 @@ class EmployeeRawPunchesStream(DayforceStream):
                     self.params.update(range)
                     for page in self._get_records(resource='EmployeeRawPunches', params=self.params):
                         for punch in page.get("Data"):
-                            punch["SyncTimestampUtc"] = new_bookmark
-                            with singer.Transformer() as transformer:
-                                transformed_record = transformer.transform(data=punch, schema=self.schema)
-                                singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
-                                counter.increment()
+                            if not punch:
+                                msg = f"Dayforce returned an empty {self.tap_stream_id} record. Skipping it.."
+                                LOGGER.warning(msg)
+                                rollbar.report_message(msg, 'warning')
+                                continue
+                            else:
+                                punch["SyncTimestampUtc"] = new_bookmark
+                                with singer.Transformer() as transformer:
+                                    transformed_record = transformer.transform(data=punch, schema=self.schema)
+                                    singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
+                                    counter.increment()
                     start += step
 
 
