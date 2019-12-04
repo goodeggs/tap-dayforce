@@ -209,21 +209,36 @@ class EmployeesStream(DayforceStream):
                             continue
                         else:
                             resp = self._get(resource=f"Employees/{employee.get('XRefCode')}", params=self.params)
-                            data = resp.get('Data')
-                            # Custom blacklisting for sensitive pay information.
-                            for collection in WHITELISTED_COLLECTIONS:
-                                for i, item in enumerate(data.get(collection).get("Items")):
-                                    if item.get("PayPolicy") is None:
-                                        for field in WHITELISTED_FIELDS:
-                                            data[collection]["Items"][i].pop(field, None)
-                                    elif item.get("PayPolicy").get("XRefCode") not in WHITELISTED_PAY_POLICY_CODES:
-                                        for field in WHITELISTED_FIELDS:
-                                            data[collection]["Items"][i].pop(field, None)
-                            data['SyncTimestampUtc'] = new_bookmark
-                            with singer.Transformer() as transformer:
-                                transformed_record = transformer.transform(data=data, schema=self.schema)
-                                singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
-                                counter.increment()
+                            if resp.get('Data') is None:
+                                msg = f"Dayforce returned an empty record for employee {employee.get('XRefCode')}. Skipping it.."
+                                LOGGER.warning(msg)
+                                rollbar.report_message(msg, 'warning')
+                                continue
+                            else:
+                                data = resp.get('Data')
+                                # Custom blacklisting for sensitive pay information.
+                                try:
+                                    for collection in WHITELISTED_COLLECTIONS:
+                                        for i, item in enumerate(data.get(collection).get("Items")):
+                                            if item.get("PayPolicy") is None:
+                                                for field in WHITELISTED_FIELDS:
+                                                    data[collection]["Items"][i].pop(field, None)
+                                            elif item.get("PayPolicy").get("XRefCode") not in WHITELISTED_PAY_POLICY_CODES:
+                                                for field in WHITELISTED_FIELDS:
+                                                    data[collection]["Items"][i].pop(field, None)
+                                except Exception as e:
+                                    msg = f"""
+                                    Sensitive information blacklist failed for Employee {employee.get('XRefCode')}. Skipping it..
+                                    Exception: {e}
+                                    """
+                                    LOGGER.warning(msg)
+                                    rollbar.report_message(msg, 'warning')
+                                    continue
+                                data['SyncTimestampUtc'] = new_bookmark
+                                with singer.Transformer() as transformer:
+                                    transformed_record = transformer.transform(data=data, schema=self.schema)
+                                    singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
+                                    counter.increment()
 
 
 class EmployeePunchesStream(DayforceStream):
