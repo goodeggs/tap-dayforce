@@ -1,8 +1,9 @@
+import hashlib
 import inspect
 import os
 import time
-from datetime import datetime, timedelta
-from typing import Dict, Generator
+from datetime import timedelta
+from typing import Dict, Generator, Iterable
 
 import requests
 import rollbar
@@ -427,7 +428,11 @@ class ReportStream(DayforceStream):
         schema = {
             "type": ["null", "object"],
             "additionalProperties": False,
-            "properties": {}
+            "properties": {
+                "hash_pk": {
+                    "type": ["null", "string"]
+                }
+            }
         }
         for column in column_metadata:
             field = column.get("CodeName").replace(".", "_")
@@ -441,21 +446,24 @@ class ReportStream(DayforceStream):
     def _load_schema(self) -> Dict:
         return self._generate_schema(report_xrefcode=self.xrefcode)
 
+    def _generate_md5_hash(self, input_sequence: Iterable[str]) -> str:
+        m = hashlib.md5()
+        for input in input_sequence:
+            m.update(input.encode('utf-8'))
+        return m.hexdigest()
+
     def sync(self):
-        singer_version = int(datetime.utcnow().timestamp())
         with singer.metrics.job_timer(job_type=f"sync_{self.tap_stream_id}"):
             with singer.metrics.record_counter(endpoint=self.tap_stream_id) as counter:
                 for page in self._get_records(resource=f"Reports/{self.xrefcode}", params=self.params):
                     for row in page.get("Data").get("Rows"):
+                        row["hash_pk"] = self._generate_md5_hash(row.values())
                         with singer.Transformer() as transformer:
                             transformed_record = transformer.transform(data=row, schema=self.schema)
                             singer.write_message(singer.RecordMessage(stream=self.stream,
                                                                       record=transformed_record,
-                                                                      version=singer_version,
                                                                       time_extracted=singer.utils.now()))
                             counter.increment()
-
-            singer.write_version(stream_name=self.stream, version=singer_version)
 
 
 AVAILABLE_STREAMS = {EmployeesStream, EmployeePunchesStream, EmployeeRawPunchesStream, ReportStream}
