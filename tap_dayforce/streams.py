@@ -417,7 +417,7 @@ class ReportStream(DayforceStream):
         self.tap_stream_id = f"report_{xrefcode}"
         self.stream = f"report_{xrefcode}"
         self.xrefcode = xrefcode
-        self.key_properties = []
+        self.key_properties = 'hash_pk'
         self.valid_replication_keys = []
         super().__init__(config, state)
 
