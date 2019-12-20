@@ -201,47 +201,41 @@ class EmployeesStream(DayforceStream):
                                                      key=self.replication_key,
                                                      val=new_bookmark)
 
+        empty_count = 0
         with singer.metrics.job_timer(job_type=f"sync_{self.tap_stream_id}"):
             with singer.metrics.record_counter(endpoint=self.tap_stream_id) as counter:
                 for page in self._get_records(resource='Employees', params=self.params):
                     for employee in page.get("Data"):
                         if not employee:
-                            msg = f"Dayforce returned an empty {self.tap_stream_id} record. Skipping it.."
-                            LOGGER.warning(msg)
-                            rollbar.report_message(msg, 'warning')
+                            LOGGER.warning(f"Dayforce returned an empty {self.tap_stream_id} record. Skipping it..")
+                            empty_count += 1
                             continue
                         else:
                             resp = self._get(resource=f"Employees/{employee.get('XRefCode')}", params=self.params)
-                            if resp.get('Data') is None:
-                                msg = f"Dayforce returned an empty record for employee {employee.get('XRefCode')}. Skipping it.."
-                                LOGGER.warning(msg)
-                                rollbar.report_message(msg, 'warning')
+                            data = resp.get('Data')
+                            # Custom blacklisting for sensitive pay information.
+                            try:
+                                for collection in WHITELISTED_COLLECTIONS:
+                                    for i, item in enumerate(data.get(collection).get("Items")):
+                                        if item.get("PayPolicy") is None:
+                                            for field in WHITELISTED_FIELDS:
+                                                data[collection]["Items"][i].pop(field, None)
+                                        elif item.get("PayPolicy").get("XRefCode") not in WHITELISTED_PAY_POLICY_CODES:
+                                            for field in WHITELISTED_FIELDS:
+                                                data[collection]["Items"][i].pop(field, None)
+                            except Exception as e:
+                                msg = f"Sensitive information blacklist failed for Employee {employee.get('XRefCode')}."
+                                LOGGER.warning(msg, exc_info=e)
+                                rollbar.report_exc_info(e, level='warning', extra_data={'title': msg})
                                 continue
-                            else:
-                                data = resp.get('Data')
-                                # Custom blacklisting for sensitive pay information.
-                                try:
-                                    for collection in WHITELISTED_COLLECTIONS:
-                                        for i, item in enumerate(data.get(collection).get("Items")):
-                                            if item.get("PayPolicy") is None:
-                                                for field in WHITELISTED_FIELDS:
-                                                    data[collection]["Items"][i].pop(field, None)
-                                            elif item.get("PayPolicy").get("XRefCode") not in WHITELISTED_PAY_POLICY_CODES:
-                                                for field in WHITELISTED_FIELDS:
-                                                    data[collection]["Items"][i].pop(field, None)
-                                except Exception as e:
-                                    msg = f"""
-                                    Sensitive information blacklist failed for Employee {employee.get('XRefCode')}. Skipping it..
-                                    Exception: {e}
-                                    """
-                                    LOGGER.warning(msg)
-                                    rollbar.report_message(msg, 'warning')
-                                    continue
-                                data['SyncTimestampUtc'] = new_bookmark
-                                with singer.Transformer() as transformer:
-                                    transformed_record = transformer.transform(data=data, schema=self.schema)
-                                    singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
-                                    counter.increment()
+                            data['SyncTimestampUtc'] = new_bookmark
+                            with singer.Transformer() as transformer:
+                                transformed_record = transformer.transform(data=data, schema=self.schema)
+                                singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
+                                counter.increment()
+
+        if empty_count > 0:
+            rollbar.report_message(f"Dayforce returned empty {self.tap_stream_id} records", 'warning', extra_data={'count': empty_count})
 
 
 class EmployeePunchesStream(DayforceStream):
@@ -296,6 +290,8 @@ class EmployeePunchesStream(DayforceStream):
         end = singer.utils.strptime_to_utc(self.params.get('filterTransactionEndTimeUTC'))
         step = timedelta(days=7)
 
+        empty_count = 0
+
         with singer.metrics.job_timer(job_type=f"sync_{self.tap_stream_id}"):
             with singer.metrics.record_counter(endpoint=self.tap_stream_id) as counter:
                 while start < end:
@@ -307,9 +303,8 @@ class EmployeePunchesStream(DayforceStream):
                     for page in self._get_records(resource='EmployeePunches', params=self.params):
                         for punch in page.get("Data"):
                             if not punch:
-                                msg = f"Dayforce returned an empty {self.tap_stream_id} record. Skipping it.."
-                                LOGGER.warning(msg)
-                                rollbar.report_message(msg, 'warning')
+                                LOGGER.warning(f"Dayforce returned an empty {self.tap_stream_id} record. Skipping it..")
+                                empty_count += 1
                                 continue
                             else:
                                 punch["SyncTimestampUtc"] = new_bookmark
@@ -318,6 +313,9 @@ class EmployeePunchesStream(DayforceStream):
                                     singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
                                     counter.increment()
                     start += step
+
+        if empty_count > 0:
+            rollbar.report_message(f"Dayforce returned empty {self.tap_stream_id} records", 'warning', extra_data={'count': empty_count})
 
 
 class EmployeeRawPunchesStream(DayforceStream):
@@ -367,6 +365,8 @@ class EmployeeRawPunchesStream(DayforceStream):
         end = singer.utils.strptime_to_utc(self.params.get('filterTransactionEndTimeUTC'))
         step = timedelta(days=7)
 
+        empty_count = 0
+
         with singer.metrics.job_timer(job_type=f"sync_{self.tap_stream_id}"):
             with singer.metrics.record_counter(endpoint=self.tap_stream_id) as counter:
                 while start < end:
@@ -378,9 +378,8 @@ class EmployeeRawPunchesStream(DayforceStream):
                     for page in self._get_records(resource='EmployeeRawPunches', params=self.params):
                         for punch in page.get("Data"):
                             if not punch:
-                                msg = f"Dayforce returned an empty {self.tap_stream_id} record. Skipping it.."
-                                LOGGER.warning(msg)
-                                rollbar.report_message(msg, 'warning')
+                                LOGGER.warning(f"Dayforce returned an empty {self.tap_stream_id} record. Skipping it..")
+                                empty_count += 1
                                 continue
                             else:
                                 punch["SyncTimestampUtc"] = new_bookmark
@@ -389,6 +388,9 @@ class EmployeeRawPunchesStream(DayforceStream):
                                     singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
                                     counter.increment()
                     start += step
+
+        if empty_count > 0:
+            rollbar.report_message(f"Dayforce returned empty {self.tap_stream_id} records", 'warning', extra_data={'count': empty_count})
 
 
 class ReportStream(DayforceStream):
