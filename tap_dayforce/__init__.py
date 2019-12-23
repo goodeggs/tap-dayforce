@@ -1,82 +1,86 @@
 import logging
 import os
+import json
 
 import rollbar
 import singer
 from rollbar.logger import RollbarHandler
 
-from .streams import AVAILABLE_STREAMS, ReportStream
+from typing import Dict
+
+from .streams import EmployeePunchesStream
+
+AVAILABLE_STREAMS = {
+    EmployeePunchesStream
+}
 
 ROLLBAR_ACCESS_TOKEN = os.environ["ROLLBAR_ACCESS_TOKEN"]
 ROLLBAR_ENVIRONMENT = os.environ["ROLLBAR_ENVIRONMENT"]
 
 LOGGER = singer.get_logger()
 
-rollbar.init(ROLLBAR_ACCESS_TOKEN, ROLLBAR_ENVIRONMENT)
-rollbar_handler = RollbarHandler()
-# Only send level WARNING and above to Rollbar.
-rollbar_handler.setLevel(logging.WARNING)
-LOGGER.addHandler(rollbar_handler)
+def get_abs_path(path: str) -> str:
+    return os.path.join(os.path.dirname(os.path.realpath(__file__)), path)
 
+def load_schema(tap_stream_id: str, schema_path: str = 'schemas') -> Dict:
+    path = get_abs_path(schema_path)
+    return singer.utils.load_json(f"{path}/{tap_stream_id}.json")
 
-def discover(config, state={}):
+def discover(args, select_all=False):
     LOGGER.info('Starting discovery..')
-    data = {}
-    data['streams'] = []
+
+    catalog = {"streams": []}
     for available_stream in AVAILABLE_STREAMS:
-        if available_stream == ReportStream:
-            if config.get("streams", {}).get("reports") is None:
-                LOGGER.info('No Reports to replicate. Moving on..')
-                continue
-            else:
-                for report in config.get("streams").get("reports").keys():
-                    data['streams'].append(available_stream(config=config, state=state, xrefcode=report))
-        else:
-            data['streams'].append(available_stream(config=config, state=state))
-    catalog = singer.catalog.Catalog.from_dict(data=data)
-    singer.catalog.write_catalog(catalog)
+        stream = available_stream.from_args(args)
+        schema = load_schema(stream.tap_stream_id)
+        catalog_entry = {
+            "stream": stream.tap_stream_id,
+            "tap_stream_id": stream.tap_stream_id,
+            "schema": schema,
+            "metadata": singer.metadata.get_standard_metadata(schema=schema,
+                                                              key_properties=stream.key_properties,
+                                                              valid_replication_keys=stream.bookmark_properties,
+                                                              replication_method=stream.replication_method)
+        }
+
+        if select_all is True:
+            catalog_entry["metadata"][0]["metadata"]["selected"] = True
+        catalog["streams"].append(catalog_entry)
+
+    print(json.dumps(catalog, indent=2))
     LOGGER.info('Finished discovery..')
 
 
-def sync(config, catalog, state):
+def sync(args):
     LOGGER.info('Starting sync..')
-    selected_streams = {catalog_entry.stream for catalog_entry in catalog.get_selected_streams(state)}
 
-    streams_to_sync = set()
+    selected_streams = {catalog_entry.stream for catalog_entry in args.catalog.get_selected_streams(args.state)}
+    LOGGER.info(f"Selected Streams: {selected_streams}")
+
     for available_stream in AVAILABLE_STREAMS:
-        if available_stream == ReportStream:
-            if config.get("streams", {}).get("reports") is None:
-                LOGGER.info('No Reports to replicate. Moving on..')
-                continue
-            else:
-                for report in config.get("streams").get("reports").keys():
-                    stream = available_stream(config=config, state=state, xrefcode=report)
-                    if stream.stream in selected_streams:
-                        streams_to_sync.add(stream)
-
-        elif available_stream.stream in selected_streams:
-            streams_to_sync.add(available_stream(config=config, state=state))
-
-    for stream in streams_to_sync:
-        singer.bookmarks.set_currently_syncing(state=stream.state, tap_stream_id=stream.tap_stream_id)
-        stream.write_state_message()
-        stream.write_schema_message()
-        stream.sync()
-        singer.bookmarks.set_currently_syncing(state=stream.state, tap_stream_id=None)
-        stream.write_state_message()
+        stream = available_stream.from_args(args)
+        if stream.tap_stream_id in selected_streams:
+            print(stream.catalog.get_stream(stream.tap_stream_id).schema.to_dict())
+            LOGGER.info(f"Starting sync for Stream {stream.tap_stream_id}..")
+            singer.bookmarks.set_currently_syncing(state=args.state, tap_stream_id=stream.tap_stream_id)
+            stream.write_state_message()
+            stream.write_schema_message()
+            stream.sync()
+            singer.bookmarks.set_currently_syncing(state=args.state, tap_stream_id=None)
+            stream.write_state_message()
 
 
 def main():
-    args = singer.utils.parse_args(required_config_keys=["username", "password", "client_name", "email"])
+    args = singer.utils.parse_args(required_config_keys=["username", "password", "client_namespace"])
     if args.discover:
         try:
-            discover(config=args.config)
+            discover(args, select_all=True)
         except:
             LOGGER.exception('Caught exception during Discovery..')
             rollbar.report_exc_info()
     else:
         try:
-            sync(config=args.config, catalog=args.catalog, state=args.state)
+            sync(args)
         except:
             LOGGER.exception('Caught exception during Sync..')
             rollbar.report_exc_info()

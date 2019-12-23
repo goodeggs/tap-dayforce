@@ -4,9 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+tap-dayforce = {editable = true,path = "."}
 
 [dev-packages]
-tap-dayforce = {path = ".", editable = true}
 isort = "*"
 flake8 = "*"
 pytest = "*"
@@ -15,3 +15,4 @@ tox = "*"
 [requires]
 
 [pipenv]
+allow_prereleases = true
