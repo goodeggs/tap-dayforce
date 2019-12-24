@@ -22,7 +22,7 @@ setup(
     long_description=readme,
     long_description_content_type='text/markdown',
     classifiers=[
-        'Development Status :: 1 - Planning',
+        'Development Status :: 5 - Production/Stable',
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Natural Language :: English',
         'Topic :: Software Development',
@@ -30,7 +30,8 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 3 :: Only',
         'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7'
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8'
     ],
     keywords="singer tap python dayforce",
     license='GPLv3',
@@ -41,7 +42,8 @@ setup(
     install_requires=[
         'dayforce-client==0.1.0a1',
         'requests==2.22.0',
-        'singer-python==5.7.0',
+        'singer-python==5.9.0',
+        'backoff==1.8.0',
         'rollbar==0.14.7'
     ],
     python_requires='>=3.6',

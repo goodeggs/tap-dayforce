@@ -22,3 +22,8 @@ run-tap-to-stitch-with-state:
 	@echo "Persisting state.."
 	@tail -1 state.json > state.tmp.json
 	@mv state.tmp.json state.json
+
+run-tap-persist-state:
+	@tap-dayforce --config=config/dayforce.config.new.json --catalog=catalog.new.json > state.json
+	@tail -1 state.json > state.tmp.json
+	@mv state.tmp.json state.json

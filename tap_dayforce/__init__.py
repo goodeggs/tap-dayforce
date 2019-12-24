@@ -1,37 +1,40 @@
 import logging
 import os
 import json
+from typing import Dict
 
 import rollbar
 import singer
 from rollbar.logger import RollbarHandler
 
-from typing import Dict
-
-from .streams import EmployeePunchesStream
+from .streams import EmployeePunchesStream, EmployeeRawPunchesStream, EmployeesStream, PaySummaryReportStream
+from .utils import get_abs_path, load_schema, parse_args
 
 AVAILABLE_STREAMS = {
-    EmployeePunchesStream
+    #EmployeePunchesStream,
+    #EmployeeRawPunchesStream,
+    EmployeesStream,
+    PaySummaryReportStream
 }
-
-ROLLBAR_ACCESS_TOKEN = os.environ["ROLLBAR_ACCESS_TOKEN"]
-ROLLBAR_ENVIRONMENT = os.environ["ROLLBAR_ENVIRONMENT"]
 
 LOGGER = singer.get_logger()
 
-def get_abs_path(path: str) -> str:
-    return os.path.join(os.path.dirname(os.path.realpath(__file__)), path)
+try:
+    ROLLBAR_ACCESS_TOKEN = os.environ["ROLLBAR_ACCESS_TOKEN"]
+    ROLLBAR_ENVIRONMENT = os.environ["ROLLBAR_ENVIRONMENT"]
+except KeyError:
+    LOGGER.info("Required env vars for Rollbar logging not found. Rollbar logging disabled..")
+    log_to_rollbar = False
+else:
+    rollbar.init(ROLLBAR_ACCESS_TOKEN, ROLLBAR_ENVIRONMENT)
+    log_to_rollbar = True
 
-def load_schema(tap_stream_id: str, schema_path: str = 'schemas') -> Dict:
-    path = get_abs_path(schema_path)
-    return singer.utils.load_json(f"{path}/{tap_stream_id}.json")
 
 def discover(args, select_all=False):
     LOGGER.info('Starting discovery..')
 
     catalog = {"streams": []}
-    for available_stream in AVAILABLE_STREAMS:
-        stream = available_stream.from_args(args)
+    for stream in AVAILABLE_STREAMS:
         schema = load_schema(stream.tap_stream_id)
         catalog_entry = {
             "stream": stream.tap_stream_id,
@@ -71,19 +74,21 @@ def sync(args):
 
 
 def main():
-    args = singer.utils.parse_args(required_config_keys=["username", "password", "client_namespace"])
+    args = parse_args(required_config_keys={"username", "password", "client_namespace", "start_date"})
     if args.discover:
         try:
-            discover(args, select_all=True)
+            discover(args, select_all=args.select_all)
         except:
             LOGGER.exception('Caught exception during Discovery..')
-            rollbar.report_exc_info()
+            if log_to_rollbar is True:
+                rollbar.report_exc_info()
     else:
         try:
             sync(args)
         except:
             LOGGER.exception('Caught exception during Sync..')
-            rollbar.report_exc_info()
+            if log_to_rollbar is True:
+                rollbar.report_exc_info()
 
 
 if __name__ == "__main__":
