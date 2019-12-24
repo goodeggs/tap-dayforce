@@ -11,8 +11,8 @@ from .streams import EmployeePunchesStream, EmployeeRawPunchesStream, EmployeesS
 from .utils import get_abs_path, load_schema, parse_args
 
 AVAILABLE_STREAMS = {
-    #EmployeePunchesStream,
-    #EmployeeRawPunchesStream,
+    EmployeePunchesStream,
+    EmployeeRawPunchesStream,
     EmployeesStream,
     PaySummaryReportStream
 }

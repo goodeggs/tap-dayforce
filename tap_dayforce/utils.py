@@ -86,13 +86,3 @@ def check_config(config: Dict, required_config_keys: Set[str]):
     missing_keys = [key for key in required_config_keys if key not in config]
     if missing_keys:
         raise Exception("Config is missing required keys: {}".format(missing_keys))
-
-
-def jobtimer(tap_stream_id):
-    def decorator_jobtimer(func):
-        @functools.wraps(func)
-        def wrapper_jobtimer(*args, **kwargs):
-            with singer.metrics.job_timer(job_type=f"sync_{tap_stream_id}"):
-                func(*args, **kwargs)
-        return wrapper_jobtimer
-    return decorator_jobtimer
