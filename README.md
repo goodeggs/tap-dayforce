@@ -34,8 +34,8 @@ The tap accepts a JSON-formatted configuration file as arguments. This configura
 
 1. `username`: A valid Dayforce web services user account username.
 2. `password`: A valid Dayforce web services user account password.
-3. `client_name`: A valid client name (e.g. Company Name) that will be inserted into the request URL.
-2. `email`: A valid email address to be inserted into the `From` header of the HTTP Request headers.
+3. `client_namespace`: A valid client name (e.g. Company Name) that will be inserted into the request URL.
+4. `start_date`: A date to fall back on when no `state.json` is provided. This determines how far back the tap looks for data within the Dayforce platform.
 
 It's important to note that the Role attached to the User Account used in the configuration file must have at minimum the "Web Services" feature, as well as the "Read Data" sub-feature enabled.
 
@@ -45,35 +45,18 @@ An bare-bones Dayforce configuration may file may look like the following:
 {
   "username": "foo",
   "password": "bar",
-  "client_name": "foo_bar",
-  "email": "foo.bar@gmail.com"
-}
-```
-
-Additionally, you may specify more granular configurations for individual streams. Each key under a stream should represent a valid API request parameter for that endpoint. A more fleshed-out configuration file may look similar to the following:
-
-```json
-{
-  "username": "foo",
-  "password": "bar",
-  "client_name": "foo_bar",
-  "email": "foo.bar@gmail.com",
-  "streams": {
-    "employees": {
-      "expand": "EmploymentStatuses,Roles,EmployeeManagers,CompensationSummary,Locations,LastActiveManagers"
-    },
-    "employee_punches": {
-      "filterTransactionStartTimeUTC": "2019-06-01T00:00:00Z"
-    }
-  }
+  "client_namespace": "foo_bar",
+  "start_date": "2019-01-01T00:00:00Z"
 }
 ```
 
 ## Streams
 
-The current version of the tap syncs two distinct [Streams](https://github.com/singer-io/getting-started/blob/master/docs/SYNC_MODE.md#streams):
+The current version of the tap syncs four distinct [Streams](https://github.com/singer-io/getting-started/blob/master/docs/SYNC_MODE.md#streams):
 1. `Employees`: [Endpoint Documentation](https://developers.dayforce.com/Build/API-Explorer/Employee/GET-Employee-Details.aspx)
 2. `EmployeePunches`: [Endpoint Documentation](https://developers.dayforce.com/Build/API-Explorer/Time-Management/Employee-Punches.aspx)
+3. `EmployeeRawPunches` [Endpoint Documentation](https://developers.dayforce.com/Build/API-Explorer/Time-Management/Employee-Raw-Punches.aspx)
+4. `PaySummaryReport` [Endpoint Documentation](https://developers.dayforce.com/Build/API-Explorer/Reporting/GET-Reports.aspx)
 
 ## Discovery
 
@@ -87,6 +70,12 @@ The tap will generate a [Catalog](https://github.com/singer-io/getting-started/b
 
 ```bash
 $ ~/.venvs/tap-dayforce/bin/tap-dayforce --config=config/dayforce.config.json --discover > catalog.json
+```
+
+Discovery mode will not select all streams for replication by default. To instruct Discovery mode to select all streams for replication, use the `--select-all` flag:
+
+```bash
+$ ~/.venvs/tap-dayforce/bin/tap-dayforce --config=config/dayforce.config.json --discover --select-all > catalog.json
 ```
 
 ## Sync to stdout
@@ -109,14 +98,20 @@ $ mv state.json.tmp state.json
 
 You can also send the output of the tap to [Stitch Data](https://www.stitchdata.com/) for loading into the data warehouse. To do this, first create a JSON-formatted configuration for Stitch. This configuration file has two required fields:
 1. `client_id`: The ID associated with the Stitch Data account you'll be sending data to.
-2. `token` The token associated with the specific [Import API integration](https://www.stitchdata.com/docs/integrations/import-api/) within the Stitch Data account.
+2. `token`: The token associated with the specific [Import API integration](https://www.stitchdata.com/docs/integrations/import-api/) within the Stitch Data account.
+3. `small_batch_url`: Default to "https://api.stitchdata.com/v2/import/batch"
+4. `big_batch_url`: Default to "https://api.stitchdata.com/v2/import/batch"
+5. `batch_size_preferences`: Default to `{}`
 
 An example configuration file will look as follows:
 
 ```json
 {
-  "client_id": 1234,
-  "token": "foobarfoobar"
+  "token": "foobar",
+  "client_id": 12345,
+  "small_batch_url": "https://api.stitchdata.com/v2/import/batch",
+  "big_batch_url": "https://api.stitchdata.com/v2/import/batch",
+  "batch_size_preferences": {}
 }
 ```
 
@@ -130,47 +125,36 @@ $ mv state.json.tmp state.json
 
 ## Contributing
 
-The first step to contributing is getting a copy of the source code. First, [fork `tap-dayforce` on GitHub](https://github.com/goodeggs/tap-dayforce/fork). Then, `cd` into the directory where you want your copy of the source code to live and clone the source code:
+1. The first step to contributing is getting a copy of the source code. First, [fork `tap-dayforce` on GitHub](https://github.com/goodeggs/tap-dayforce/fork). Then, `cd` into the directory where you want your copy of the source code to live and clone the source code:
 
 ```bash
+$ cd repos
 $ git clone git@github.com:YourGitHubName/tap-dayforce.git
 ```
 
-Now that you have a copy of the source code on your local machine, you can leverage [Pipenv](https://docs.pipenv.org/en/latest/) and the corresponding `Pipfile` to install of the development dependencies within a virtual environment:
+2. Now that you have a copy of the source code on your machine, create and activate a virtual envionment for `tap-dayforce`:
 
 ```bash
-$ pipenv install --three --dev
+$ python3 -mvenv ~/.venvs/tap-dayforce
+$ source ~/.venvs/tap-dayforce/bin/activate
 ```
 
-This command will create an isolated virtual environment for your `tap-dayforce` project and install all the development dependencies defined within the `Pipfile` inside of the environment. You can then enter a shell within the environment:
+2. Once inside the virtual environment, run `make dev_install` at the root of the repository:
 
 ```bash
-$ pipenv shell
+$ (tap-dayforce) make dev_install
 ```
 
-Or, you can run individual commands within the environment without entering the shell:
-
+3. Run the [tox](https://tox.readthedocs.io/en/latest/) testing suite in the appropriate python environment to ensure things are working properly:
 ```bash
-$ pipenv run <command>
+$ (tap-dayforce) tox -e py37
 ```
 
-For example, to format your code using [isort](https://github.com/timothycrosley/isort) and [flake8](http://flake8.pycqa.org/en/latest/index.html) before commiting changes, run the following commands:
+To format your code using [isort](https://github.com/timothycrosley/isort) and [flake8](http://flake8.pycqa.org/en/latest/index.html) before commiting changes, run the following commands:
 
 ```bash
-$ pipenv run make isort
-$ pipenv run make flake8
-```
-
-You can also run the entire testing suite before committing using [tox](https://tox.readthedocs.io/en/latest/):
-
-```bash
-$ pipenv run tox
-```
-
-Finally, you can run your local version of the tap within the virtual environment using a command like the following:
-
-```bash
-$ pipenv run tap-dayforce --config=config/dayforce.config.json --catalog=catalog.json
+$ (tap-dayforce) make isort
+$ (tap-dayforce) make flake8
 ```
 
 Once you've confirmed that your changes work and the testing suite passes, feel free to put out a PR!

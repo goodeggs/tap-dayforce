@@ -1,19 +1,20 @@
 import argparse
 import json
-import functools
 import os
 from typing import Dict, Set
 
-import singer
 import requests
+import singer
 
 
 def get_abs_path(path: str) -> str:
     return os.path.join(os.path.dirname(os.path.realpath(__file__)), path)
 
+
 def load_schema(tap_stream_id: str, schema_path: str = 'schemas') -> Dict:
     path = get_abs_path(schema_path)
     return singer.utils.load_json(f"{path}/{tap_stream_id}.json")
+
 
 def is_fatal_code(e: requests.exceptions.RequestException) -> bool:
     '''Helper function to determine if a Requests reponse status code
@@ -21,9 +22,11 @@ def is_fatal_code(e: requests.exceptions.RequestException) -> bool:
     instead of attemtping to backoff.'''
     return 400 <= e.response.status_code < 500 and e.response.status_code != 429
 
+
 def load_json(path: str) -> Dict:
     with open(path) as fil:
         return json.load(fil)
+
 
 def parse_args(required_config_keys: Set[str]) -> argparse.Namespace:
     '''Parse standard command-line args.

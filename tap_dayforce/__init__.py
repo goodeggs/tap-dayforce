@@ -1,14 +1,12 @@
-import logging
-import os
 import json
-from typing import Dict
+import os
 
 import rollbar
 import singer
-from rollbar.logger import RollbarHandler
 
-from .streams import EmployeePunchesStream, EmployeeRawPunchesStream, EmployeesStream, PaySummaryReportStream
-from .utils import get_abs_path, load_schema, parse_args
+from .streams import (EmployeePunchesStream, EmployeeRawPunchesStream,
+                      EmployeesStream, PaySummaryReportStream)
+from .utils import load_schema, parse_args
 
 AVAILABLE_STREAMS = {
     EmployeePunchesStream,
@@ -63,14 +61,15 @@ def sync(args):
     for available_stream in AVAILABLE_STREAMS:
         stream = available_stream.from_args(args)
         if stream.tap_stream_id in selected_streams:
-            print(stream.catalog.get_stream(stream.tap_stream_id).schema.to_dict())
             LOGGER.info(f"Starting sync for Stream {stream.tap_stream_id}..")
-            singer.bookmarks.set_currently_syncing(state=args.state, tap_stream_id=stream.tap_stream_id)
-            stream.write_state_message()
-            stream.write_schema_message()
+            singer.bookmarks.set_currently_syncing(state=stream.state, tap_stream_id=stream.tap_stream_id)
+            singer.write_state(stream.state)
+            singer.write_schema(stream_name=stream.tap_stream_id,
+                                schema=stream.get_schema(tap_stream_id=stream.tap_stream_id, catalog=stream.catalog),
+                                key_properties=stream.key_properties)
             stream.sync()
-            singer.bookmarks.set_currently_syncing(state=args.state, tap_stream_id=None)
-            stream.write_state_message()
+            singer.bookmarks.set_currently_syncing(state=stream.state, tap_stream_id=None)
+            singer.write_state(stream.state)
 
 
 def main():
