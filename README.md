@@ -3,6 +3,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Python Versions](https://img.shields.io/badge/python-3.6%20%7C%203.7-blue.svg)](https://pypi.python.org/pypi/ansicolortags/)
 [![Build Status](https://travis-ci.com/goodeggs/tap-pagerduty.svg?branch=master)](https://travis-ci.com/goodeggs/tap-dayforce.svg?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/7225a0fe514477edc17c/maintainability)](https://codeclimate.com/github/goodeggs/tap-dayforce/maintainability)
 
 A [Singer](https://www.singer.io/) tap for extracting data from the [Dayforce REST API v1](https://developers.dayforce.com/Build/RESTful-general-URL-structure.aspx).
 
