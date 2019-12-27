@@ -208,7 +208,6 @@ class PaySummaryReportStream(DayforceStream):
                     counter.increment()
 
     def sync(self):
-        singer_version = int(datetime.utcnow().timestamp())
         with singer.metrics.job_timer(job_type=f"sync_{self.tap_stream_id}"):
             with singer.metrics.record_counter(endpoint=self.tap_stream_id) as counter:
                 start = singer.utils.strptime_to_utc(self.get_bookmark(self.config, self.tap_stream_id, self.state, self.bookmark_properties))
