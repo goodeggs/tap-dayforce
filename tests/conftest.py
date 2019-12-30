@@ -28,6 +28,12 @@ def state(shared_datadir):
 
 
 @pytest.fixture(scope='function')
+def employee_record(shared_datadir):
+    with open(shared_datadir / 'test.record.employee.json') as f:
+        return json.load(f)
+
+
+@pytest.fixture(scope='function')
 def dayforce_client(config):
     return Dayforce(username=config.get("username"),
                     password=config.get("password"),

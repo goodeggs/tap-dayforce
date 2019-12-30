@@ -132,7 +132,7 @@ class EmployeesStream(DayforceStream):
 
     def whitelist_sensitive_info(self, data: Dict) -> Dict:
         for collection in WHITELISTED_COLLECTIONS:
-            for i, item in enumerate(data.get(collection, {}).get("Items")):
+            for i, item in enumerate(data.get(collection, {}).get("Items", [{}])):
                 if item.get("PayPolicy") is None or item.get("PayPolicy").get("XRefCode") not in WHITELISTED_PAY_POLICY_CODES:
                     for field in WHITELISTED_FIELDS:
                         data[collection]["Items"][i].pop(field, None)

@@ -1,0 +1,3964 @@
+{
+  "AvatarUri": "string",
+  "BadgeNumber": "string",
+  "BioExempt": true,
+  "BirthDate": "2019-12-30T17:13:33.851Z",
+  "BirthCountry": "string",
+  "BirthState": "string",
+  "BirthCity": "string",
+  "ChecksumTimestamp": "2019-12-30T17:13:33.851Z",
+  "ClockSupervisor": true,
+  "COBRANotificationSentDate": "2019-12-30T17:13:33.851Z",
+  "COBRANotificationStatus": 0,
+  "Culture": {
+    "XRefCode": "string",
+    "ShortName": "string",
+    "LongName": "string",
+    "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+  },
+  "DateOfDeath": "2019-12-30T17:13:33.851Z",
+  "EligibleForRehire": "string",
+  "EmployeePin": "string",
+  "EntitlementOverrideDate": "2019-12-30T17:13:33.851Z",
+  "EstimatedReturnDate": "2019-12-30T17:13:33.851Z",
+  "ExportDate": "2019-12-30T17:13:33.851Z",
+  "FederatedId": "string",
+  "Gender": "string",
+  "HireDate": "2019-12-30T17:13:33.851Z",
+  "HomePhone": "string",
+  "IsAboriginal": "string",
+  "IsVisibleMinority": "string",
+  "EmployeeLatestUpdatedTimestamp": "2019-12-30T17:13:33.851Z",
+  "LastPayrollNewHireExportDate": "2019-12-30T17:13:33.851Z",
+  "Nationality": "string",
+  "NewHireApprovalDate": "2019-12-30T17:13:33.851Z",
+  "NewHireApproved": true,
+  "NewHireApprovedBy": "string",
+  "OriginalHireDate": "2019-12-30T17:13:33.851Z",
+  "PhotoExempt": true,
+  "PPACAOverrideDate": "2019-12-30T17:13:33.851Z",
+  "RegisteredDisabled": "string",
+  "RequiresExitInterview": true,
+  "SeniorityDate": "2019-12-30T17:13:33.851Z",
+  "SocialSecurityNumber": "string",
+  "SSNCountryCode": "string",
+  "SSNExpiryDate": "2019-12-30T17:13:33.851Z",
+  "StartDate": "2019-12-30T17:13:33.851Z",
+  "TaxExempt": true,
+  "TaxpayerId": "string",
+  "TerminationDate": "2019-12-30T17:13:33.851Z",
+  "VeteranSeparationDate": "2019-12-30T17:13:33.851Z",
+  "FirstTimeAccessEmailSentCount": 0,
+  "FirstTimeAccessVerificationAttempts": 0,
+  "SendFirstTimeAccessEmail": true,
+  "EmployeeBadge": {
+    "BadgeNumber": "string",
+    "EffectiveStart": "2019-12-30T17:13:33.851Z",
+    "EffectiveEnd": "2019-12-30T17:13:33.851Z",
+    "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+  },
+  "PreStartDate": "2019-12-30T17:13:33.851Z",
+  "PayrollKey": "string",
+  "LoginId": "string",
+  "HomeOrganization": {
+    "OrgLevel": {
+      "XRefCode": "string",
+      "ShortName": "string",
+      "LongName": "string",
+      "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+    },
+    "PhysicalLocation": true,
+    "BusinessPhone": "string",
+    "ContactBusinessPhone": "string",
+    "ContactCellPhone": "string",
+    "PostalCode": "string",
+    "CountryCode": "string",
+    "OpeningDate": "2019-12-30T17:13:33.851Z",
+    "ClosingDate": "2019-12-30T17:13:33.851Z",
+    "ComparableLocation": {
+      "XRefCode": "string",
+      "ShortName": "string",
+      "LongName": "string"
+    },
+    "Department": {
+      "XRefCode": "string",
+      "ShortName": "string",
+      "LongName": "string",
+      "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+    },
+    "Zone": {
+      "XRefCode": "string",
+      "ShortName": "string",
+      "LongName": "string",
+      "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+    },
+    "StartDayOfWeek": 0,
+    "GeoCity": {
+      "ShortName": "string",
+      "LongName": "string",
+      "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+    },
+    "Timezone": {
+      "XRefCode": "string",
+      "ShortName": "string",
+      "LongName": "string",
+      "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+    },
+    "County": "string",
+    "IsOrgManaged": true,
+    "IsMobileOrg": true,
+    "PublicName": "string",
+    "ClockTransferCode": "string",
+    "ContactEmail": "string",
+    "ContactName": "string",
+    "LedgerCode": "string",
+    "StateCode": "string",
+    "Address": "string",
+    "Address2": "string",
+    "LegalEntity": {
+      "Country": {
+        "Name": "string",
+        "XRefCode": "string",
+        "ShortName": "string",
+        "LongName": "string",
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+      },
+      "LegalEntityAddress": {
+        "Address1": "string",
+        "Address2": "string",
+        "Address3": "string",
+        "Address4": "string",
+        "Address5": "string",
+        "Address6": "string",
+        "City": "string",
+        "PostalCode": "string",
+        "Country": {
+          "Name": "string",
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "State": {
+          "Name": "string",
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+      },
+      "LegalIdNumber": "string",
+      "XRefCode": "string",
+      "ShortName": "string",
+      "LongName": "string",
+      "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+    },
+    "OrgUnitLegalEntities": {
+      "Items": [
+        {
+          "LegalEntity": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string"
+          },
+          "EffectiveStart": "2019-12-30T17:13:33.851Z",
+          "EffectiveEnd": "2019-12-30T17:13:33.851Z",
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        }
+      ]
+    },
+    "OrgUnitParents": {
+      "Items": [
+        {
+          "ParentOrgUnit": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string"
+          },
+          "EffectiveStart": "2019-12-30T17:13:33.851Z",
+          "EffectiveEnd": "2019-12-30T17:13:33.851Z",
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        }
+      ]
+    },
+    "ChildOrgUnits": {
+      "Items": [
+        {
+          "OrgLevel": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+          },
+          "OrgUnitLegalEntities": {
+            "Items": [
+              {
+                "LegalEntity": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string"
+                },
+                "EffectiveStart": "2019-12-30T17:13:33.851Z",
+                "EffectiveEnd": "2019-12-30T17:13:33.851Z",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+              }
+            ]
+          },
+          "OrgUnitParents": {
+            "Items": [
+              {
+                "ParentOrgUnit": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string"
+                },
+                "EffectiveStart": "2019-12-30T17:13:33.851Z",
+                "EffectiveEnd": "2019-12-30T17:13:33.851Z",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+              }
+            ]
+          },
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        }
+      ]
+    },
+    "XRefCode": "string",
+    "ShortName": "string",
+    "LongName": "string",
+    "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+  },
+  "EmployeeNumber": "string",
+  "EmploymentStatuses": {
+    "Items": [
+      {
+        "EmployeeNumber": "string",
+        "EffectiveStart": "2019-12-30T17:13:33.851Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.851Z",
+        "EmploymentStatus": {
+          "IsBenefitArrearsEnabled": true,
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "EmploymentStatusGroup": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "PayType": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "PayGroup": {
+          "PayFrequency": {
+            "PayFrequencyType": "string",
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+          },
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "PayTypeGroup": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "PayClass": {
+          "LedgerCode": "string",
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "PunchPolicy": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "PayPolicy": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "PayHolidayGroup": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "EmployeeGroup": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "EntitlementPolicy": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "ShiftRotation": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "ShiftRotationDayOffset": 0,
+        "ShiftRotationStartDate": "2019-12-30T17:13:33.851Z",
+        "CreateShiftRotationShift": true,
+        "TimeOffPolicy": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "ShiftTradePolicy": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "AttendancePolicy": {
+          "TrackingBasedOn": 0,
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "SchedulePolicy": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "OvertimeGroup": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "PayrollPolicy": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "JobStepPolicy": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "AlternateRate": 0,
+        "AverageDailyHours": 0,
+        "AverageOvertimeRate": 0,
+        "BaseRate": 0,
+        "BaseRateManuallySet": true,
+        "BaseSalary": 0,
+        "PeriodicSalary": 0,
+        "DailyRate": 0,
+        "EmploymentStatusReason": {
+          "IsCompChangeReason": true,
+          "IsLeaveReason": true,
+          "IsPositionChangeReason": true,
+          "IsTerminationReason": true,
+          "IsVoluntaryReason": true,
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "NormalWeeklyHours": 0,
+        "NormalSemiMonthlyHoursTop": 0,
+        "NormalSemiMonthlyHoursBottom": 0,
+        "ScheduleChangePolicy": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "AuthorizationPolicy": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "WorkContractPremiumPolicy": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "LastPayEditDate": "2019-12-30T17:13:33.851Z",
+        "VacationRate": 0,
+        "TargetBonus": 0,
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+      }
+    ]
+  },
+  "WorkAssignments": {
+    "Items": [
+      {
+        "Position": {
+          "Department": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+          },
+          "Job": {
+            "EmployeeEEO": {
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+            },
+            "IsUnionJob": true,
+            "JobQualifications": "string",
+            "JobRank": 0,
+            "JobUDFString1": "string",
+            "JobUDFString2": "string",
+            "JobUDFString3": "string",
+            "LedgerCode": "string",
+            "NOC": "string",
+            "JobClassification": {
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+            },
+            "JobFunction": {
+              "Level": 0,
+              "UsableForExternalPosting": true,
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+            },
+            "FLSAStatus": {
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+            },
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+          },
+          "DefaultTargetBonus": 0,
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "Location": {
+          "OrgLevel": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+          },
+          "PhysicalLocation": true,
+          "BusinessPhone": "string",
+          "ContactBusinessPhone": "string",
+          "ContactCellPhone": "string",
+          "PostalCode": "string",
+          "CountryCode": "string",
+          "OpeningDate": "2019-12-30T17:13:33.851Z",
+          "ClosingDate": "2019-12-30T17:13:33.851Z",
+          "ComparableLocation": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string"
+          },
+          "Department": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+          },
+          "Zone": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+          },
+          "StartDayOfWeek": 0,
+          "GeoCity": {
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+          },
+          "Timezone": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+          },
+          "County": "string",
+          "IsOrgManaged": true,
+          "IsMobileOrg": true,
+          "PublicName": "string",
+          "ClockTransferCode": "string",
+          "ContactEmail": "string",
+          "ContactName": "string",
+          "LedgerCode": "string",
+          "StateCode": "string",
+          "Address": "string",
+          "Address2": "string",
+          "LegalEntity": {
+            "Country": {
+              "Name": "string",
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+            },
+            "LegalEntityAddress": {
+              "Address1": "string",
+              "Address2": "string",
+              "Address3": "string",
+              "Address4": "string",
+              "Address5": "string",
+              "Address6": "string",
+              "City": "string",
+              "PostalCode": "string",
+              "Country": {
+                "Name": "string",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+              },
+              "State": {
+                "Name": "string",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+              },
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+            },
+            "LegalIdNumber": "string",
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+          },
+          "OrgUnitLegalEntities": {
+            "Items": [
+              {
+                "LegalEntity": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string"
+                },
+                "EffectiveStart": "2019-12-30T17:13:33.851Z",
+                "EffectiveEnd": "2019-12-30T17:13:33.851Z",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+              }
+            ]
+          },
+          "OrgUnitParents": {
+            "Items": [
+              {
+                "ParentOrgUnit": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string"
+                },
+                "EffectiveStart": "2019-12-30T17:13:33.851Z",
+                "EffectiveEnd": "2019-12-30T17:13:33.851Z",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+              }
+            ]
+          },
+          "ChildOrgUnits": {
+            "Items": [
+              {
+                "OrgLevel": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+                },
+                "OrgUnitLegalEntities": {
+                  "Items": [
+                    {
+                      "LegalEntity": {
+                        "XRefCode": "string",
+                        "ShortName": "string",
+                        "LongName": "string"
+                      },
+                      "EffectiveStart": "2019-12-30T17:13:33.851Z",
+                      "EffectiveEnd": "2019-12-30T17:13:33.851Z",
+                      "XRefCode": "string",
+                      "ShortName": "string",
+                      "LongName": "string",
+                      "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+                    }
+                  ]
+                },
+                "OrgUnitParents": {
+                  "Items": [
+                    {
+                      "ParentOrgUnit": {
+                        "XRefCode": "string",
+                        "ShortName": "string",
+                        "LongName": "string"
+                      },
+                      "EffectiveStart": "2019-12-30T17:13:33.851Z",
+                      "EffectiveEnd": "2019-12-30T17:13:33.851Z",
+                      "XRefCode": "string",
+                      "ShortName": "string",
+                      "LongName": "string",
+                      "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+                    }
+                  ]
+                },
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+              }
+            ]
+          },
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "EmploymentIndicator": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "EmploymentStatusReason": {
+          "IsCompChangeReason": true,
+          "IsLeaveReason": true,
+          "IsPositionChangeReason": true,
+          "IsTerminationReason": true,
+          "IsVoluntaryReason": true,
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "EffectiveStart": "2019-12-30T17:13:33.851Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.851Z",
+        "FlatAmount": 0,
+        "FTE": 0,
+        "IsPAPrimaryWorkSite": true,
+        "IsPrimary": true,
+        "IsStatutory": true,
+        "IsVirtual": true,
+        "BusinessTitle": "string",
+        "JobSetLevel": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "LaborPercentage": 0,
+        "LastModifiedTimeStamp": "2019-12-30T17:13:33.851Z",
+        "MultiJSalaryAllocationPercent": 0,
+        "ParticipateInReciprocalTaxCalculation": true,
+        "PositionTerm": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "PRBankAccountBranchAddress": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "WorkLocationOverride": {
+          "County": "string",
+          "Description": "string",
+          "LocationName": "string",
+          "LocationAddress": {
+            "Address1": "string",
+            "Address2": "string",
+            "PostalCode": "string",
+            "State": {
+              "Name": "string",
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+            },
+            "Country": {
+              "Name": "string",
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+            },
+            "City": "string",
+            "County": "string",
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+          },
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "Rank": 0,
+        "JobRate": 0,
+        "TipTypeGroup": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "LedgerCode": "string"
+      }
+    ]
+  },
+  "Contacts": {
+    "Items": [
+      {
+        "ContactNumber": "string",
+        "Country": {
+          "Name": "string",
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "ElectronicAddress": "string",
+        "Extension": "string",
+        "EffectiveStart": "2019-12-30T17:13:33.851Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.851Z",
+        "ContactInformationType": {
+          "ContactInformationTypeGroup": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+          },
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "IsForSystemCommunications": true,
+        "IsPreferredContactMethod": true,
+        "IsUnlistedNumber": true,
+        "FormattedNumber": "string",
+        "IsVerified": true,
+        "IsRejected": true,
+        "ShowRejectedWarning": true,
+        "NumberOfVerificationRequests": 0,
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+      }
+    ]
+  },
+  "Addresses": {
+    "Items": [
+      {
+        "Address1": "string",
+        "Address2": "string",
+        "Address3": "string",
+        "Address4": "string",
+        "Address5": "string",
+        "Address6": "string",
+        "County": "string",
+        "City": "string",
+        "PostalCode": "string",
+        "Country": {
+          "Name": "string",
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "State": {
+          "Name": "string",
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "EffectiveStart": "2019-12-30T17:13:33.851Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.851Z",
+        "ContactInformationType": {
+          "ContactInformationTypeGroup": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+          },
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "IsPayrollMailing": true,
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+      }
+    ]
+  },
+  "Roles": {
+    "Items": [
+      {
+        "IsDefault": true,
+        "Role": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "EffectiveStart": "2019-12-30T17:13:33.851Z",
+        "IsPrestartRole": true,
+        "EffectiveEnd": "2019-12-30T17:13:33.851Z",
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+      }
+    ]
+  },
+  "EmployeeManagers": {
+    "Items": [
+      {
+        "EffectiveStart": "2019-12-30T17:13:33.851Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.851Z",
+        "ManagerXRefCode": "string",
+        "ManagerFirstName": "string",
+        "ManagerMiddleName": "string",
+        "ManagerLastName": "string",
+        "DerivationMethod": 0,
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+      }
+    ]
+  },
+  "EmployeeWorkAssignmentManagers": {
+    "Items": [
+      {
+        "EffectiveStart": "2019-12-30T17:13:33.851Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.851Z",
+        "TerminationDate": "2019-12-30T17:13:33.851Z",
+        "EmploymentStatusGroupXRefCode": "string",
+        "ManagerXRefCode": "string",
+        "ManagerName": "string",
+        "ActiveEmployeePosition": {
+          "Department": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+          },
+          "Job": {
+            "EmployeeEEO": {
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+            },
+            "IsUnionJob": true,
+            "JobQualifications": "string",
+            "JobRank": 0,
+            "JobUDFString1": "string",
+            "JobUDFString2": "string",
+            "JobUDFString3": "string",
+            "LedgerCode": "string",
+            "NOC": "string",
+            "JobClassification": {
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+            },
+            "JobFunction": {
+              "Level": 0,
+              "UsableForExternalPosting": true,
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+            },
+            "FLSAStatus": {
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+            },
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+          },
+          "DefaultTargetBonus": 0,
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+        },
+        "ActiveEmployeeLocation": {
+          "OrgLevel": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+          },
+          "PhysicalLocation": true,
+          "BusinessPhone": "string",
+          "ContactBusinessPhone": "string",
+          "ContactCellPhone": "string",
+          "PostalCode": "string",
+          "CountryCode": "string",
+          "OpeningDate": "2019-12-30T17:13:33.851Z",
+          "ClosingDate": "2019-12-30T17:13:33.851Z",
+          "ComparableLocation": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string"
+          },
+          "Department": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+          },
+          "Zone": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+          },
+          "StartDayOfWeek": 0,
+          "GeoCity": {
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+          },
+          "Timezone": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+          },
+          "County": "string",
+          "IsOrgManaged": true,
+          "IsMobileOrg": true,
+          "PublicName": "string",
+          "ClockTransferCode": "string",
+          "ContactEmail": "string",
+          "ContactName": "string",
+          "LedgerCode": "string",
+          "StateCode": "string",
+          "Address": "string",
+          "Address2": "string",
+          "LegalEntity": {
+            "Country": {
+              "Name": "string",
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+            },
+            "LegalEntityAddress": {
+              "Address1": "string",
+              "Address2": "string",
+              "Address3": "string",
+              "Address4": "string",
+              "Address5": "string",
+              "Address6": "string",
+              "City": "string",
+              "PostalCode": "string",
+              "Country": {
+                "Name": "string",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+              },
+              "State": {
+                "Name": "string",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+              },
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+            },
+            "LegalIdNumber": "string",
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.851Z"
+          },
+          "OrgUnitLegalEntities": {
+            "Items": [
+              {
+                "LegalEntity": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string"
+                },
+                "EffectiveStart": "2019-12-30T17:13:33.852Z",
+                "EffectiveEnd": "2019-12-30T17:13:33.852Z",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+              }
+            ]
+          },
+          "OrgUnitParents": {
+            "Items": [
+              {
+                "ParentOrgUnit": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string"
+                },
+                "EffectiveStart": "2019-12-30T17:13:33.852Z",
+                "EffectiveEnd": "2019-12-30T17:13:33.852Z",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+              }
+            ]
+          },
+          "ChildOrgUnits": {
+            "Items": [
+              {
+                "OrgLevel": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+                },
+                "OrgUnitLegalEntities": {
+                  "Items": [
+                    {
+                      "LegalEntity": {
+                        "XRefCode": "string",
+                        "ShortName": "string",
+                        "LongName": "string"
+                      },
+                      "EffectiveStart": "2019-12-30T17:13:33.852Z",
+                      "EffectiveEnd": "2019-12-30T17:13:33.852Z",
+                      "XRefCode": "string",
+                      "ShortName": "string",
+                      "LongName": "string",
+                      "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+                    }
+                  ]
+                },
+                "OrgUnitParents": {
+                  "Items": [
+                    {
+                      "ParentOrgUnit": {
+                        "XRefCode": "string",
+                        "ShortName": "string",
+                        "LongName": "string"
+                      },
+                      "EffectiveStart": "2019-12-30T17:13:33.852Z",
+                      "EffectiveEnd": "2019-12-30T17:13:33.852Z",
+                      "XRefCode": "string",
+                      "ShortName": "string",
+                      "LongName": "string",
+                      "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+                    }
+                  ]
+                },
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+              }
+            ]
+          },
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+        },
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+      }
+    ]
+  },
+  "CompensationSummary": {
+    "Items": [
+      {
+        "EmployeeNumber": "string",
+        "EffectiveEnd": "2019-12-30T17:13:33.852Z",
+        "EffectiveStart": "2019-12-30T17:13:33.852Z",
+        "PayGrade": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+        },
+        "PayType": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+        },
+        "PayGroup": {
+          "PayFrequency": {
+            "PayFrequencyType": "string",
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+          },
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+        },
+        "PayClass": {
+          "LedgerCode": "string",
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+        },
+        "EmploymentStatusReason": {
+          "IsCompChangeReason": true,
+          "IsLeaveReason": true,
+          "IsPositionChangeReason": true,
+          "IsTerminationReason": true,
+          "IsVoluntaryReason": true,
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+        },
+        "AlternateRate": 0,
+        "AverageDailyHours": 0,
+        "AverageOvertimeRate": 0,
+        "BaseRate": 0,
+        "BaseRateManuallySet": true,
+        "BaseSalary": 0,
+        "DailyRate": 0,
+        "NormalWeeklyHours": 0,
+        "NormalSemiMonthlyHoursTop": 0,
+        "NormalSemiMonthlyHoursBottom": 0,
+        "LastPayEditDate": "2019-12-30T17:13:33.852Z",
+        "VacationRate": 0,
+        "MinimumRate": 0,
+        "ControlRate": 0,
+        "MaximumRate": 0,
+        "RateMidPoint": 0,
+        "MinimumSalary": 0,
+        "ControlSalary": 0,
+        "MaximumSalary": 0,
+        "SalaryMidPoint": 0,
+        "CompRatio": 0,
+        "ChangePercent": 0,
+        "ChangeValue": 0,
+        "PreviousBaseSalary": 0,
+        "PreviousBaseRate": 0,
+        "PayPolicy": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+        },
+        "RatePolicy": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+        },
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+      }
+    ]
+  },
+  "SSOAccounts": {
+    "Items": [
+      {
+        "LoginName": "string",
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+      }
+    ]
+  },
+  "MaritalStatuses": {
+    "Items": [
+      {
+        "MaritalStatus": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+        },
+        "EffectiveStart": "2019-12-30T17:13:33.852Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.852Z",
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+      }
+    ]
+  },
+  "Locations": {
+    "Items": [
+      {
+        "IsPrimary": true,
+        "Location": {
+          "OrgLevel": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+          },
+          "PhysicalLocation": true,
+          "BusinessPhone": "string",
+          "ContactBusinessPhone": "string",
+          "ContactCellPhone": "string",
+          "PostalCode": "string",
+          "CountryCode": "string",
+          "OpeningDate": "2019-12-30T17:13:33.852Z",
+          "ClosingDate": "2019-12-30T17:13:33.852Z",
+          "ComparableLocation": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string"
+          },
+          "Department": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+          },
+          "Zone": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+          },
+          "StartDayOfWeek": 0,
+          "GeoCity": {
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+          },
+          "Timezone": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+          },
+          "County": "string",
+          "IsOrgManaged": true,
+          "IsMobileOrg": true,
+          "PublicName": "string",
+          "ClockTransferCode": "string",
+          "ContactEmail": "string",
+          "ContactName": "string",
+          "LedgerCode": "string",
+          "StateCode": "string",
+          "Address": "string",
+          "Address2": "string",
+          "LegalEntity": {
+            "Country": {
+              "Name": "string",
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+            },
+            "LegalEntityAddress": {
+              "Address1": "string",
+              "Address2": "string",
+              "Address3": "string",
+              "Address4": "string",
+              "Address5": "string",
+              "Address6": "string",
+              "City": "string",
+              "PostalCode": "string",
+              "Country": {
+                "Name": "string",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+              },
+              "State": {
+                "Name": "string",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+              },
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+            },
+            "LegalIdNumber": "string",
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+          },
+          "OrgUnitLegalEntities": {
+            "Items": [
+              {
+                "LegalEntity": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string"
+                },
+                "EffectiveStart": "2019-12-30T17:13:33.852Z",
+                "EffectiveEnd": "2019-12-30T17:13:33.852Z",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+              }
+            ]
+          },
+          "OrgUnitParents": {
+            "Items": [
+              {
+                "ParentOrgUnit": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string"
+                },
+                "EffectiveStart": "2019-12-30T17:13:33.852Z",
+                "EffectiveEnd": "2019-12-30T17:13:33.852Z",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+              }
+            ]
+          },
+          "ChildOrgUnits": {
+            "Items": [
+              {
+                "OrgLevel": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+                },
+                "OrgUnitLegalEntities": {
+                  "Items": [
+                    {
+                      "LegalEntity": {
+                        "XRefCode": "string",
+                        "ShortName": "string",
+                        "LongName": "string"
+                      },
+                      "EffectiveStart": "2019-12-30T17:13:33.852Z",
+                      "EffectiveEnd": "2019-12-30T17:13:33.852Z",
+                      "XRefCode": "string",
+                      "ShortName": "string",
+                      "LongName": "string",
+                      "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+                    }
+                  ]
+                },
+                "OrgUnitParents": {
+                  "Items": [
+                    {
+                      "ParentOrgUnit": {
+                        "XRefCode": "string",
+                        "ShortName": "string",
+                        "LongName": "string"
+                      },
+                      "EffectiveStart": "2019-12-30T17:13:33.852Z",
+                      "EffectiveEnd": "2019-12-30T17:13:33.852Z",
+                      "XRefCode": "string",
+                      "ShortName": "string",
+                      "LongName": "string",
+                      "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+                    }
+                  ]
+                },
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+              }
+            ]
+          },
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+        },
+        "EffectiveStart": "2019-12-30T17:13:33.852Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.852Z",
+        "IsDefault": true,
+        "EmployeeLocationAuthorities": {
+          "Items": [
+            {
+              "EffectiveStart": "2019-12-30T17:13:33.852Z",
+              "EffectiveEnd": "2019-12-30T17:13:33.852Z",
+              "AuthorityType": {
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+              },
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+            }
+          ]
+        },
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+      }
+    ]
+  },
+  "BioSensitivityLevel": {
+    "XRefCode": "string",
+    "ShortName": "string",
+    "LongName": "string",
+    "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+  },
+  "CitizenshipType": {
+    "XRefCode": "string",
+    "ShortName": "string",
+    "LongName": "string",
+    "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+  },
+  "SchoolYear": {
+    "XRefCode": "string",
+    "ShortName": "string",
+    "LongName": "string",
+    "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+  },
+  "HealthWellnessDetails": {
+    "Items": [
+      {
+        "TobaccoUser": "string",
+        "DateLastSmoked": "2019-12-30T17:13:33.852Z",
+        "EffectiveStart": "2019-12-30T17:13:33.852Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.852Z",
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+      }
+    ]
+  },
+  "Courses": {
+    "Items": [
+      {
+        "StartDate": "2019-12-30T17:13:33.852Z",
+        "CompletionDate": "2019-12-30T17:13:33.852Z",
+        "CertificationExpiryDate": "2019-12-30T17:13:33.852Z",
+        "Course": {
+          "CourseCode": "string",
+          "CourseType": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+          },
+          "CourseProvider": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+          },
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+        },
+        "EmployeeTrainingProgram": {
+          "TrainingProgram": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+          },
+          "EnrollmentDate": "2019-12-30T17:13:33.852Z",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+        },
+        "CertificationNumber": "string",
+        "Comment": "string",
+        "Score": "string",
+        "PassFail": "string",
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+      }
+    ]
+  },
+  "HRIncidents": {
+    "Items": [
+      {
+        "HRIncidentNotes": {
+          "Items": [
+            {
+              "DateAdded": "2019-12-30T17:13:33.852Z",
+              "Notes": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+            }
+          ]
+        },
+        "OrgUnit": {
+          "EffectiveStart": "2019-12-30T17:13:33.852Z",
+          "EffectiveEnd": "2019-12-30T17:13:33.852Z",
+          "Address": {
+            "Address1": "string",
+            "Address2": "string",
+            "Address3": "string",
+            "Address4": "string",
+            "Address5": "string",
+            "Address6": "string",
+            "City": "string",
+            "PostalCode": "string",
+            "Country": {
+              "Name": "string",
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+            },
+            "State": {
+              "Name": "string",
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+            },
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+          },
+          "ChildSortOrder": 0,
+          "IsPhysicalLocation": true,
+          "IsPrimary": true,
+          "LedgerCode": "string",
+          "ParentSortOrder": 0,
+          "OrgLevel": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+          },
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+        },
+        "HRIncidentState": "string",
+        "OpenDate": "2019-12-30T17:13:33.852Z",
+        "HRIncidentAction": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+        },
+        "HRIncidentType": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+        },
+        "ClosedDate": "2019-12-30T17:13:33.852Z",
+        "HRIncidentDate": "2019-12-30T17:13:33.852Z",
+        "HRIncidentBeganWork": "2019-12-30T17:13:33.852Z",
+        "HRIncidentEventTime": "2019-12-30T17:13:33.852Z",
+        "SafetyHealthType": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+        },
+        "HRIncidentInjury": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.852Z"
+        },
+        "HRIncidentBodyPart": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+        },
+        "Died": true,
+        "HRIncidentArea": "string",
+        "TaskBeingPerformed": "string",
+        "CausedObject": "string",
+        "CausedAction": "string",
+        "PrivacyCase": true,
+        "DoctorName": "string",
+        "EmergencyRoom": true,
+        "HospitalOvernight": true,
+        "Hospital": "string",
+        "HospitalStreet": "string",
+        "HospitalCity": "string",
+        "HospitalStateCode": "string",
+        "HospitalZip": "string",
+        "DateReturnToWork": "2019-12-30T17:13:33.853Z",
+        "DaysLost": 0,
+        "DaysRestricted": 0,
+        "DateDied": "2019-12-30T17:13:33.853Z",
+        "QuestionableClaim": true,
+        "IsDaysLost": true,
+        "WCBCaseNumber": "string",
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+      }
+    ]
+  },
+  "Skills": {
+    "Items": [
+      {
+        "Skill": {
+          "SkillType": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+          },
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+        },
+        "SkillLevel": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+        },
+        "EffectiveStart": "2019-12-30T17:13:33.853Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.853Z",
+        "LastAssignedBy": "string",
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+      }
+    ]
+  },
+  "TrainingPrograms": {
+    "Items": [
+      {
+        "TrainingProgram": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+        },
+        "EnrollmentDate": "2019-12-30T17:13:33.853Z",
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+      }
+    ]
+  },
+  "UnionMemberships": {
+    "Items": [
+      {
+        "UnionMembershipDate": "2019-12-30T17:13:33.853Z",
+        "EffectiveStart": "2019-12-30T17:13:33.853Z",
+        "Union": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+        },
+        "EffectiveEnd": "2019-12-30T17:13:33.853Z",
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+      }
+    ]
+  },
+  "EmploymentTypes": {
+    "Items": [
+      {
+        "EffectiveStart": "2019-12-30T17:13:33.853Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.853Z",
+        "EmploymentType": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+        },
+        "TaxPayerId": "string",
+        "DBAName": "string",
+        "GamingProfitsDistributions": true,
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+      }
+    ]
+  },
+  "HighlyCompensatedEmployees": {
+    "Items": [
+      {
+        "EffectiveStart": "2019-12-30T17:13:33.853Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.853Z",
+        "IsHCE": true,
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+      }
+    ]
+  },
+  "PayGradeRates": {
+    "Items": [
+      {
+        "EffectiveStart": "2019-12-30T17:13:33.853Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.853Z",
+        "WorkAssignmentEffectiveStart": "2019-12-30T17:13:33.853Z",
+        "WorkAssignmentEffectiveEnd": "2019-12-30T17:13:33.853Z",
+        "PayGrade": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+        },
+        "MinimumRate": 0,
+        "ControlRate": 0,
+        "MaximumRate": 0,
+        "RateMidPoint": 0,
+        "MinimumSalary": 0,
+        "ControlSalary": 0,
+        "MaximumSalary": 0,
+        "SalaryMidPoint": 0,
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+      }
+    ]
+  },
+  "DirectDeposits": {
+    "Items": [
+      {
+        "AccountNumber": "string",
+        "BankName": "string",
+        "BankNumber": "string",
+        "BuildingSocietyNumber": "string",
+        "DepositNumber": 0,
+        "DepositValue": 0,
+        "PayMethod": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+        },
+        "IsDeleted": true,
+        "IsPercentage": true,
+        "IsRemainder": true,
+        "NumberOfPreNoteDays": 0,
+        "PrenoteFileRunPayDate": "2019-12-30T17:13:33.853Z",
+        "PrenoteFileSentOn": "2019-12-30T17:13:33.853Z",
+        "RequiresPreNote": true,
+        "RoutingTransitNumber": "string",
+        "PayCardType": "string",
+        "FinancialInstitution": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+        },
+        "AccountHolder": "string",
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+      }
+    ]
+  },
+  "CANFederalTaxes": {
+    "Items": [
+      {
+        "EffectiveStart": "2019-12-30T17:13:33.853Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.853Z",
+        "TotalClaimAmount": 0,
+        "IsNonResident": true,
+        "MultipleEmployer": true,
+        "IncomeLessThanClaim": true,
+        "DistrictTaxDeduction": 0,
+        "AuthorizedTaxCredits": 0,
+        "EstimatedExpense": 0,
+        "EstimatedRemuneration": 0,
+        "AdditionalAmount": 0,
+        "PrescribedAreaDeduction": 0,
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+      }
+    ]
+  },
+  "CANStateTaxes": {
+    "Items": [
+      {
+        "EffectiveStart": "2019-12-30T17:13:33.853Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.853Z",
+        "State": {
+          "Name": "string",
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+        },
+        "TotalClaimAmount": 0,
+        "PrescribedAreaDeduction": 0,
+        "MaintenanceDeduction": 0,
+        "AuthorizedTaxCredits": 0,
+        "QuebecDevelopmentFunds": 0,
+        "EstimatedExpense": 0,
+        "EstimatedRemuneration": 0,
+        "AdditionalAmount": 0,
+        "LabourSponsoredFunds": 0,
+        "HasQuebecHealthContributionExemption": true,
+        "IncomeLessThanClaim": true,
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+      }
+    ]
+  },
+  "USFederalTaxes": {
+    "Items": [
+      {
+        "EffectiveStart": "2019-12-30T17:13:33.853Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.853Z",
+        "FilingStatus": {
+          "CountryCode": "string",
+          "FederalFilingStatusCode": "string",
+          "CalculationCode": "string",
+          "PayrollOutput": "string",
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+        },
+        "Allowances": 0,
+        "AdditionalAmount": 0,
+        "IsTaxExempt": true,
+        "IsLocked": true,
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+      }
+    ]
+  },
+  "USStateTaxes": {
+    "Items": [
+      {
+        "EffectiveStart": "2019-12-30T17:13:33.853Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.853Z",
+        "State": {
+          "Name": "string",
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+        },
+        "FilingStatus": {
+          "CountryCode": "string",
+          "StateCode": "string",
+          "StateFilingStatusCode": "string",
+          "CalculationCode": "string",
+          "PayrollOutput": "string",
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+        },
+        "Allowances": 0,
+        "AdditionalAmount": 0,
+        "DependentAllowances": 0,
+        "PersonalAllowances": 0,
+        "AdditionalAllowances": 0,
+        "IsTaxExempt": true,
+        "AlternateCalculationCode": "string",
+        "ExemptionAmount": 0,
+        "IsLocked": true,
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+      }
+    ]
+  },
+  "EmergencyContacts": {
+    "Items": [
+      {
+        "FirstName": "string",
+        "LastName": "string",
+        "MiddleName": "string",
+        "Comment": "string",
+        "IsPrimary": true,
+        "Relationship": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+        },
+        "Addresses": {
+          "Items": [
+            {
+              "Address1": "string",
+              "Address2": "string",
+              "Address3": "string",
+              "Address4": "string",
+              "Address5": "string",
+              "Address6": "string",
+              "County": "string",
+              "City": "string",
+              "PostalCode": "string",
+              "Country": {
+                "Name": "string",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+              },
+              "State": {
+                "Name": "string",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+              },
+              "EffectiveStart": "2019-12-30T17:13:33.853Z",
+              "EffectiveEnd": "2019-12-30T17:13:33.853Z",
+              "ContactInformationType": {
+                "ContactInformationTypeGroup": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+                },
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+              },
+              "IsPayrollMailing": true,
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+            }
+          ]
+        },
+        "Contacts": {
+          "Items": [
+            {
+              "ContactNumber": "string",
+              "Country": {
+                "Name": "string",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+              },
+              "ElectronicAddress": "string",
+              "Extension": "string",
+              "EffectiveStart": "2019-12-30T17:13:33.853Z",
+              "EffectiveEnd": "2019-12-30T17:13:33.853Z",
+              "ContactInformationType": {
+                "ContactInformationTypeGroup": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+                },
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+              },
+              "IsForSystemCommunications": true,
+              "IsPreferredContactMethod": true,
+              "IsUnlistedNumber": true,
+              "FormattedNumber": "string",
+              "IsVerified": true,
+              "IsRejected": true,
+              "ShowRejectedWarning": true,
+              "NumberOfVerificationRequests": 0,
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+            }
+          ]
+        },
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+      }
+    ]
+  },
+  "Ethnicities": {
+    "Items": [
+      {
+        "EffectiveStart": "2019-12-30T17:13:33.853Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.853Z",
+        "Ethnicity": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+        },
+        "ManagerEthnicity": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+        },
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+      }
+    ]
+  },
+  "VeteranStatuses": {
+    "Items": [
+      {
+        "EffectiveStart": "2019-12-30T17:13:33.853Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.853Z",
+        "IsVevraa": true,
+        "VeteransStatus": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+        },
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+      }
+    ]
+  },
+  "EmployeeProperties": {
+    "Items": [
+      {
+        "EffectiveEnd": "2019-12-30T17:13:33.853Z",
+        "EffectiveStart": "2019-12-30T17:13:33.853Z",
+        "EmployeeProperty": {
+          "DataType": 0,
+          "EmployeeCardinality": 0,
+          "IsEditable": true,
+          "DataTypeParam": "string",
+          "GenerateHREvent": true,
+          "Sequence": 0,
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+        },
+        "BitValue": true,
+        "NumberValue": 0,
+        "OptionValue": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+        },
+        "StringValue": "string",
+        "DateTimeValue": "2019-12-30T17:13:33.853Z",
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+      }
+    ]
+  },
+  "LaborDefaults": {
+    "Items": [
+      {
+        "Position": {
+          "Department": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+          },
+          "Job": {
+            "EmployeeEEO": {
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+            },
+            "IsUnionJob": true,
+            "JobQualifications": "string",
+            "JobRank": 0,
+            "JobUDFString1": "string",
+            "JobUDFString2": "string",
+            "JobUDFString3": "string",
+            "LedgerCode": "string",
+            "NOC": "string",
+            "JobClassification": {
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+            },
+            "JobFunction": {
+              "Level": 0,
+              "UsableForExternalPosting": true,
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+            },
+            "FLSAStatus": {
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+            },
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+          },
+          "DefaultTargetBonus": 0,
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+        },
+        "EffectiveEnd": "2019-12-30T17:13:33.853Z",
+        "EffectiveStart": "2019-12-30T17:13:33.853Z",
+        "Location": {
+          "OrgLevel": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+          },
+          "PhysicalLocation": true,
+          "BusinessPhone": "string",
+          "ContactBusinessPhone": "string",
+          "ContactCellPhone": "string",
+          "PostalCode": "string",
+          "CountryCode": "string",
+          "OpeningDate": "2019-12-30T17:13:33.853Z",
+          "ClosingDate": "2019-12-30T17:13:33.853Z",
+          "ComparableLocation": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string"
+          },
+          "Department": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+          },
+          "Zone": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+          },
+          "StartDayOfWeek": 0,
+          "GeoCity": {
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+          },
+          "Timezone": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+          },
+          "County": "string",
+          "IsOrgManaged": true,
+          "IsMobileOrg": true,
+          "PublicName": "string",
+          "ClockTransferCode": "string",
+          "ContactEmail": "string",
+          "ContactName": "string",
+          "LedgerCode": "string",
+          "StateCode": "string",
+          "Address": "string",
+          "Address2": "string",
+          "LegalEntity": {
+            "Country": {
+              "Name": "string",
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+            },
+            "LegalEntityAddress": {
+              "Address1": "string",
+              "Address2": "string",
+              "Address3": "string",
+              "Address4": "string",
+              "Address5": "string",
+              "Address6": "string",
+              "City": "string",
+              "PostalCode": "string",
+              "Country": {
+                "Name": "string",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+              },
+              "State": {
+                "Name": "string",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+              },
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+            },
+            "LegalIdNumber": "string",
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+          },
+          "OrgUnitLegalEntities": {
+            "Items": [
+              {
+                "LegalEntity": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string"
+                },
+                "EffectiveStart": "2019-12-30T17:13:33.853Z",
+                "EffectiveEnd": "2019-12-30T17:13:33.853Z",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+              }
+            ]
+          },
+          "OrgUnitParents": {
+            "Items": [
+              {
+                "ParentOrgUnit": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string"
+                },
+                "EffectiveStart": "2019-12-30T17:13:33.853Z",
+                "EffectiveEnd": "2019-12-30T17:13:33.853Z",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+              }
+            ]
+          },
+          "ChildOrgUnits": {
+            "Items": [
+              {
+                "OrgLevel": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+                },
+                "OrgUnitLegalEntities": {
+                  "Items": [
+                    {
+                      "LegalEntity": {
+                        "XRefCode": "string",
+                        "ShortName": "string",
+                        "LongName": "string"
+                      },
+                      "EffectiveStart": "2019-12-30T17:13:33.853Z",
+                      "EffectiveEnd": "2019-12-30T17:13:33.853Z",
+                      "XRefCode": "string",
+                      "ShortName": "string",
+                      "LongName": "string",
+                      "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+                    }
+                  ]
+                },
+                "OrgUnitParents": {
+                  "Items": [
+                    {
+                      "ParentOrgUnit": {
+                        "XRefCode": "string",
+                        "ShortName": "string",
+                        "LongName": "string"
+                      },
+                      "EffectiveStart": "2019-12-30T17:13:33.853Z",
+                      "EffectiveEnd": "2019-12-30T17:13:33.853Z",
+                      "XRefCode": "string",
+                      "ShortName": "string",
+                      "LongName": "string",
+                      "LastModifiedTimestamp": "2019-12-30T17:13:33.853Z"
+                    }
+                  ]
+                },
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+              }
+            ]
+          },
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "PayAdjCode": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "Project": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "Docket": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+      }
+    ]
+  },
+  "DocumentManagementSecurityGroups": {
+    "Items": [
+      {
+        "DocMgmtSecurityGroup": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+      }
+    ]
+  },
+  "ClockDeviceGroups": {
+    "Items": [
+      {
+        "ClockDeviceGroup": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+      }
+    ]
+  },
+  "EmployeePayAdjustCodeGroups": {
+    "Items": [
+      {
+        "PayAdjCodeGroup": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+      }
+    ]
+  },
+  "UserPayAdjustCodeGroups": {
+    "Items": [
+      {
+        "PayAdjCodeGroup": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+      }
+    ]
+  },
+  "WorkContracts": {
+    "Items": [
+      {
+        "AverageNumOfDays": 0,
+        "BaseHours": 0,
+        "BaseComplementaryHours": 0,
+        "ContractWorkPercent": 0,
+        "CreateShiftOnHolidays": true,
+        "EndDate": "2019-12-30T17:13:33.854Z",
+        "FullTimeHours": 0,
+        "StartDate": "2019-12-30T17:13:33.854Z",
+        "WorkContract": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "WorkPatternLengthDays": 0,
+        "WorkPatterns": {
+          "Items": [
+            {
+              "NetHours": 0,
+              "ShiftTimeBegin": "2019-12-30T17:13:33.854Z",
+              "ShiftTimeEnd": "2019-12-30T17:13:33.854Z",
+              "WorkPatternDayIndex": 0,
+              "Deparment": {
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+              },
+              "Job": {
+                "EmployeeEEO": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                },
+                "IsUnionJob": true,
+                "JobQualifications": "string",
+                "JobRank": 0,
+                "JobUDFString1": "string",
+                "JobUDFString2": "string",
+                "JobUDFString3": "string",
+                "LedgerCode": "string",
+                "NOC": "string",
+                "JobClassification": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                },
+                "JobFunction": {
+                  "Level": 0,
+                  "UsableForExternalPosting": true,
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                },
+                "FLSAStatus": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                },
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+              },
+              "ShiftType": {
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+              },
+              "Location": {
+                "OrgLevel": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                },
+                "PhysicalLocation": true,
+                "BusinessPhone": "string",
+                "ContactBusinessPhone": "string",
+                "ContactCellPhone": "string",
+                "PostalCode": "string",
+                "CountryCode": "string",
+                "OpeningDate": "2019-12-30T17:13:33.854Z",
+                "ClosingDate": "2019-12-30T17:13:33.854Z",
+                "ComparableLocation": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string"
+                },
+                "Department": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                },
+                "Zone": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                },
+                "StartDayOfWeek": 0,
+                "GeoCity": {
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                },
+                "Timezone": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                },
+                "County": "string",
+                "IsOrgManaged": true,
+                "IsMobileOrg": true,
+                "PublicName": "string",
+                "ClockTransferCode": "string",
+                "ContactEmail": "string",
+                "ContactName": "string",
+                "LedgerCode": "string",
+                "StateCode": "string",
+                "Address": "string",
+                "Address2": "string",
+                "LegalEntity": {
+                  "Country": {
+                    "Name": "string",
+                    "XRefCode": "string",
+                    "ShortName": "string",
+                    "LongName": "string",
+                    "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                  },
+                  "LegalEntityAddress": {
+                    "Address1": "string",
+                    "Address2": "string",
+                    "Address3": "string",
+                    "Address4": "string",
+                    "Address5": "string",
+                    "Address6": "string",
+                    "City": "string",
+                    "PostalCode": "string",
+                    "Country": {
+                      "Name": "string",
+                      "XRefCode": "string",
+                      "ShortName": "string",
+                      "LongName": "string",
+                      "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                    },
+                    "State": {
+                      "Name": "string",
+                      "XRefCode": "string",
+                      "ShortName": "string",
+                      "LongName": "string",
+                      "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                    },
+                    "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                  },
+                  "LegalIdNumber": "string",
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                },
+                "OrgUnitLegalEntities": {
+                  "Items": [
+                    {
+                      "LegalEntity": {
+                        "XRefCode": "string",
+                        "ShortName": "string",
+                        "LongName": "string"
+                      },
+                      "EffectiveStart": "2019-12-30T17:13:33.854Z",
+                      "EffectiveEnd": "2019-12-30T17:13:33.854Z",
+                      "XRefCode": "string",
+                      "ShortName": "string",
+                      "LongName": "string",
+                      "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                    }
+                  ]
+                },
+                "OrgUnitParents": {
+                  "Items": [
+                    {
+                      "ParentOrgUnit": {
+                        "XRefCode": "string",
+                        "ShortName": "string",
+                        "LongName": "string"
+                      },
+                      "EffectiveStart": "2019-12-30T17:13:33.854Z",
+                      "EffectiveEnd": "2019-12-30T17:13:33.854Z",
+                      "XRefCode": "string",
+                      "ShortName": "string",
+                      "LongName": "string",
+                      "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                    }
+                  ]
+                },
+                "ChildOrgUnits": {
+                  "Items": [
+                    {
+                      "OrgLevel": {
+                        "XRefCode": "string",
+                        "ShortName": "string",
+                        "LongName": "string",
+                        "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                      },
+                      "OrgUnitLegalEntities": {
+                        "Items": [
+                          {
+                            "LegalEntity": {
+                              "XRefCode": "string",
+                              "ShortName": "string",
+                              "LongName": "string"
+                            },
+                            "EffectiveStart": "2019-12-30T17:13:33.854Z",
+                            "EffectiveEnd": "2019-12-30T17:13:33.854Z",
+                            "XRefCode": "string",
+                            "ShortName": "string",
+                            "LongName": "string",
+                            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                          }
+                        ]
+                      },
+                      "OrgUnitParents": {
+                        "Items": [
+                          {
+                            "ParentOrgUnit": {
+                              "XRefCode": "string",
+                              "ShortName": "string",
+                              "LongName": "string"
+                            },
+                            "EffectiveStart": "2019-12-30T17:13:33.854Z",
+                            "EffectiveEnd": "2019-12-30T17:13:33.854Z",
+                            "XRefCode": "string",
+                            "ShortName": "string",
+                            "LongName": "string",
+                            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                          }
+                        ]
+                      },
+                      "XRefCode": "string",
+                      "ShortName": "string",
+                      "LongName": "string",
+                      "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                    }
+                  ]
+                },
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+              },
+              "OrgLocationType": {
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+              },
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+            }
+          ]
+        },
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+      }
+    ]
+  },
+  "PerformanceRatings": {
+    "Items": [
+      {
+        "Comments": "string",
+        "NextReviewDate": "2019-12-30T17:13:33.854Z",
+        "PerformanceCycle": {
+          "CycleStartDate": "2019-12-30T17:13:33.854Z",
+          "CycleEndDate": "2019-12-30T17:13:33.854Z",
+          "EffectiveStart": "2019-12-30T17:13:33.854Z",
+          "EffectiveEnd": "2019-12-30T17:13:33.854Z",
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "PerformanceRatingScale": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "PerformanceRating": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "RatingScore": 0,
+        "ReviewDate": "2019-12-30T17:13:33.854Z",
+        "Reviewer": {
+          "XRefCode": "string",
+          "NewXRefCode": "string",
+          "CommonName": "string",
+          "DisplayName": "string",
+          "FirstName": "string",
+          "LastName": "string",
+          "Initials": "string",
+          "MaidenName": "string",
+          "MiddleName": "string",
+          "PreferredLastName": "string",
+          "SecondLastName": "string",
+          "Suffix": "string",
+          "Title": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "ReviewPeriodStartDate": "2019-12-30T17:13:33.854Z",
+        "ReviewPeriodEndDate": "2019-12-30T17:13:33.854Z",
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+      }
+    ]
+  },
+  "EIRates": {
+    "Items": [
+      {
+        "EffectiveStart": "2019-12-30T17:13:33.854Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.854Z",
+        "LegalEntity": {
+          "Country": {
+            "Name": "string",
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+          },
+          "LegalEntityAddress": {
+            "Address1": "string",
+            "Address2": "string",
+            "Address3": "string",
+            "Address4": "string",
+            "Address5": "string",
+            "Address6": "string",
+            "City": "string",
+            "PostalCode": "string",
+            "Country": {
+              "Name": "string",
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+            },
+            "State": {
+              "Name": "string",
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+            },
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+          },
+          "LegalIdNumber": "string",
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "RateGroup": "string",
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+      }
+    ]
+  },
+  "USTaxStatuses": {
+    "Items": [
+      {
+        "StateCode": "string",
+        "EffectiveStart": "2019-12-30T17:13:33.854Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.854Z",
+        "TaxPropertyCollection": {
+          "Items": [
+            {
+              "PropertyCodeName": "string",
+              "PropertyValue": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+            }
+          ]
+        },
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+      }
+    ]
+  },
+  "CANTaxStatuses": {
+    "Items": [
+      {
+        "ProvinceCode": "string",
+        "EffectiveStart": "2019-12-30T17:13:33.854Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.854Z",
+        "TaxPropertyCollection": {
+          "Items": [
+            {
+              "PropertyCodeName": "string",
+              "PropertyValue": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+            }
+          ]
+        },
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+      }
+    ]
+  },
+  "OrgUnitInfos": {
+    "Items": [
+      {
+        "OrgUnitDetail": {
+          "EffectiveStart": "2019-12-30T17:13:33.854Z",
+          "EffectiveEnd": "2019-12-30T17:13:33.854Z",
+          "Address": {
+            "Address1": "string",
+            "Address2": "string",
+            "Address3": "string",
+            "Address4": "string",
+            "Address5": "string",
+            "Address6": "string",
+            "City": "string",
+            "PostalCode": "string",
+            "Country": {
+              "Name": "string",
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+            },
+            "State": {
+              "Name": "string",
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+            },
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+          },
+          "ChildSortOrder": 0,
+          "IsPhysicalLocation": true,
+          "IsPrimary": true,
+          "LedgerCode": "string",
+          "ParentSortOrder": 0,
+          "OrgLevel": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+          },
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "Department": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+      }
+    ]
+  },
+  "ManagedEmployees": {
+    "Items": [
+      {
+        "EffectiveStart": "2019-12-30T17:13:33.854Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.854Z",
+        "TerminationDate": "2019-12-30T17:13:33.854Z",
+        "EmploymentStatusGroupXRefCode": "string",
+        "ManagerXRefCode": "string",
+        "ManagerName": "string",
+        "ActiveEmployeePosition": {
+          "Department": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+          },
+          "Job": {
+            "EmployeeEEO": {
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+            },
+            "IsUnionJob": true,
+            "JobQualifications": "string",
+            "JobRank": 0,
+            "JobUDFString1": "string",
+            "JobUDFString2": "string",
+            "JobUDFString3": "string",
+            "LedgerCode": "string",
+            "NOC": "string",
+            "JobClassification": {
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+            },
+            "JobFunction": {
+              "Level": 0,
+              "UsableForExternalPosting": true,
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+            },
+            "FLSAStatus": {
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+            },
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+          },
+          "DefaultTargetBonus": 0,
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "ActiveEmployeeLocation": {
+          "OrgLevel": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+          },
+          "PhysicalLocation": true,
+          "BusinessPhone": "string",
+          "ContactBusinessPhone": "string",
+          "ContactCellPhone": "string",
+          "PostalCode": "string",
+          "CountryCode": "string",
+          "OpeningDate": "2019-12-30T17:13:33.854Z",
+          "ClosingDate": "2019-12-30T17:13:33.854Z",
+          "ComparableLocation": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string"
+          },
+          "Department": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+          },
+          "Zone": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+          },
+          "StartDayOfWeek": 0,
+          "GeoCity": {
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+          },
+          "Timezone": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+          },
+          "County": "string",
+          "IsOrgManaged": true,
+          "IsMobileOrg": true,
+          "PublicName": "string",
+          "ClockTransferCode": "string",
+          "ContactEmail": "string",
+          "ContactName": "string",
+          "LedgerCode": "string",
+          "StateCode": "string",
+          "Address": "string",
+          "Address2": "string",
+          "LegalEntity": {
+            "Country": {
+              "Name": "string",
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+            },
+            "LegalEntityAddress": {
+              "Address1": "string",
+              "Address2": "string",
+              "Address3": "string",
+              "Address4": "string",
+              "Address5": "string",
+              "Address6": "string",
+              "City": "string",
+              "PostalCode": "string",
+              "Country": {
+                "Name": "string",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+              },
+              "State": {
+                "Name": "string",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+              },
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+            },
+            "LegalIdNumber": "string",
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+          },
+          "OrgUnitLegalEntities": {
+            "Items": [
+              {
+                "LegalEntity": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string"
+                },
+                "EffectiveStart": "2019-12-30T17:13:33.854Z",
+                "EffectiveEnd": "2019-12-30T17:13:33.854Z",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+              }
+            ]
+          },
+          "OrgUnitParents": {
+            "Items": [
+              {
+                "ParentOrgUnit": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string"
+                },
+                "EffectiveStart": "2019-12-30T17:13:33.854Z",
+                "EffectiveEnd": "2019-12-30T17:13:33.854Z",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+              }
+            ]
+          },
+          "ChildOrgUnits": {
+            "Items": [
+              {
+                "OrgLevel": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                },
+                "OrgUnitLegalEntities": {
+                  "Items": [
+                    {
+                      "LegalEntity": {
+                        "XRefCode": "string",
+                        "ShortName": "string",
+                        "LongName": "string"
+                      },
+                      "EffectiveStart": "2019-12-30T17:13:33.854Z",
+                      "EffectiveEnd": "2019-12-30T17:13:33.854Z",
+                      "XRefCode": "string",
+                      "ShortName": "string",
+                      "LongName": "string",
+                      "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                    }
+                  ]
+                },
+                "OrgUnitParents": {
+                  "Items": [
+                    {
+                      "ParentOrgUnit": {
+                        "XRefCode": "string",
+                        "ShortName": "string",
+                        "LongName": "string"
+                      },
+                      "EffectiveStart": "2019-12-30T17:13:33.854Z",
+                      "EffectiveEnd": "2019-12-30T17:13:33.854Z",
+                      "XRefCode": "string",
+                      "ShortName": "string",
+                      "LongName": "string",
+                      "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                    }
+                  ]
+                },
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+              }
+            ]
+          },
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+      }
+    ]
+  },
+  "ConfidentialIdentification": {
+    "Items": [
+      {
+        "EffectiveStart": "2019-12-30T17:13:33.854Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.854Z",
+        "ConfidentialIdentificationType": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "CountryCode": "string",
+        "ExpiryDate": "2019-12-30T17:13:33.854Z",
+        "IDNumber": "string",
+        "PlaceOfIssue": "string",
+        "IssueDate": "2019-12-30T17:13:33.854Z",
+        "UseForRTW": true,
+        "RTWDocReview": "string",
+        "RTWDocReviewOn": "2019-12-30T17:13:33.854Z",
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+      }
+    ]
+  },
+  "EmploymentAgreements": {
+    "Items": [
+      {
+        "EffectiveEnd": "2019-12-30T17:13:33.854Z",
+        "EffectiveStart": "2019-12-30T17:13:33.854Z",
+        "XRefCode": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "EmploymentAgreementType": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "EmploymentAgreementPopulation": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "EmploymentAgreementDetails": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "EmploymentAgreementTaxRegime": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "EmploymentAgreementDuration": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "EmploymentAgreementSettlement": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "GovernmentIdentifier": "string",
+        "AgreementReason": {
+          "IsCompChangeReason": true,
+          "IsLeaveReason": true,
+          "IsPositionChangeReason": true,
+          "IsTerminationReason": true,
+          "IsVoluntaryReason": true,
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "AgreementEndReason": {
+          "IsCompChangeReason": true,
+          "IsLeaveReason": true,
+          "IsPositionChangeReason": true,
+          "IsTerminationReason": true,
+          "IsVoluntaryReason": true,
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "Country": {
+          "Name": "string",
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+      }
+    ]
+  },
+  "GenderIdentity": {
+    "XRefCode": "string",
+    "ShortName": "string",
+    "LongName": "string",
+    "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+  },
+  "OnboardingPolicies": {
+    "Items": [
+      {
+        "OnboardingPolicy": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "EffectiveStart": "2019-12-30T17:13:33.854Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.854Z",
+        "IsInternalHire": true,
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+      }
+    ]
+  },
+  "PayPeriodInformation": {
+    "Items": [
+      {
+        "PayGroup": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "PayPeriodStartDate": "2019-12-30T17:13:33.854Z",
+        "PayPeriodEndDate": "2019-12-30T17:13:33.854Z",
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+      }
+    ]
+  },
+  "EarningElections": {
+    "Items": [
+      {
+        "ContinuePaymentOnStatutoryPay": true,
+        "IsOptOut": 0,
+        "Earning": {
+          "CalculationType": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+          },
+          "CreditJournalNumber": "string",
+          "DebitJournalNumber": "string",
+          "DisplayName": "string",
+          "EarningCode": {
+            "EarningType": {
+              "CodeName": "string",
+              "IsGLAllocatedDebit": true,
+              "IsGLAllocatedCredit": true,
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+            },
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+          },
+          "IsDecliningBalance": true,
+          "IsGenerated": true,
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "EffectiveEnd": "2019-12-30T17:13:33.854Z",
+        "EffectiveStart": "2019-12-30T17:13:33.854Z",
+        "ElectionSchedule": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "ElectionStartPayGroup": {
+          "PayFrequency": {
+            "PayFrequencyType": "string",
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+          },
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+        },
+        "ElectionStartPayPeriodStartDate": "2019-12-30T17:13:33.854Z",
+        "IsBlocked": true,
+        "LimitAmount": 0,
+        "LimitPercent": 0,
+        "Location": {
+          "OrgLevel": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+          },
+          "PhysicalLocation": true,
+          "BusinessPhone": "string",
+          "ContactBusinessPhone": "string",
+          "ContactCellPhone": "string",
+          "PostalCode": "string",
+          "CountryCode": "string",
+          "OpeningDate": "2019-12-30T17:13:33.854Z",
+          "ClosingDate": "2019-12-30T17:13:33.854Z",
+          "ComparableLocation": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string"
+          },
+          "Department": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+          },
+          "Zone": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+          },
+          "StartDayOfWeek": 0,
+          "GeoCity": {
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+          },
+          "Timezone": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+          },
+          "County": "string",
+          "IsOrgManaged": true,
+          "IsMobileOrg": true,
+          "PublicName": "string",
+          "ClockTransferCode": "string",
+          "ContactEmail": "string",
+          "ContactName": "string",
+          "LedgerCode": "string",
+          "StateCode": "string",
+          "Address": "string",
+          "Address2": "string",
+          "LegalEntity": {
+            "Country": {
+              "Name": "string",
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+            },
+            "LegalEntityAddress": {
+              "Address1": "string",
+              "Address2": "string",
+              "Address3": "string",
+              "Address4": "string",
+              "Address5": "string",
+              "Address6": "string",
+              "City": "string",
+              "PostalCode": "string",
+              "Country": {
+                "Name": "string",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+              },
+              "State": {
+                "Name": "string",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+              },
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+            },
+            "LegalIdNumber": "string",
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+          },
+          "OrgUnitLegalEntities": {
+            "Items": [
+              {
+                "LegalEntity": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string"
+                },
+                "EffectiveStart": "2019-12-30T17:13:33.854Z",
+                "EffectiveEnd": "2019-12-30T17:13:33.854Z",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+              }
+            ]
+          },
+          "OrgUnitParents": {
+            "Items": [
+              {
+                "ParentOrgUnit": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string"
+                },
+                "EffectiveStart": "2019-12-30T17:13:33.854Z",
+                "EffectiveEnd": "2019-12-30T17:13:33.854Z",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+              }
+            ]
+          },
+          "ChildOrgUnits": {
+            "Items": [
+              {
+                "OrgLevel": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.854Z"
+                },
+                "OrgUnitLegalEntities": {
+                  "Items": [
+                    {
+                      "LegalEntity": {
+                        "XRefCode": "string",
+                        "ShortName": "string",
+                        "LongName": "string"
+                      },
+                      "EffectiveStart": "2019-12-30T17:13:33.854Z",
+                      "EffectiveEnd": "2019-12-30T17:13:33.854Z",
+                      "XRefCode": "string",
+                      "ShortName": "string",
+                      "LongName": "string",
+                      "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+                    }
+                  ]
+                },
+                "OrgUnitParents": {
+                  "Items": [
+                    {
+                      "ParentOrgUnit": {
+                        "XRefCode": "string",
+                        "ShortName": "string",
+                        "LongName": "string"
+                      },
+                      "EffectiveStart": "2019-12-30T17:13:33.855Z",
+                      "EffectiveEnd": "2019-12-30T17:13:33.855Z",
+                      "XRefCode": "string",
+                      "ShortName": "string",
+                      "LongName": "string",
+                      "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+                    }
+                  ]
+                },
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+              }
+            ]
+          },
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+        },
+        "Position": {
+          "Department": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+          },
+          "Job": {
+            "EmployeeEEO": {
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+            },
+            "IsUnionJob": true,
+            "JobQualifications": "string",
+            "JobRank": 0,
+            "JobUDFString1": "string",
+            "JobUDFString2": "string",
+            "JobUDFString3": "string",
+            "LedgerCode": "string",
+            "NOC": "string",
+            "JobClassification": {
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+            },
+            "JobFunction": {
+              "Level": 0,
+              "UsableForExternalPosting": true,
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+            },
+            "FLSAStatus": {
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+            },
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+          },
+          "DefaultTargetBonus": 0,
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+        },
+        "EmployeeEarningParameters": {
+          "Items": [
+            {
+              "EarningParameter": {
+                "CodeName": "string",
+                "ParameterAccessType": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+                },
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+              },
+              "Value": 0,
+              "PayGroupValue": 0,
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+            }
+          ]
+        },
+        "EmployeeEarningLimits": {
+          "Items": [
+            {
+              "EarningLimit": {
+                "LimitAccessType": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+                },
+                "AccumulationType": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+                },
+                "LimitType": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+                },
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+              },
+              "LimitAmount": 0,
+              "LimitPercent": 0,
+              "PayGroupLimitAmount": 0,
+              "PayGroupLimitPercent": 0,
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+            }
+          ]
+        },
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+      }
+    ]
+  },
+  "DeductionElections": {
+    "Items": [
+      {
+        "Deduction": {
+          "CalculationType": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+          },
+          "DeductionCode": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+          },
+          "DeductionType": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+          },
+          "DisplayName": "string",
+          "DebitJournalNumber": "string",
+          "CreditJournalNumber": "string",
+          "IsDecliningBalance": true,
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+        },
+        "EffectiveStart": "2019-12-30T17:13:33.855Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.855Z",
+        "ElectionStartPayPeriodStartDate": "2019-12-30T17:13:33.855Z",
+        "ElectionStartPayGroup": {
+          "PayFrequency": {
+            "PayFrequencyType": "string",
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+          },
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+        },
+        "ElectionSchedule": {
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+        },
+        "IsBlocked": true,
+        "Position": {
+          "Department": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+          },
+          "Job": {
+            "EmployeeEEO": {
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+            },
+            "IsUnionJob": true,
+            "JobQualifications": "string",
+            "JobRank": 0,
+            "JobUDFString1": "string",
+            "JobUDFString2": "string",
+            "JobUDFString3": "string",
+            "LedgerCode": "string",
+            "NOC": "string",
+            "JobClassification": {
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+            },
+            "JobFunction": {
+              "Level": 0,
+              "UsableForExternalPosting": true,
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+            },
+            "FLSAStatus": {
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+            },
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+          },
+          "DefaultTargetBonus": 0,
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+        },
+        "Location": {
+          "OrgLevel": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+          },
+          "PhysicalLocation": true,
+          "BusinessPhone": "string",
+          "ContactBusinessPhone": "string",
+          "ContactCellPhone": "string",
+          "PostalCode": "string",
+          "CountryCode": "string",
+          "OpeningDate": "2019-12-30T17:13:33.855Z",
+          "ClosingDate": "2019-12-30T17:13:33.855Z",
+          "ComparableLocation": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string"
+          },
+          "Department": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+          },
+          "Zone": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+          },
+          "StartDayOfWeek": 0,
+          "GeoCity": {
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+          },
+          "Timezone": {
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+          },
+          "County": "string",
+          "IsOrgManaged": true,
+          "IsMobileOrg": true,
+          "PublicName": "string",
+          "ClockTransferCode": "string",
+          "ContactEmail": "string",
+          "ContactName": "string",
+          "LedgerCode": "string",
+          "StateCode": "string",
+          "Address": "string",
+          "Address2": "string",
+          "LegalEntity": {
+            "Country": {
+              "Name": "string",
+              "XRefCode": "string",
+              "ShortName": "string",
+              "LongName": "string",
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+            },
+            "LegalEntityAddress": {
+              "Address1": "string",
+              "Address2": "string",
+              "Address3": "string",
+              "Address4": "string",
+              "Address5": "string",
+              "Address6": "string",
+              "City": "string",
+              "PostalCode": "string",
+              "Country": {
+                "Name": "string",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+              },
+              "State": {
+                "Name": "string",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+              },
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+            },
+            "LegalIdNumber": "string",
+            "XRefCode": "string",
+            "ShortName": "string",
+            "LongName": "string",
+            "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+          },
+          "OrgUnitLegalEntities": {
+            "Items": [
+              {
+                "LegalEntity": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string"
+                },
+                "EffectiveStart": "2019-12-30T17:13:33.855Z",
+                "EffectiveEnd": "2019-12-30T17:13:33.855Z",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+              }
+            ]
+          },
+          "OrgUnitParents": {
+            "Items": [
+              {
+                "ParentOrgUnit": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string"
+                },
+                "EffectiveStart": "2019-12-30T17:13:33.855Z",
+                "EffectiveEnd": "2019-12-30T17:13:33.855Z",
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+              }
+            ]
+          },
+          "ChildOrgUnits": {
+            "Items": [
+              {
+                "OrgLevel": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+                },
+                "OrgUnitLegalEntities": {
+                  "Items": [
+                    {
+                      "LegalEntity": {
+                        "XRefCode": "string",
+                        "ShortName": "string",
+                        "LongName": "string"
+                      },
+                      "EffectiveStart": "2019-12-30T17:13:33.855Z",
+                      "EffectiveEnd": "2019-12-30T17:13:33.855Z",
+                      "XRefCode": "string",
+                      "ShortName": "string",
+                      "LongName": "string",
+                      "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+                    }
+                  ]
+                },
+                "OrgUnitParents": {
+                  "Items": [
+                    {
+                      "ParentOrgUnit": {
+                        "XRefCode": "string",
+                        "ShortName": "string",
+                        "LongName": "string"
+                      },
+                      "EffectiveStart": "2019-12-30T17:13:33.855Z",
+                      "EffectiveEnd": "2019-12-30T17:13:33.855Z",
+                      "XRefCode": "string",
+                      "ShortName": "string",
+                      "LongName": "string",
+                      "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+                    }
+                  ]
+                },
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+              }
+            ]
+          },
+          "XRefCode": "string",
+          "ShortName": "string",
+          "LongName": "string",
+          "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+        },
+        "ContinuePaymentOnStatutoryPay": true,
+        "IsOptOut": 0,
+        "EmployeeDeductionParameters": {
+          "Items": [
+            {
+              "DeductionParameter": {
+                "ParameterAccessType": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+                },
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+              },
+              "Value": 0,
+              "PayGroupValue": 0,
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+            }
+          ]
+        },
+        "EmployeeDeductionLimits": {
+          "Items": [
+            {
+              "DeductionLimit": {
+                "LimitAccessType": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+                },
+                "AccumulationType": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+                },
+                "LimitType": {
+                  "XRefCode": "string",
+                  "ShortName": "string",
+                  "LongName": "string",
+                  "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+                },
+                "XRefCode": "string",
+                "ShortName": "string",
+                "LongName": "string",
+                "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+              },
+              "LimitAmount": 0,
+              "LimitPercent": 0,
+              "PayGroupLimitAmount": 0,
+              "PayGroupLimitPercent": 0,
+              "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+            }
+          ]
+        },
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+      }
+    ]
+  },
+  "LastActiveManagers": {
+    "Items": [
+      {
+        "EffectiveStart": "2019-12-30T17:13:33.855Z",
+        "EffectiveEnd": "2019-12-30T17:13:33.855Z",
+        "ManagerXRefCode": "string",
+        "ManagerFirstName": "string",
+        "ManagerMiddleName": "string",
+        "ManagerLastName": "string",
+        "DerivationMethod": 0,
+        "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+      }
+    ]
+  },
+  "XRefCode": "string",
+  "NewXRefCode": "string",
+  "CommonName": "string",
+  "DisplayName": "string",
+  "FirstName": "string",
+  "LastName": "string",
+  "Initials": "string",
+  "MaidenName": "string",
+  "MiddleName": "string",
+  "PreferredLastName": "string",
+  "SecondLastName": "string",
+  "Suffix": "string",
+  "Title": "string",
+  "LastModifiedTimestamp": "2019-12-30T17:13:33.855Z"
+}

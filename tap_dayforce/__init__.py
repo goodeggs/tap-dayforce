@@ -81,6 +81,8 @@ def main():
             LOGGER.exception('Caught exception during Discovery..')
             if log_to_rollbar is True:
                 rollbar.report_exc_info()
+    elif not args.catalog:
+        raise RuntimeError('Catalog file must be supplied during Sync.')
     else:
         try:
             sync(args)

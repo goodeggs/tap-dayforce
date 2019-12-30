@@ -1,10 +1,11 @@
+import copy
+
 import pytest
 
 from tap_dayforce import (EmployeePunchesStream, EmployeeRawPunchesStream,
                           EmployeesStream, PaySummaryReportStream)
-
-# import responses
-# from singer.schema import Schema
+from tap_dayforce.whitelisting import (WHITELISTED_COLLECTIONS,
+                                       WHITELISTED_FIELDS)
 
 
 @pytest.mark.parametrize('pt_stream', [EmployeesStream, EmployeeRawPunchesStream, EmployeePunchesStream, PaySummaryReportStream])
@@ -29,3 +30,23 @@ def test_get_bookmark_static_method(pt_stream, config, state):
     expected = state.get("bookmarks").get(pt_stream.tap_stream_id).get(pt_stream.bookmark_properties)
     bookmark = pt_stream.get_bookmark(config, pt_stream.tap_stream_id, state, pt_stream.bookmark_properties)
     assert expected == bookmark
+
+
+@pytest.mark.parametrize('pay_policy_xrefcode', ['SALARIED', 'CONTRACTOR', None,
+                                                 pytest.param('USA_CA_HNE', marks=pytest.mark.xfail),
+                                                 pytest.param('USA_CA_HNE_4', marks=pytest.mark.xfail),
+                                                 pytest.param('USA_CA_HNEWHSE', marks=pytest.mark.xfail),
+                                                 pytest.param('USA_CA_HNEDRIVER', marks=pytest.mark.xfail)])
+def test_employee_stream_whitelist(args, employee_record, pay_policy_xrefcode):
+    stream = EmployeesStream.from_args(args)
+    for collection in WHITELISTED_COLLECTIONS:
+        employee_record[collection]["Items"][0]["PayPolicy"]["XRefCode"] = pay_policy_xrefcode
+
+    expected = copy.deepcopy(employee_record)
+    for collection in WHITELISTED_COLLECTIONS:
+        for field in WHITELISTED_FIELDS:
+            expected[collection]["Items"][0].pop(field, None)
+
+    output = stream.whitelist_sensitive_info(data=employee_record)
+
+    assert expected == output
