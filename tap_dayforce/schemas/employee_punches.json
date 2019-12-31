@@ -42,6 +42,18 @@
     "JobXRefCode": {
       "type": ["null", "string"]
     },
+    "DocketXRefCode": {
+      "type": ["null", "string"]
+    },
+    "DocketQuantity": {
+      "type": ["null", "number"]
+    },
+    "ProjectXRefCode": {
+      "type": ["null", "string"]
+    },
+    "PayAdjustmentXRefCode": {
+      "type": ["null", "string"]
+    },
     "StartExceptionCode": {
       "type": ["null", "string"]
     },
@@ -124,6 +136,78 @@
           }
         }
       }
+    },
+    "Transfers": {
+      "type": ["null", "array"],
+      "items": {
+        "type": ["null", "object"],
+        "properties": {
+          "TimeStart": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "TimeStartRaw": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "LocationXRefCode": {
+            "type": ["null", "string"]
+          },
+          "PositionXRefCode": {
+            "type": ["null", "string"]
+          },
+          "ProjectXRefCode": {
+            "type": ["null", "string"]
+          },
+          "DocketXRefCode": {
+            "type": ["null", "string"]
+          },
+          "DocketQuantity": {
+            "type": ["null", "number"]
+          },
+          "PayAdjustmentXRefCode": {
+            "type": ["null", "string"]
+          },
+          "EmployeeComment": {
+            "type": ["null", "string"]
+          },
+          "ManagerComment": {
+            "type": ["null", "string"]
+          },
+          "LaborMetrics": {
+            "type": ["null", "array"],
+            "items": {
+              "type": ["null", "object"],
+              "properties": {
+                "LaborMetricsTypeXRefCode": {
+                  "type": ["null", "string"]
+                },
+                "LaborMetricsCodeXRefCode": {
+                  "type": ["null", "string"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "LaborMetrics": {
+      "type": ["null", "array"],
+      "items": {
+        "type": ["null", "object"],
+        "properties": {
+          "LaborMetricsTypeXRefCode": {
+            "type": ["null", "string"]
+          },
+          "LaborMetricsCodeXRefCode": {
+            "type": ["null", "string"]
+          }
+        }
+      }
+    },
+    "SyncTimestampUtc": {
+      "type": ["null", "string"],
+      "format": "date-time"
     }
   }
 }

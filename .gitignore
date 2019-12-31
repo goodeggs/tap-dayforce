@@ -1,6 +1,5 @@
 # Singer files
 config/
-*.config.json
 catalog.json
 state.json
 
@@ -108,3 +107,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+.vscode/

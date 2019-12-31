@@ -1,0 +1,17 @@
+{
+  "bookmarks": {
+    "employees": {
+        "SyncTimestampUtc": "2019-11-14T09:51:32.777Z"
+      },
+      "employee_raw_punches": {
+        "SyncTimestampUtc": "2019-11-14T09:51:55.969Z"
+      },
+      "employee_punches": {
+        "SyncTimestampUtc": "2019-11-14T10:51:02.239Z"
+      },
+      "pay_summary_report": {
+        "SyncTimestampUtc": "2019-11-14T10:53:05.235Z"
+      }
+    },
+  "currently_syncing": null
+}

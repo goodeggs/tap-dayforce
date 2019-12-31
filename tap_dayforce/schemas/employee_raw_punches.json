@@ -1,0 +1,142 @@
+{
+  "type": ["null", "object"],
+  "additionalProperties": false,
+  "properties": {
+    "RawPunchXRefCode": {
+      "type": ["null", "string"]
+    },
+    "PunchState": {
+      "type": ["null", "string"]
+    },
+    "PayDate": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "EmployeeXRefCode": {
+      "type": ["null", "string"]
+    },
+    "EmployeeBadge": {
+      "type": ["null", "string"]
+    },
+    "RawPunchTime": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "WasOfflinePunch": {
+      "type": ["null", "boolean"]
+    },
+    "ExtraData": {
+      "type": ["null", "object"],
+      "properties": {
+        "DocketXRefCode": {
+          "type": ["null", "string"]
+        },
+        "ProjectXRefCode": {
+          "type": ["null", "string"]
+        },
+        "PositionXRefCode": {
+          "type": ["null", "string"]
+        },
+        "LocationXRefCode": {
+          "type": ["null", "string"]
+        },
+        "Quantity": {
+          "type": ["null", "number"]
+        },
+        "MealWaiver": {
+          "type": ["null", "string"]
+        },
+        "BreakAttestation": {
+          "type": ["null", "boolean"]
+        },
+        "BioFailure": {
+          "type": ["null", "boolean"]
+        },
+        "FaceVerificationFailure": {
+          "type": ["null", "boolean"]
+        },
+        "LaborMetrics": {
+          "type": ["null", "array"],
+          "items": {
+            "type": ["null", "object"],
+            "properties": {
+              "TypeXRefCode": {
+                "type": ["null", "string"]
+              },
+              "CodeXRefCode": {
+                "type": ["null", "string"]
+              },
+              "TypeClockTransferCode": {
+                "type": ["null", "string"]
+              },
+              "CodeClockTransferCode": {
+                "type": ["null", "string"]
+              }
+            }
+          }
+        },
+        "DocketClockTransferCode": {
+          "type": ["null", "string"]
+        },
+        "ProjectClockTransferCode": {
+          "type": ["null", "string"]
+        },
+        "PositionClockTransferCode": {
+          "type": ["null", "string"]
+        },
+        "LocationClockTransferCode": {
+          "type": ["null", "string"]
+        }
+      }
+    },
+    "PunchType": {
+      "type": ["null", "string"]
+    },
+    "Comment": {
+      "type": ["null", "string"]
+    },
+    "PunchDevice": {
+      "type": ["null", "string"]
+    },
+    "SupervisorBadge": {
+      "type": ["null", "string"]
+    },
+    "IsDuplicate": {
+      "type": ["null", "boolean"]
+    },
+    "RejectedReason": {
+      "type": ["null", "string"]
+    },
+    "LocationXRefCode": {
+      "type": ["null", "string"]
+    },
+    "PositionXRefCode": {
+      "type": ["null", "string"]
+    },
+    "DepartmentXRefCode": {
+      "type": ["null", "string"]
+    },
+    "JobXRefCode": {
+      "type": ["null", "string"]
+    },
+    "IPAddress": {
+      "type": ["null", "string"]
+    },
+    "PunchOrigin": {
+      "type": ["null", "string"]
+    },
+    "Latitude": {
+      "type": ["null", "number"]
+    },
+    "Longitude": {
+      "type": ["null", "number"]
+    },
+    "Accuracy": {
+      "type": ["null", "integer"]
+    },
+    "SyncTimestampUtc": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    }
+  }
+}

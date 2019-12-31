@@ -1,0 +1,65 @@
+{
+  "type": ["null", "object"],
+  "additionalProperties": false,
+  "properties": {
+    "EmployeeEmploymentStatus_EmployeeNumber": {
+      "type": ["null", "string"]
+    },
+    "Employee_DisplayName": {
+      "type": ["null", "string"]
+    },
+    "EmployeePaySummary_PayDate": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    },
+    "OrgUnit_ShortName": {
+      "type": ["null", "string"]
+    },
+    "Department_ShortName": {
+      "type": ["null", "string"]
+    },
+    "Department_XRefCode": {
+      "type": ["null", "string"]
+    },
+    "Job_ShortName": {
+      "type": ["null", "string"]
+    },
+    "Job_XRefCode": {
+      "type": ["null", "string"]
+    },
+    "ActualIn": {
+      "type": ["null", "string"]
+    },
+    "ActualOut": {
+      "type": ["null", "string"]
+    },
+    "AuthorizedManager": {
+      "type": ["null", "string"]
+    },
+    "AuthorizedEmployee": {
+      "type": ["null", "string"]
+    },
+    "PayAdjCode_ShortName": {
+      "type": ["null", "string"]
+    },
+    "PayCategory_ShortName": {
+      "type": ["null", "string"]
+    },
+    "Normal": {
+      "type": ["null", "number"]
+    },
+    "Other": {
+      "type": ["null", "number"]
+    },
+    "EmployeePaySummary_PayAmount": {
+      "type": ["null", "number"]
+    },
+    "HashKey": {
+      "type": ["null", "string"]
+    },
+    "SyncTimestampUtc": {
+      "type": ["null", "string"],
+      "format": "date-time"
+    }
+  }
+}
