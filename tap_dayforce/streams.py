@@ -1,463 +1,221 @@
-import inspect
+import hashlib
 import os
-import time
-from datetime import datetime, timedelta
-from typing import Dict, Generator
+from datetime import timedelta
+from typing import ClassVar, Dict, Iterable, List, Optional, Union
 
+import attr
+import backoff
 import requests
-import rollbar
 import singer
+from dayforce_client import Dayforce
 
-from .version import __version__
+from .utils import is_fatal_code
+from .whitelisting import (WHITELISTED_COLLECTIONS, WHITELISTED_FIELDS,
+                           WHITELISTED_PAY_POLICY_CODES)
 
 LOGGER = singer.get_logger()
 
-BOOKMARK_DATETIME_STR_FMT = "%Y-%m-%dT%H:%M:%SZ"
 
-WHITELISTED_COLLECTIONS = {
-    'CompensationSummary',
-    'EmploymentStatuses'
-}
+@attr.s
+class DayforceStream(object):
 
-WHITELISTED_FIELDS = {
-    'BaseRate',
-    'BaseSalary',
-    'PreviousBaseRate',
-    'PreviousBaseSalary',
-    'ChangeValue',
-    'ChangePercent'
-}
+    client: Dayforce = attr.ib(validator=attr.validators.instance_of(Dayforce))
+    config: Dict = attr.ib(repr=False, validator=attr.validators.instance_of(Dict))
+    config_path: Union[os.PathLike, str] = attr.ib()
+    state: Dict = attr.ib(validator=attr.validators.instance_of(Dict))
+    catalog: Optional[singer.catalog.Catalog] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(singer.catalog.Catalog)),
+                                                        repr=False,
+                                                        default=None)
+    catalog_path: Optional[Union[os.PathLike, str]] = attr.ib(default=None)
 
-WHITELISTED_PAY_POLICY_CODES = {
-    'USA_CA_HNE',
-    'USA_CA_HNE_4',
-    'USA_CA_HNEWHSE',
-    'USA_CA_HNEDRIVER'
-}
+    @classmethod
+    def from_args(cls, args, **kwargs):
+        return cls(client=Dayforce(username=args.config.get("username"),
+                                   password=args.config.get("password"),
+                                   client_namespace=args.config.get("client_namespace")),
+                   config=args.config,
+                   config_path=args.config_path,
+                   catalog=getattr(args, 'catalog', None),
+                   catalog_path=getattr(args, 'catalog_path', None),
+                   state=args.state,
+                   **kwargs)
 
+    @staticmethod
+    def get_schema(tap_stream_id: str, catalog: singer.catalog.Catalog) -> Dict:
+        return catalog.get_stream(tap_stream_id).schema.to_dict()
 
-class DayforceStream:
-    BASE_URL = "https://usr57-services.dayforcehcm.com/Api"
-
-    def __init__(self, config: Dict, state: Dict):
-        self.username = config.get('username')
-        self.password = config.get('password')
-        self.client_name = config.get('client_name')
-        self.email = config.get('email')
-        self.params = {}
-        self.state = state
-        self.schema = self._load_schema()
-        self.metadata = singer.metadata.get_standard_metadata(schema=self._load_schema(),
-                                                              key_properties=self.key_properties,
-                                                              valid_replication_keys=self.valid_replication_keys,
-                                                              replication_method=self.replication_method)
-
-        config_stream_params = config.get('streams', {}).get(self.tap_stream_id)
-
-        if config_stream_params is not None:
-            for key in config_stream_params.keys():
-                if key not in self.valid_params:
-                    raise DayforceException(f"/{self.tap_stream_id} endpoint does not support '{key}' parameter.")
-
-            self.params.update(config_stream_params)
-
-        for param in self.required_params:
-            if param not in self.params.keys():
-                raise DayforceException(f"Parameter '{param}' required but not supplied for /{self.tap_stream_id} endpoint.")
-
-    def _get_abs_path(self, path: str) -> str:
-        return os.path.join(os.path.dirname(os.path.realpath(__file__)), path)
-
-    def _load_schema(self) -> Dict:
-        '''Loads a JSON schema file for a given
-        Dayforce resource into a dict representation.
-        '''
-        schema_path = self._get_abs_path("schemas")
-        return singer.utils.load_json(f"{schema_path}/{self.tap_stream_id}.json")
-
-    def _construct_headers(self) -> Dict:
-        '''Constructs a standard set of headers for GET requests.'''
-        headers = requests.utils.default_headers()
-        headers["User-Agent"] = f"python-dayforce-tap/{__version__}"
-        headers["Content-Type"] = "application/json"
-        headers["From"] = self.email
-        headers["Date"] = singer.utils.strftime(singer.utils.now(), '%a, %d %b %Y %H:%M:%S %Z')
-        return headers
-
-    def _get(self, resource: str, params: Dict = None) -> Dict:
-        '''Constructs a standard way of making
-        a GET request to the Dayforce REST API.
-        '''
-        url = f"{self.BASE_URL}/{self.client_name}/V1/{resource}"
-        headers = self._construct_headers()
-        response = requests.get(url, auth=(self.username, self.password), headers=headers, params=params)
-        if response.status_code == 429:
-            retry_after = int(response.headers.get('Retry-After')) + 1
-            LOGGER.warn(f"Rate limit reached. Trying again in {retry_after} seconds: {response.text}")
-            time.sleep(retry_after)
-            response = requests.get(url, auth=(self.username, self.password), headers=headers, params=params)
-        response.raise_for_status()
-        return response.json()
-
-    def _get_records(self, resource: str, params: Dict = None) -> Generator[Dict, None, None]:
-        '''Yields a Dict representing a record of the requested resource.'''
-        resp = DayforceResponse(client=self,
-                                resource=resource,
-                                params=params,
-                                response=self._get(resource=resource, params=params))
-
-        return resp
-
-    def get(self, key: str):
-        '''Custom get method so that Singer can
-        access Class attributes using dict syntax.
-        '''
-        return inspect.getattr_static(self, key, default=None)
-
-    def write_schema_message(self):
-        '''Writes a Singer schema message.'''
-        return singer.write_schema(stream_name=self.stream, schema=self.schema, key_properties=self.key_properties)
-
-    def write_state_message(self):
-        '''Writes a Singer state message.'''
-        return singer.write_state(self.state)
-
-
-class DayforceResponse:
-    """
-    Class to enable response pagination via iteration.
-    """
-    def __init__(self, client, resource, params, response):
-        self.client = client
-        self.resource = resource
-        self.params = params
-        self.response = response
-
-    def __iter__(self):
-        self._iteration = 0
-        return self
-
-    def __next__(self):
-        self._iteration += 1
-        if self._iteration == 1:
-            return self
-
-        # If Pagination is not available on endpoint.
-        if self.response.get("Paging") is None:
-            raise StopIteration
-        # If Pagination section has a blank "Next" value.
-        elif self.response.get("Paging").get("Next") == "":
-            raise StopIteration
+    @staticmethod
+    def get_bookmark(config: Dict, tap_stream_id: str, state: Dict, bookmark_properties: str) -> Optional[str]:
+        bookmark = singer.bookmarks.get_bookmark(state, tap_stream_id, key=bookmark_properties)
+        if bookmark is not None:
+            return bookmark
         else:
-            next_page = self.response.get("Paging").get("Next")
-            headers = self.client._construct_headers()
-            response = requests.get(next_page, auth=(self.client.username, self.client.password), headers=headers)
-            if response.status_code == 429:
-                retry_after = int(response.headers.get('Retry-After')) + 1
-                LOGGER.warn(f"Rate limit reached. Trying again in {retry_after} seconds: {response.text}")
-                time.sleep(retry_after)
-                response = requests.get(next_page, auth=(self.client.username, self.client.password), headers=headers)
-            response.raise_for_status()
-            self.response = response.json()
-            return self
-
-    def get(self, key, default=None):
-        return self.response.get(key, default)
+            return config.get("start_date")
 
 
-class DayforceException(BaseException):
-    pass
+@attr.s
+class DayforcePunchStream(DayforceStream):
+
+    def sync(self):
+        with singer.metrics.job_timer(job_type=f"sync_{self.tap_stream_id}"):
+            with singer.metrics.record_counter(endpoint=self.tap_stream_id) as counter:
+                start = singer.utils.strptime_to_utc(self.get_bookmark(self.config, self.tap_stream_id, self.state, self.bookmark_properties))
+                new_bookmark = singer.utils.now()
+                singer.bookmarks.write_bookmark(state=self.state, tap_stream_id=self.tap_stream_id, key=self.bookmark_properties, val=singer.utils.strftime(new_bookmark))
+                step = timedelta(days=6)
+                while start < new_bookmark:
+                    end = start + step - timedelta(seconds=1)
+                    self._transform_records(start, end, counter)
+                    start += step
 
 
+@attr.s
+class EmployeePunchesStream(DayforcePunchStream):
+    tap_stream_id: ClassVar[str] = 'employee_punches'
+    key_properties: ClassVar[List[str]] = ['PunchXRefCode']
+    bookmark_properties: ClassVar[str] = 'SyncTimestampUtc'
+    replication_method: ClassVar[str] = 'INCREMENTAL'
+
+    @backoff.on_exception(backoff.expo,
+                          requests.exceptions.HTTPError,
+                          max_time=120,
+                          giveup=is_fatal_code,
+                          logger=LOGGER)
+    @backoff.on_exception(backoff.expo,
+                          (requests.exceptions.ConnectionError,
+                           requests.exceptions.Timeout),
+                          max_time=120,
+                          logger=LOGGER)
+    def _transform_records(self, start, end, counter):
+        for _, record in self.client.get_employee_punches(filterTransactionStartTimeUTC=singer.utils.strftime(start), filterTransactionEndTimeUTC=singer.utils.strftime(end)).yield_records():
+            if record:
+                record["SyncTimestampUtc"] = self.get_bookmark(self.config, self.tap_stream_id, self.state, self.bookmark_properties)
+                with singer.Transformer() as transformer:
+                    transformed_record = transformer.transform(data=record, schema=self.get_schema(self.tap_stream_id, self.catalog))
+                    singer.write_record(stream_name=self.tap_stream_id, time_extracted=singer.utils.now(), record=transformed_record)
+                    counter.increment()
+
+
+@attr.s
+class EmployeeRawPunchesStream(DayforcePunchStream):
+    tap_stream_id: ClassVar[str] = 'employee_raw_punches'
+    key_properties: ClassVar[List[str]] = ['RawPunchXRefCode']
+    bookmark_properties: ClassVar[str] = 'SyncTimestampUtc'
+    replication_method: ClassVar[str] = 'INCREMENTAL'
+
+    @backoff.on_exception(backoff.expo,
+                          requests.exceptions.HTTPError,
+                          max_time=120,
+                          giveup=is_fatal_code,
+                          logger=LOGGER)
+    @backoff.on_exception(backoff.expo,
+                          (requests.exceptions.ConnectionError,
+                           requests.exceptions.Timeout),
+                          max_time=120,
+                          logger=LOGGER)
+    def _transform_records(self, start, end, counter):
+        for _, record in self.client.get_employee_raw_punches(filterTransactionStartTimeUTC=singer.utils.strftime(start), filterTransactionEndTimeUTC=singer.utils.strftime(end)).yield_records():
+            if record:
+                record["SyncTimestampUtc"] = self.get_bookmark(self.config, self.tap_stream_id, self.state, self.bookmark_properties)
+                with singer.Transformer() as transformer:
+                    transformed_record = transformer.transform(data=record, schema=self.get_schema(self.tap_stream_id, self.catalog))
+                    singer.write_record(stream_name=self.tap_stream_id, time_extracted=singer.utils.now(), record=transformed_record)
+                    counter.increment()
+
+
+@attr.s
 class EmployeesStream(DayforceStream):
-    tap_stream_id = 'employees'
-    stream = 'employees'
-    replication_key = 'SyncTimestampUtc'
-    valid_replication_keys = ['SyncTimestampUtc']
-    key_properties = 'XRefCode'
-    replication_method = 'INCREMENTAL'
-    required_params = []
-    valid_params = ['contextDate', 'expand']
+    tap_stream_id: ClassVar[str] = 'employees'
+    key_properties: ClassVar[List[str]] = ['XRefCode']
+    bookmark_properties: ClassVar[str] = 'SyncTimestampUtc'
+    replication_method: ClassVar[str] = 'INCREMENTAL'
 
-    def __init__(self, config: Dict, state: Dict):
-        super().__init__(config, state)
+    def whitelist_sensitive_info(self, data: Dict) -> Dict:
+        for collection in WHITELISTED_COLLECTIONS:
+            if data.get(collection, {}).get("Items") is not None:
+                for i, item in enumerate(data.get(collection, {}).get("Items")):
+                    if item.get("PayPolicy") is None or item.get("PayPolicy").get("XRefCode") not in WHITELISTED_PAY_POLICY_CODES:
+                        for field in WHITELISTED_FIELDS:
+                            data[collection]["Items"][i].pop(field, None)
 
-    def sync(self):
+        return data
 
-        new_bookmark = singer.utils.strftime(singer.utils.now(), BOOKMARK_DATETIME_STR_FMT)
-        current_bookmark = singer.bookmarks.get_bookmark(state=self.state,
-                                                         tap_stream_id=self.tap_stream_id,
-                                                         key=self.replication_key)
-
-        if current_bookmark is not None:
-            self.params.update({
-                "filterUpdatedStartDate": current_bookmark,
-                "filterUpdatedEndDate": new_bookmark
-            })
-
-        self.state = singer.bookmarks.write_bookmark(state=self.state,
-                                                     tap_stream_id=self.tap_stream_id,
-                                                     key=self.replication_key,
-                                                     val=new_bookmark)
-
-        empty_count = 0
-        with singer.metrics.job_timer(job_type=f"sync_{self.tap_stream_id}"):
-            with singer.metrics.record_counter(endpoint=self.tap_stream_id) as counter:
-                for page in self._get_records(resource='Employees', params=self.params):
-                    for employee in page.get("Data"):
-                        if not employee:
-                            LOGGER.warning(f"Dayforce returned an empty {self.tap_stream_id} record. Skipping it..")
-                            empty_count += 1
-                            continue
-                        else:
-                            resp = self._get(resource=f"Employees/{employee.get('XRefCode')}", params=self.params)
-                            data = resp.get('Data')
-                            # Custom blacklisting for sensitive pay information.
-                            try:
-                                for collection in WHITELISTED_COLLECTIONS:
-                                    for i, item in enumerate(data.get(collection).get("Items")):
-                                        if item.get("PayPolicy") is None:
-                                            for field in WHITELISTED_FIELDS:
-                                                data[collection]["Items"][i].pop(field, None)
-                                        elif item.get("PayPolicy").get("XRefCode") not in WHITELISTED_PAY_POLICY_CODES:
-                                            for field in WHITELISTED_FIELDS:
-                                                data[collection]["Items"][i].pop(field, None)
-                            except Exception as e:
-                                msg = f"Sensitive information blacklist failed for Employee {employee.get('XRefCode')}."
-                                LOGGER.warning(msg, exc_info=e)
-                                rollbar.report_exc_info(e, level='warning', extra_data={'title': msg})
-                                continue
-                            data['SyncTimestampUtc'] = new_bookmark
-                            with singer.Transformer() as transformer:
-                                transformed_record = transformer.transform(data=data, schema=self.schema)
-                                singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
-                                counter.increment()
-
-        if empty_count > 0:
-            rollbar.report_message(f"Dayforce returned empty {self.tap_stream_id} records", 'warning', extra_data={'count': empty_count})
-
-
-class EmployeePunchesStream(DayforceStream):
-    tap_stream_id = 'employee_punches'
-    stream = 'employee_punches'
-    replication_key = 'SyncTimestampUtc'
-    valid_replication_keys = ['SyncTimestampUtc']
-    key_properties = 'PunchXRefCode'
-    replication_method = 'INCREMENTAL'
-    required_params = ['filterTransactionStartTimeUTC']
-    valid_params = [
-        'filterTransactionStartTimeUTC',
-        'filterTransactionEndTimeUTC',
-        'employeeXRefCode',
-        'locationXRefCode',
-        'positionXRefCode',
-        'departmentXRefCode',
-        'jobXRefCode',
-        'shiftStatus',
-        'filterShiftTimeStart',
-        'filterShiftTimeEnd',
-        'businessDate',
-        'pageSize'
-    ]
-
-    def __init__(self, config: Dict, state: Dict):
-        super().__init__(config, state)
+    @backoff.on_exception(backoff.expo,
+                          requests.exceptions.HTTPError,
+                          max_time=120,
+                          giveup=is_fatal_code,
+                          logger=LOGGER)
+    @backoff.on_exception(backoff.expo,
+                          (requests.exceptions.ConnectionError,
+                           requests.exceptions.Timeout),
+                          max_time=120,
+                          logger=LOGGER)
+    def _transform_records(self, start, end, counter):
+        for _, record in self.client.get_employees(filterUpdatedStartDate=singer.utils.strftime(start), filterUpdatedEndDate=singer.utils.strftime(end)).yield_records():
+            if record:
+                details = self.client.get_employee_details(xrefcode=record.get("XRefCode"), expand="WorkAssignments,Contacts,EmploymentStatuses,Roles,EmployeeManagers,CompensationSummary,Locations,LastActiveManagers").get("Data")
+                if details:
+                    details["SyncTimestampUtc"] = self.get_bookmark(self.config, self.tap_stream_id, self.state, self.bookmark_properties)
+                    details = self.whitelist_sensitive_info(data=details)
+                    with singer.Transformer() as transformer:
+                        transformed_record = transformer.transform(data=details, schema=self.get_schema(self.tap_stream_id, self.catalog))
+                        singer.write_record(stream_name=self.tap_stream_id, time_extracted=singer.utils.now(), record=transformed_record)
+                        counter.increment()
 
     def sync(self):
-
-        new_bookmark = singer.utils.strftime(singer.utils.now(), BOOKMARK_DATETIME_STR_FMT)
-
-        self.params.update({
-            "filterTransactionEndTimeUTC": new_bookmark
-        })
-
-        current_bookmark = singer.bookmarks.get_bookmark(state=self.state,
-                                                         tap_stream_id=self.tap_stream_id,
-                                                         key=self.replication_key)
-
-        if current_bookmark is not None:
-            self.params.update({
-                "filterTransactionStartTimeUTC": current_bookmark
-            })
-
-        self.state = singer.bookmarks.write_bookmark(state=self.state,
-                                                     tap_stream_id=self.tap_stream_id,
-                                                     key=self.replication_key,
-                                                     val=new_bookmark)
-
-        start = singer.utils.strptime_to_utc(self.params.get('filterTransactionStartTimeUTC'))
-        end = singer.utils.strptime_to_utc(self.params.get('filterTransactionEndTimeUTC'))
-        step = timedelta(days=7)
-
-        empty_count = 0
-
         with singer.metrics.job_timer(job_type=f"sync_{self.tap_stream_id}"):
             with singer.metrics.record_counter(endpoint=self.tap_stream_id) as counter:
-                while start < end:
-                    range = {
-                        "filterTransactionStartTimeUTC": singer.utils.strftime(start),
-                        "filterTransactionEndTimeUTC": min(singer.utils.strftime(start + step), singer.utils.strftime(end))
-                    }
-                    self.params.update(range)
-                    for page in self._get_records(resource='EmployeePunches', params=self.params):
-                        for punch in page.get("Data"):
-                            if not punch:
-                                LOGGER.warning(f"Dayforce returned an empty {self.tap_stream_id} record. Skipping it..")
-                                empty_count += 1
-                                continue
-                            else:
-                                punch["SyncTimestampUtc"] = new_bookmark
-                                with singer.Transformer() as transformer:
-                                    transformed_record = transformer.transform(data=punch, schema=self.schema)
-                                    singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
-                                    counter.increment()
-                    start += step
-
-        if empty_count > 0:
-            rollbar.report_message(f"Dayforce returned empty {self.tap_stream_id} records", 'warning', extra_data={'count': empty_count})
+                start = singer.utils.strptime_to_utc(self.get_bookmark(self.config, self.tap_stream_id, self.state, self.bookmark_properties))
+                new_bookmark = singer.utils.now()
+                singer.bookmarks.write_bookmark(state=self.state, tap_stream_id=self.tap_stream_id, key=self.bookmark_properties, val=singer.utils.strftime(new_bookmark))
+                self._transform_records(start, new_bookmark, counter)
 
 
-class EmployeeRawPunchesStream(DayforceStream):
-    tap_stream_id = 'employee_raw_punches'
-    stream = 'employee_raw_punches'
-    replication_key = 'SyncTimestampUtc'
-    valid_replication_keys = ['SyncTimestampUtc']
-    key_properties = 'RawPunchXRefCode'
-    replication_method = 'INCREMENTAL'
-    required_params = ['filterTransactionStartTimeUTC']
-    valid_params = [
-        'filterTransactionStartTimeUTC',
-        'filterTransactionEndTimeUTC',
-        'employeeXRefCode',
-        'employeeBadge',
-        'punchState',
-        'punchTypes',
-        'pageSize'
-    ]
+@attr.s
+class PaySummaryReportStream(DayforceStream):
+    tap_stream_id: ClassVar[str] = 'pay_summary_report'
+    key_properties: ClassVar[List[str]] = ['HashKey']
+    bookmark_properties: ClassVar[str] = 'SyncTimestampUtc'
+    replication_method: ClassVar[str] = 'INCREMENTAL'
 
-    def __init__(self, config: Dict, state: Dict):
-        super().__init__(config, state)
+    def _generate_md5_hash(self, input_sequence: Iterable[Optional[str]]) -> str:
+        m = hashlib.md5()
+        for input in input_sequence:
+            m.update(str(input).encode('utf-8'))
+        return m.hexdigest()
 
-    def sync(self):
-
-        new_bookmark = singer.utils.strftime(singer.utils.now(), BOOKMARK_DATETIME_STR_FMT)
-
-        self.params.update({
-            "filterTransactionEndTimeUTC": new_bookmark
-        })
-
-        current_bookmark = singer.bookmarks.get_bookmark(state=self.state,
-                                                         tap_stream_id=self.tap_stream_id,
-                                                         key=self.replication_key)
-
-        if current_bookmark is not None:
-            self.params.update({
-                "filterTransactionStartTimeUTC": current_bookmark
-            })
-
-        self.state = singer.bookmarks.write_bookmark(state=self.state,
-                                                     tap_stream_id=self.tap_stream_id,
-                                                     key=self.replication_key,
-                                                     val=new_bookmark)
-
-        start = singer.utils.strptime_to_utc(self.params.get('filterTransactionStartTimeUTC'))
-        end = singer.utils.strptime_to_utc(self.params.get('filterTransactionEndTimeUTC'))
-        step = timedelta(days=7)
-
-        empty_count = 0
-
-        with singer.metrics.job_timer(job_type=f"sync_{self.tap_stream_id}"):
-            with singer.metrics.record_counter(endpoint=self.tap_stream_id) as counter:
-                while start < end:
-                    range = {
-                        "filterTransactionStartTimeUTC": singer.utils.strftime(start),
-                        "filterTransactionEndTimeUTC": min(singer.utils.strftime(start + step), singer.utils.strftime(end))
-                    }
-                    self.params.update(range)
-                    for page in self._get_records(resource='EmployeeRawPunches', params=self.params):
-                        for punch in page.get("Data"):
-                            if not punch:
-                                LOGGER.warning(f"Dayforce returned an empty {self.tap_stream_id} record. Skipping it..")
-                                empty_count += 1
-                                continue
-                            else:
-                                punch["SyncTimestampUtc"] = new_bookmark
-                                with singer.Transformer() as transformer:
-                                    transformed_record = transformer.transform(data=punch, schema=self.schema)
-                                    singer.write_record(stream_name=self.stream, time_extracted=singer.utils.now(), record=transformed_record)
-                                    counter.increment()
-                    start += step
-
-        if empty_count > 0:
-            rollbar.report_message(f"Dayforce returned empty {self.tap_stream_id} records", 'warning', extra_data={'count': empty_count})
-
-
-class ReportStream(DayforceStream):
-    DATA_TYPE_MAPPING = {
-        "String": {"type": ["null", "string"]},
-        "Integer": {"type": ["null", "integer"]},
-        "Decimal": {"type": ["null", "number"]},
-        "DateTime": {
-            "type": ["null", "string"],
-            "format": "date-time"
-        },
-        "Time": {
-            "type": ["null", "string"]
-        },
-        "Date": {
-            "type": ["null", "string"],
-            "format": "date-time"
+    @backoff.on_exception(backoff.expo,
+                          requests.exceptions.HTTPError,
+                          max_time=120,
+                          giveup=is_fatal_code,
+                          logger=LOGGER)
+    @backoff.on_exception(backoff.expo,
+                          (requests.exceptions.ConnectionError,
+                           requests.exceptions.Timeout),
+                          max_time=120,
+                          logger=LOGGER)
+    def _transform_records(self, start, end, counter):
+        report_params = {
+            "003cd1ea-5f11-4fe8-ae9c-d7af1e3a95d6": singer.utils.strftime(start),
+            "b03cd1ea-5f11-4fe8-ae9c-d7af1e3a95d6": singer.utils.strftime(end)
         }
-    }
-    key_properties = []
-    valid_replication_keys = []
-    replication_method = 'FULL_TABLE'
-    required_params = []
-
-    def __init__(self, config: Dict, state: Dict, xrefcode: str):
-        self.tap_stream_id = f"report_{xrefcode}"
-        self.stream = f"report_{xrefcode}"
-        self.xrefcode = xrefcode
-        self.key_properties = []
-        self.valid_replication_keys = []
-        super().__init__(config, state)
-
-    def _generate_schema(self, report_xrefcode: str) -> Dict:
-        '''Dynamically generates a schema for a Report by inspecting the ReportMetadata endpoint.'''
-        resp = self._get(resource=f"ReportMetadata/{report_xrefcode}")
-        column_metadata = resp.get("Data")[0].get("ColumnMetadata")
-        schema = {
-            "type": ["null", "object"],
-            "additionalProperties": False,
-            "properties": {}
-        }
-        for column in column_metadata:
-            field = column.get("CodeName").replace(".", "_")
-            if column.get("DataType") not in self.DATA_TYPE_MAPPING.keys():
-                raise TypeError(f"Column {column.get('DisplayName')} has data type {column.get('DataType')} which is not implemented.")
-            else:
-                schema.get("properties").update({field: self.DATA_TYPE_MAPPING.get(column.get("DataType"))})
-
-        return schema
-
-    def _load_schema(self) -> Dict:
-        return self._generate_schema(report_xrefcode=self.xrefcode)
+        for _, row in self.client.get_report(xrefcode=self.tap_stream_id, **report_params).yield_report_rows():
+            if row:
+                row["HashKey"] = self._generate_md5_hash(row.values())
+                row["SyncTimestampUtc"] = self.get_bookmark(self.config, self.tap_stream_id, self.state, self.bookmark_properties)
+                with singer.Transformer() as transformer:
+                    transformed_record = transformer.transform(data=row, schema=self.get_schema(self.tap_stream_id, self.catalog))
+                    singer.write_record(stream_name=self.tap_stream_id, time_extracted=singer.utils.now(), record=transformed_record)
+                    counter.increment()
 
     def sync(self):
-        singer_version = int(datetime.utcnow().timestamp())
         with singer.metrics.job_timer(job_type=f"sync_{self.tap_stream_id}"):
             with singer.metrics.record_counter(endpoint=self.tap_stream_id) as counter:
-                for page in self._get_records(resource=f"Reports/{self.xrefcode}", params=self.params):
-                    for row in page.get("Data").get("Rows"):
-                        with singer.Transformer() as transformer:
-                            transformed_record = transformer.transform(data=row, schema=self.schema)
-                            singer.write_message(singer.RecordMessage(stream=self.stream,
-                                                                      record=transformed_record,
-                                                                      version=singer_version,
-                                                                      time_extracted=singer.utils.now()))
-                            counter.increment()
-
-            singer.write_version(stream_name=self.stream, version=singer_version)
-
-
-AVAILABLE_STREAMS = {EmployeesStream, EmployeePunchesStream, EmployeeRawPunchesStream, ReportStream}
+                start = singer.utils.strptime_to_utc(self.get_bookmark(self.config, self.tap_stream_id, self.state, self.bookmark_properties))
+                new_bookmark = singer.utils.now()
+                singer.bookmarks.write_bookmark(state=self.state, tap_stream_id=self.tap_stream_id, key=self.bookmark_properties, val=singer.utils.strftime(new_bookmark))
+                step = timedelta(days=1)
+                while start < new_bookmark:
+                    end = start + step - timedelta(seconds=1)
+                    self._transform_records(start, end, counter)
+                    start += step

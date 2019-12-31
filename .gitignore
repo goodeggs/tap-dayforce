@@ -1,6 +1,5 @@
 # Singer files
 config/
-*.config.json
 catalog.json
 state.json
 
