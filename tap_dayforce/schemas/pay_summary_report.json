@@ -24,7 +24,7 @@
     "Job_ShortName": {
       "type": ["null", "string"]
     },
-    "Job_XRefCode": {
+    "Job_XrefCode": {
       "type": ["null", "string"]
     },
     "ActualIn": {
