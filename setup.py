@@ -40,7 +40,7 @@ setup(
         'tap_dayforce': ['schemas/*.json']
     },
     install_requires=[
-        'dayforce-client==0.1.0a1',
+        'dayforce-client==0.1.0',
         'singer-python==5.9.0',
         'backoff==1.8.0',
         'rollbar==0.14.7'
