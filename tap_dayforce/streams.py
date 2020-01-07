@@ -78,13 +78,13 @@ class EmployeePunchesStream(DayforcePunchStream):
 
     @backoff.on_exception(backoff.expo,
                           requests.exceptions.HTTPError,
-                          max_time=120,
+                          max_time=240,
                           giveup=is_fatal_code,
                           logger=LOGGER)
     @backoff.on_exception(backoff.expo,
                           (requests.exceptions.ConnectionError,
                            requests.exceptions.Timeout),
-                          max_time=120,
+                          max_time=240,
                           logger=LOGGER)
     def _transform_records(self, start, end, counter):
         for _, record in self.client.get_employee_punches(filterTransactionStartTimeUTC=singer.utils.strftime(start), filterTransactionEndTimeUTC=singer.utils.strftime(end)).yield_records():
@@ -105,13 +105,13 @@ class EmployeeRawPunchesStream(DayforcePunchStream):
 
     @backoff.on_exception(backoff.expo,
                           requests.exceptions.HTTPError,
-                          max_time=120,
+                          max_time=240,
                           giveup=is_fatal_code,
                           logger=LOGGER)
     @backoff.on_exception(backoff.expo,
                           (requests.exceptions.ConnectionError,
                            requests.exceptions.Timeout),
-                          max_time=120,
+                          max_time=240,
                           logger=LOGGER)
     def _transform_records(self, start, end, counter):
         for _, record in self.client.get_employee_raw_punches(filterTransactionStartTimeUTC=singer.utils.strftime(start), filterTransactionEndTimeUTC=singer.utils.strftime(end)).yield_records():
@@ -142,13 +142,13 @@ class EmployeesStream(DayforceStream):
 
     @backoff.on_exception(backoff.expo,
                           requests.exceptions.HTTPError,
-                          max_time=120,
+                          max_time=240,
                           giveup=is_fatal_code,
                           logger=LOGGER)
     @backoff.on_exception(backoff.expo,
                           (requests.exceptions.ConnectionError,
                            requests.exceptions.Timeout),
-                          max_time=120,
+                          max_time=240,
                           logger=LOGGER)
     def _transform_records(self, start, end, counter):
         for _, record in self.client.get_employees(filterUpdatedStartDate=singer.utils.strftime(start), filterUpdatedEndDate=singer.utils.strftime(end)).yield_records():
@@ -186,13 +186,13 @@ class PaySummaryReportStream(DayforceStream):
 
     @backoff.on_exception(backoff.expo,
                           requests.exceptions.HTTPError,
-                          max_time=120,
+                          max_time=240,
                           giveup=is_fatal_code,
                           logger=LOGGER)
     @backoff.on_exception(backoff.expo,
                           (requests.exceptions.ConnectionError,
                            requests.exceptions.Timeout),
-                          max_time=120,
+                          max_time=240,
                           logger=LOGGER)
     def _transform_records(self, start, end, counter):
         report_params = {
