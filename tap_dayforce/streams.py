@@ -177,6 +177,7 @@ class EmployeesStream(DayforceStream):
         for _, record in self.client.get_employees(filterUpdatedStartDate=singer.utils.strftime(start), filterUpdatedEndDate=singer.utils.strftime(end)).yield_records():
             if record:
                 self._rate_limit(times=times, limit=(100,60))
+                times.appendleft(time.time())
                 details = self.client.get_employee_details(xrefcode=record.get("XRefCode"), expand="WorkAssignments,Contacts,EmploymentStatuses,Roles,EmployeeManagers,CompensationSummary,Locations,LastActiveManagers").get("Data")
                 if details.get("XRefCode") is not None:
                     details["SyncTimestampUtc"] = self.get_bookmark(self.config, self.tap_stream_id, self.state, self.bookmark_properties)
@@ -185,8 +186,6 @@ class EmployeesStream(DayforceStream):
                         transformed_record = transformer.transform(data=details, schema=self.get_schema(self.tap_stream_id, self.catalog))
                         singer.write_record(stream_name=self.tap_stream_id, time_extracted=singer.utils.now(), record=transformed_record)
                         counter.increment()
-
-                times.appendleft(time.time())
 
     def sync(self):
         with singer.metrics.job_timer(job_type=f"sync_{self.tap_stream_id}"):
