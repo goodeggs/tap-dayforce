@@ -52,6 +52,28 @@ class DayforceStream(object):
         else:
             return config.get("start_date")
 
+    @staticmethod
+    def _rate_limit(times: collections.deque, limit: Tuple[int, int]):
+        """A way of checking and enforcing a rate limit.
+
+        Args:
+            times (collections.deque): A deque object containing the times of all requests
+                                       made to the rate-limited endpoint.
+
+            limit (Tuple[int, int]): A tuple dictating the number of requests to be made
+                                     in a given number of seconds. For example, if it is
+                                     only possible to make 100 requests per minute, the
+                                     supplied value should be (100, 60). If a response is
+                                     paginated, a single HTTP request will be made per page.
+        """
+        if len(times) >= limit[0]:
+            start = times.pop()
+            now = time.time()
+            sleep_time = limit[1] - (now - start)
+            if sleep_time > 0:
+                LOGGER.info(f"Rate limit reached. Sleeping for {sleep_time} seconds..")
+                time.sleep(sleep_time)
+
 
 @attr.s
 class DayforcePunchStream(DayforceStream):
@@ -151,8 +173,10 @@ class EmployeesStream(DayforceStream):
                           max_time=240,
                           logger=LOGGER)
     def _transform_records(self, start, end, counter):
+        times: collections.deque = collections.deque()
         for _, record in self.client.get_employees(filterUpdatedStartDate=singer.utils.strftime(start), filterUpdatedEndDate=singer.utils.strftime(end)).yield_records():
             if record:
+                self._rate_limit(times=times, limit=(100,60))
                 details = self.client.get_employee_details(xrefcode=record.get("XRefCode"), expand="WorkAssignments,Contacts,EmploymentStatuses,Roles,EmployeeManagers,CompensationSummary,Locations,LastActiveManagers").get("Data")
                 if details:
                     details["SyncTimestampUtc"] = self.get_bookmark(self.config, self.tap_stream_id, self.state, self.bookmark_properties)
@@ -161,6 +185,8 @@ class EmployeesStream(DayforceStream):
                         transformed_record = transformer.transform(data=details, schema=self.get_schema(self.tap_stream_id, self.catalog))
                         singer.write_record(stream_name=self.tap_stream_id, time_extracted=singer.utils.now(), record=transformed_record)
                         counter.increment()
+
+                times.appendleft(time.time())
 
     def sync(self):
         with singer.metrics.job_timer(job_type=f"sync_{self.tap_stream_id}"):
@@ -199,7 +225,7 @@ class PaySummaryReportStream(DayforceStream):
             "003cd1ea-5f11-4fe8-ae9c-d7af1e3a95d6": singer.utils.strftime(start),
             "b03cd1ea-5f11-4fe8-ae9c-d7af1e3a95d6": singer.utils.strftime(end)
         }
-        for _, row in self.client.get_report(xrefcode=self.tap_stream_id, **report_params).yield_report_rows():
+        for _, row in self.client.get_report(xrefcode=self.tap_stream_id, **report_params).yield_report_rows(limit=(500,3600)):
             if row:
                 row["HashKey"] = self._generate_md5_hash(row.values())
                 row["SyncTimestampUtc"] = self.get_bookmark(self.config, self.tap_stream_id, self.state, self.bookmark_properties)
