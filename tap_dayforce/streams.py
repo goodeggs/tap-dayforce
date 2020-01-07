@@ -178,7 +178,7 @@ class EmployeesStream(DayforceStream):
             if record:
                 self._rate_limit(times=times, limit=(100,60))
                 details = self.client.get_employee_details(xrefcode=record.get("XRefCode"), expand="WorkAssignments,Contacts,EmploymentStatuses,Roles,EmployeeManagers,CompensationSummary,Locations,LastActiveManagers").get("Data")
-                if details:
+                if details.get("XRefCode") is not None:
                     details["SyncTimestampUtc"] = self.get_bookmark(self.config, self.tap_stream_id, self.state, self.bookmark_properties)
                     details = self.whitelist_sensitive_info(data=details)
                     with singer.Transformer() as transformer:
