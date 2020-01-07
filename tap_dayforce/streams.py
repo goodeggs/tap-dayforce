@@ -52,28 +52,6 @@ class DayforceStream(object):
         else:
             return config.get("start_date")
 
-    @staticmethod
-    def _rate_limit(times: collections.deque, limit: Tuple[int, int]):
-        """A way of checking and enforcing a rate limit.
-
-        Args:
-            times (collections.deque): A deque object containing the times of all requests
-                                       made to the rate-limited endpoint.
-
-            limit (Tuple[int, int]): A tuple dictating the number of requests to be made
-                                     in a given number of seconds. For example, if it is
-                                     only possible to make 100 requests per minute, the
-                                     supplied value should be (100, 60). If a response is
-                                     paginated, a single HTTP request will be made per page.
-        """
-        if len(times) >= limit[0]:
-            start = times.pop()
-            now = time.time()
-            sleep_time = limit[1] - (now - start)
-            if sleep_time > 0:
-                LOGGER.info(f"Rate limit reached. Sleeping for {sleep_time} seconds..")
-                time.sleep(sleep_time)
-
 
 @attr.s
 class DayforcePunchStream(DayforceStream):
@@ -173,12 +151,21 @@ class EmployeesStream(DayforceStream):
                           max_time=240,
                           logger=LOGGER)
     def _transform_records(self, start, end, counter):
-        times: collections.deque = collections.deque()
         for _, record in self.client.get_employees(filterUpdatedStartDate=singer.utils.strftime(start), filterUpdatedEndDate=singer.utils.strftime(end)).yield_records():
             if record:
-                self._rate_limit(times=times, limit=(100,60))
-                times.appendleft(time.time())
-                details = self.client.get_employee_details(xrefcode=record.get("XRefCode"), expand="WorkAssignments,Contacts,EmploymentStatuses,Roles,EmployeeManagers,CompensationSummary,Locations,LastActiveManagers").get("Data")
+                try:
+                    response = self.client.get_employee_details(xrefcode=record.get("XRefCode"), expand="WorkAssignments,Contacts,EmploymentStatuses,Roles,EmployeeManagers,CompensationSummary,Locations,LastActiveManagers")
+                except requests.exceptions.HTTPError:
+                    if response.resp.status_code == 429:
+                        sleep_time = response.resp.headers["Retry-After"]
+                        LOGGER.info(f"Rate limit reached. Retrying in {sleep_time} seconds..")
+                        time.sleep(sleep_time)
+                        response = self.client.get_employee_details(xrefcode=record.get("XRefCode"), expand="WorkAssignments,Contacts,EmploymentStatuses,Roles,EmployeeManagers,CompensationSummary,Locations,LastActiveManagers")
+                    else:
+                        raise
+                finally:
+                    details = response.get("Data")
+
                 if details.get("XRefCode") is not None:
                     details["SyncTimestampUtc"] = self.get_bookmark(self.config, self.tap_stream_id, self.state, self.bookmark_properties)
                     details = self.whitelist_sensitive_info(data=details)
