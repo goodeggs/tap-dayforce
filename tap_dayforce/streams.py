@@ -212,7 +212,7 @@ class PaySummaryReportStream(DayforceStream):
             "003cd1ea-5f11-4fe8-ae9c-d7af1e3a95d6": singer.utils.strftime(start),
             "b03cd1ea-5f11-4fe8-ae9c-d7af1e3a95d6": singer.utils.strftime(end)
         }
-        for _, row in self.client.get_report(xrefcode=self.tap_stream_id, **report_params).yield_report_rows(limit=(500,3600)):
+        for _, row in self.client.get_report(xrefcode=self.tap_stream_id, **report_params).yield_report_rows(limit=(500, 3600)):
             if row:
                 row["HashKey"] = self._generate_md5_hash(row.values())
                 row["SyncTimestampUtc"] = self.get_bookmark(self.config, self.tap_stream_id, self.state, self.bookmark_properties)
