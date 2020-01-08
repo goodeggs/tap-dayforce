@@ -1,5 +1,6 @@
 import hashlib
 import os
+import time
 from datetime import timedelta
 from typing import ClassVar, Dict, Iterable, List, Optional, Union
 
@@ -78,13 +79,13 @@ class EmployeePunchesStream(DayforcePunchStream):
 
     @backoff.on_exception(backoff.expo,
                           requests.exceptions.HTTPError,
-                          max_time=120,
+                          max_time=240,
                           giveup=is_fatal_code,
                           logger=LOGGER)
     @backoff.on_exception(backoff.expo,
                           (requests.exceptions.ConnectionError,
                            requests.exceptions.Timeout),
-                          max_time=120,
+                          max_time=240,
                           logger=LOGGER)
     def _transform_records(self, start, end, counter):
         for _, record in self.client.get_employee_punches(filterTransactionStartTimeUTC=singer.utils.strftime(start), filterTransactionEndTimeUTC=singer.utils.strftime(end)).yield_records():
@@ -105,13 +106,13 @@ class EmployeeRawPunchesStream(DayforcePunchStream):
 
     @backoff.on_exception(backoff.expo,
                           requests.exceptions.HTTPError,
-                          max_time=120,
+                          max_time=240,
                           giveup=is_fatal_code,
                           logger=LOGGER)
     @backoff.on_exception(backoff.expo,
                           (requests.exceptions.ConnectionError,
                            requests.exceptions.Timeout),
-                          max_time=120,
+                          max_time=240,
                           logger=LOGGER)
     def _transform_records(self, start, end, counter):
         for _, record in self.client.get_employee_raw_punches(filterTransactionStartTimeUTC=singer.utils.strftime(start), filterTransactionEndTimeUTC=singer.utils.strftime(end)).yield_records():
@@ -142,19 +143,31 @@ class EmployeesStream(DayforceStream):
 
     @backoff.on_exception(backoff.expo,
                           requests.exceptions.HTTPError,
-                          max_time=120,
+                          max_time=240,
                           giveup=is_fatal_code,
                           logger=LOGGER)
     @backoff.on_exception(backoff.expo,
                           (requests.exceptions.ConnectionError,
                            requests.exceptions.Timeout),
-                          max_time=120,
+                          max_time=240,
                           logger=LOGGER)
     def _transform_records(self, start, end, counter):
         for _, record in self.client.get_employees(filterUpdatedStartDate=singer.utils.strftime(start), filterUpdatedEndDate=singer.utils.strftime(end)).yield_records():
             if record:
-                details = self.client.get_employee_details(xrefcode=record.get("XRefCode"), expand="WorkAssignments,Contacts,EmploymentStatuses,Roles,EmployeeManagers,CompensationSummary,Locations,LastActiveManagers").get("Data")
-                if details:
+                try:
+                    response = self.client.get_employee_details(xrefcode=record.get("XRefCode"), expand="WorkAssignments,Contacts,EmploymentStatuses,Roles,EmployeeManagers,CompensationSummary,Locations,LastActiveManagers")
+                except requests.exceptions.HTTPError as e:
+                    if e.response.status_code == 429:
+                        sleep_time = int(e.response.headers["Retry-After"]) + 1
+                        LOGGER.info(f"Rate limit reached. Retrying in {sleep_time} seconds..")
+                        time.sleep(sleep_time)
+                        response = self.client.get_employee_details(xrefcode=record.get("XRefCode"), expand="WorkAssignments,Contacts,EmploymentStatuses,Roles,EmployeeManagers,CompensationSummary,Locations,LastActiveManagers")
+                    else:
+                        raise
+                finally:
+                    details = response.get("Data")
+
+                if details.get("XRefCode") is not None:
                     details["SyncTimestampUtc"] = self.get_bookmark(self.config, self.tap_stream_id, self.state, self.bookmark_properties)
                     details = self.whitelist_sensitive_info(data=details)
                     with singer.Transformer() as transformer:
@@ -186,20 +199,20 @@ class PaySummaryReportStream(DayforceStream):
 
     @backoff.on_exception(backoff.expo,
                           requests.exceptions.HTTPError,
-                          max_time=120,
+                          max_time=240,
                           giveup=is_fatal_code,
                           logger=LOGGER)
     @backoff.on_exception(backoff.expo,
                           (requests.exceptions.ConnectionError,
                            requests.exceptions.Timeout),
-                          max_time=120,
+                          max_time=240,
                           logger=LOGGER)
     def _transform_records(self, start, end, counter):
         report_params = {
             "003cd1ea-5f11-4fe8-ae9c-d7af1e3a95d6": singer.utils.strftime(start),
             "b03cd1ea-5f11-4fe8-ae9c-d7af1e3a95d6": singer.utils.strftime(end)
         }
-        for _, row in self.client.get_report(xrefcode=self.tap_stream_id, **report_params).yield_report_rows():
+        for _, row in self.client.get_report(xrefcode=self.tap_stream_id, **report_params).yield_report_rows(limit=(500, 3600)):
             if row:
                 row["HashKey"] = self._generate_md5_hash(row.values())
                 row["SyncTimestampUtc"] = self.get_bookmark(self.config, self.tap_stream_id, self.state, self.bookmark_properties)
