@@ -156,9 +156,9 @@ class EmployeesStream(DayforceStream):
             if record:
                 try:
                     response = self.client.get_employee_details(xrefcode=record.get("XRefCode"), expand="WorkAssignments,Contacts,EmploymentStatuses,Roles,EmployeeManagers,CompensationSummary,Locations,LastActiveManagers")
-                except requests.exceptions.HTTPError:
-                    if response.resp.status_code == 429:
-                        sleep_time = response.resp.headers["Retry-After"]
+                except requests.exceptions.HTTPError as e:
+                    if e.response.status_code == 429:
+                        sleep_time = int(e.response.headers["Retry-After"]) + 1
                         LOGGER.info(f"Rate limit reached. Retrying in {sleep_time} seconds..")
                         time.sleep(sleep_time)
                         response = self.client.get_employee_details(xrefcode=record.get("XRefCode"), expand="WorkAssignments,Contacts,EmploymentStatuses,Roles,EmployeeManagers,CompensationSummary,Locations,LastActiveManagers")
