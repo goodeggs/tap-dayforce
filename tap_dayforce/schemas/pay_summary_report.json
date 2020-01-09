@@ -54,9 +54,6 @@
     "EmployeePaySummary_PayAmount": {
       "type": ["null", "number"]
     },
-    "HashKey": {
-      "type": ["null", "string"]
-    },
     "SyncTimestampUtc": {
       "type": ["null", "string"],
       "format": "date-time"

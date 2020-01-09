@@ -1,7 +1,7 @@
 import hashlib
 import os
 import time
-from datetime import timedelta
+from datetime import datetime, timedelta
 from typing import ClassVar, Dict, Iterable, List, Optional, Union
 
 import attr
@@ -187,15 +187,9 @@ class EmployeesStream(DayforceStream):
 @attr.s
 class PaySummaryReportStream(DayforceStream):
     tap_stream_id: ClassVar[str] = 'pay_summary_report'
-    key_properties: ClassVar[List[str]] = ['HashKey']
+    key_properties: ClassVar[List[str]] = []
     bookmark_properties: ClassVar[str] = 'SyncTimestampUtc'
-    replication_method: ClassVar[str] = 'INCREMENTAL'
-
-    def _generate_md5_hash(self, input_sequence: Iterable[Optional[str]]) -> str:
-        m = hashlib.md5()
-        for input in input_sequence:
-            m.update(str(input).encode('utf-8'))
-        return m.hexdigest()
+    replication_method: ClassVar[str] = 'FULL_TABLE'
 
     @backoff.on_exception(backoff.expo,
                           requests.exceptions.HTTPError,
@@ -207,28 +201,43 @@ class PaySummaryReportStream(DayforceStream):
                            requests.exceptions.Timeout),
                           max_time=240,
                           logger=LOGGER)
-    def _transform_records(self, start, end, counter):
+    def _transform_records(self, start: datetime, end: datetime, counter, version: int):
         report_params = {
             "003cd1ea-5f11-4fe8-ae9c-d7af1e3a95d6": singer.utils.strftime(start),
             "b03cd1ea-5f11-4fe8-ae9c-d7af1e3a95d6": singer.utils.strftime(end)
         }
-        for _, row in self.client.get_report(xrefcode=self.tap_stream_id, **report_params).yield_report_rows(limit=(500, 3600)):
+        rows_returned = 0
+        for _,row in self.client.get_report(xrefcode=self.tap_stream_id, **report_params).yield_report_rows(limit=(500, 3600)):
             if row:
-                row["HashKey"] = self._generate_md5_hash(row.values())
+                rows_returned += 1
                 row["SyncTimestampUtc"] = self.get_bookmark(self.config, self.tap_stream_id, self.state, self.bookmark_properties)
                 with singer.Transformer() as transformer:
                     transformed_record = transformer.transform(data=row, schema=self.get_schema(self.tap_stream_id, self.catalog))
-                    singer.write_record(stream_name=self.tap_stream_id, time_extracted=singer.utils.now(), record=transformed_record)
+                    singer.write_message(singer.messages.RecordMessage(stream=self.tap_stream_id, record=transformed_record, time_extracted=singer.utils.now(), version=version))
                     counter.increment()
 
+        if 18000 <= rows_returned < 20000:
+            LOGGER.warning("Approaching maximum row limit of 20,000. Consider making request window smaller.")
+        elif rows_returned >= 20000:
+            LOGGER.error("Hit maximum row limit of 20,000. Make request window smaller for Pay Summary Report.")
+
+
     def sync(self):
+
+        # Activate the version of the last bookmarked sync, if available.
+        current_bookmark = singer.bookmarks.get_bookmark(self.state, self.tap_stream_id, key=self.bookmark_properties)
+        if current_bookmark is not None:
+            version = int(singer.utils.strptime_to_utc(current_bookmark).timestamp())
+            singer.write_version(stream_name=self.tap_stream_id, version=version)
+
         with singer.metrics.job_timer(job_type=f"sync_{self.tap_stream_id}"):
             with singer.metrics.record_counter(endpoint=self.tap_stream_id) as counter:
-                start = singer.utils.strptime_to_utc(self.get_bookmark(self.config, self.tap_stream_id, self.state, self.bookmark_properties))
+                start = singer.utils.strptime_to_utc(self.config.get("start_date"))
                 new_bookmark = singer.utils.now()
                 singer.bookmarks.write_bookmark(state=self.state, tap_stream_id=self.tap_stream_id, key=self.bookmark_properties, val=singer.utils.strftime(new_bookmark))
-                step = timedelta(days=1)
+                step = timedelta(days=6)
                 while start < new_bookmark:
                     end = start + step - timedelta(seconds=1)
-                    self._transform_records(start, end, counter)
+                    LOGGER.info(f"Running Pay Summary Report for {start} to {end} ..")
+                    self._transform_records(start, end, counter, version=int(new_bookmark.timestamp()))
                     start += step
