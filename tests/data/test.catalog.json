@@ -4112,8 +4112,8 @@
       ]
     },
     {
-      "stream": "pay_summary_report_new_new",
-      "tap_stream_id": "pay_summary_report_new_new",
+      "stream": "pay_summary_report",
+      "tap_stream_id": "pay_summary_report",
       "schema": {
         "type": [
           "null",
