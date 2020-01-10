@@ -1,8 +1,7 @@
-import hashlib
 import os
 import time
 from datetime import datetime, timedelta
-from typing import ClassVar, Dict, Iterable, List, Optional, Union
+from typing import ClassVar, Dict, List, Optional, Union
 
 import attr
 import backoff
@@ -207,7 +206,7 @@ class PaySummaryReportStream(DayforceStream):
             "b03cd1ea-5f11-4fe8-ae9c-d7af1e3a95d6": singer.utils.strftime(end)
         }
         rows_returned = 0
-        for _,row in self.client.get_report(xrefcode="pay_summary_report", **report_params).yield_report_rows(limit=(500, 3600)):
+        for _, row in self.client.get_report(xrefcode="pay_summary_report", **report_params).yield_report_rows(limit=(500, 3600)):
             if row:
                 rows_returned += 1
                 with singer.Transformer() as transformer:
@@ -219,7 +218,6 @@ class PaySummaryReportStream(DayforceStream):
             LOGGER.warning("Approaching maximum row limit of 20,000. Consider making request window smaller.")
         elif rows_returned >= 20000:
             LOGGER.error("Hit maximum row limit of 20,000. Make request window smaller for Pay Summary Report.")
-
 
     def sync(self):
         with singer.metrics.job_timer(job_type=f"sync_{self.tap_stream_id}"):
