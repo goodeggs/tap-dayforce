@@ -188,7 +188,7 @@ class EmployeesStream(DayforceStream):
 class PaySummaryReportStream(DayforceStream):
     tap_stream_id: ClassVar[str] = 'pay_summary_report'
     key_properties: ClassVar[List[str]] = []
-    bookmark_properties: ClassVar[str] = 'SyncTimestampUtc'
+    bookmark_properties: ClassVar[List[str]] = []
     replication_method: ClassVar[str] = 'FULL_TABLE'
 
     @backoff.on_exception(backoff.expo,
@@ -201,19 +201,18 @@ class PaySummaryReportStream(DayforceStream):
                            requests.exceptions.Timeout),
                           max_time=240,
                           logger=LOGGER)
-    def _transform_records(self, start: datetime, end: datetime, counter, version: int):
+    def _transform_records(self, start: datetime, end: datetime, counter: singer.metrics.Counter, time_extracted: datetime):
         report_params = {
             "003cd1ea-5f11-4fe8-ae9c-d7af1e3a95d6": singer.utils.strftime(start),
             "b03cd1ea-5f11-4fe8-ae9c-d7af1e3a95d6": singer.utils.strftime(end)
         }
         rows_returned = 0
-        for _,row in self.client.get_report(xrefcode=self.tap_stream_id, **report_params).yield_report_rows(limit=(500, 3600)):
+        for _,row in self.client.get_report(xrefcode="pay_summary_report", **report_params).yield_report_rows(limit=(500, 3600)):
             if row:
                 rows_returned += 1
-                row["SyncTimestampUtc"] = self.get_bookmark(self.config, self.tap_stream_id, self.state, self.bookmark_properties)
                 with singer.Transformer() as transformer:
                     transformed_record = transformer.transform(data=row, schema=self.get_schema(self.tap_stream_id, self.catalog))
-                    singer.write_message(singer.messages.RecordMessage(stream=self.tap_stream_id, record=transformed_record, time_extracted=singer.utils.now(), version=version))
+                    singer.write_record(stream_name=self.tap_stream_id, record=transformed_record, time_extracted=time_extracted)
                     counter.increment()
 
         if 18000 <= rows_returned < 20000:
@@ -223,21 +222,13 @@ class PaySummaryReportStream(DayforceStream):
 
 
     def sync(self):
-
-        # Activate the version of the last bookmarked sync, if available.
-        current_bookmark = singer.bookmarks.get_bookmark(self.state, self.tap_stream_id, key=self.bookmark_properties)
-        if current_bookmark is not None:
-            version = int(singer.utils.strptime_to_utc(current_bookmark).timestamp())
-            singer.write_version(stream_name=self.tap_stream_id, version=version)
-
         with singer.metrics.job_timer(job_type=f"sync_{self.tap_stream_id}"):
             with singer.metrics.record_counter(endpoint=self.tap_stream_id) as counter:
                 start = singer.utils.strptime_to_utc(self.config.get("start_date"))
                 new_bookmark = singer.utils.now()
-                singer.bookmarks.write_bookmark(state=self.state, tap_stream_id=self.tap_stream_id, key=self.bookmark_properties, val=singer.utils.strftime(new_bookmark))
                 step = timedelta(days=6)
                 while start < new_bookmark:
                     end = start + step - timedelta(seconds=1)
                     LOGGER.info(f"Running Pay Summary Report for {start} to {end} ..")
-                    self._transform_records(start, end, counter, version=int(new_bookmark.timestamp()))
+                    self._transform_records(start=start, end=end, counter=counter, time_extracted=new_bookmark)
                     start += step

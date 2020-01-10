@@ -53,10 +53,6 @@
     },
     "EmployeePaySummary_PayAmount": {
       "type": ["null", "number"]
-    },
-    "SyncTimestampUtc": {
-      "type": ["null", "string"],
-      "format": "date-time"
     }
   }
 }
