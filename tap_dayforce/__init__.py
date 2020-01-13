@@ -85,7 +85,7 @@ def main_impl():
 def main():
     try:
         main_impl()
-    except Exception as exc:
+    except Exception:
         if log_to_rollbar is True:
             LOGGER.info("Reporting exception info to Rollbar..")
             rollbar.report_exc_info()
