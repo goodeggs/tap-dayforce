@@ -75,6 +75,7 @@ def sync(args):
 
 def _main():
     args = parse_args(required_config_keys={"username", "password", "client_namespace", "start_date"})
+    raise RuntimeError
     if args.discover:
         discover(args, select_all=args.select_all)
     elif not args.catalog:
@@ -90,7 +91,7 @@ def main():
         if log_to_rollbar is True:
             LOGGER.info("Reporting exception info to Rollbar..")
             rollbar.report_exc_info()
-        LOGGER.critical(msg="Uncaught Exception..", exc_info=True)
+        LOGGER.exception(msg="Uncaught Exception..")
         sys.exit(1)
 
 
