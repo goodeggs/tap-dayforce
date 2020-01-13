@@ -72,25 +72,25 @@ def sync(args):
             singer.write_state(stream.state)
 
 
-def main():
+def main_impl():
     args = parse_args(required_config_keys={"username", "password", "client_namespace", "start_date"})
     if args.discover:
-        try:
-            discover(args, select_all=args.select_all)
-        except:
-            LOGGER.exception('Caught exception during Discovery..')
-            if log_to_rollbar is True:
-                rollbar.report_exc_info()
+        discover(args, select_all=args.select_all)
     elif not args.catalog:
         raise RuntimeError('Catalog file must be supplied during Sync.')
     else:
-        try:
-            sync(args)
-        except:
-            LOGGER.exception('Caught exception during Sync..')
-            if log_to_rollbar is True:
-                rollbar.report_exc_info()
+        sync(args)
 
+
+def main():
+    try:
+        main_impl()
+    except Exception:
+        LOGGER.exception("Fatal exception while running tap..")
+        if log_to_rollbar is True:
+            LOGGER.info("Reporting exception info to Rollbar..")
+            rollbar.report_exc_info()
+            
 
 if __name__ == "__main__":
     main()
