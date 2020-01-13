@@ -1,1318 +1,6 @@
 {
   "streams": [
     {
-      "stream": "pay_summary_report",
-      "tap_stream_id": "pay_summary_report",
-      "schema": {
-        "type": [
-          "null",
-          "object"
-        ],
-        "additionalProperties": false,
-        "properties": {
-          "EmployeeEmploymentStatus_EmployeeNumber": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "Employee_DisplayName": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "EmployeePaySummary_PayDate": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
-          },
-          "OrgUnit_ShortName": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "Department_ShortName": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "Department_XRefCode": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "Job_ShortName": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "Job_XRefCode": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "ActualIn": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "ActualOut": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "AuthorizedManager": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "AuthorizedEmployee": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "PayAdjCode_ShortName": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "PayCategory_ShortName": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "Normal": {
-            "type": [
-              "null",
-              "number"
-            ]
-          },
-          "Other": {
-            "type": [
-              "null",
-              "number"
-            ]
-          },
-          "EmployeePaySummary_PayAmount": {
-            "type": [
-              "null",
-              "number"
-            ]
-          },
-          "HashKey": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "SyncTimestampUtc": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
-          }
-        }
-      },
-      "metadata": [
-        {
-          "breadcrumb": [],
-          "metadata": {
-            "table-key-properties": [
-              "HashKey"
-            ],
-            "forced-replication-method": "INCREMENTAL",
-            "valid-replication-keys": "SyncTimestampUtc",
-            "inclusion": "available",
-            "selected": true
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "EmployeeEmploymentStatus_EmployeeNumber"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "Employee_DisplayName"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "EmployeePaySummary_PayDate"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "OrgUnit_ShortName"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "Department_ShortName"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "Department_XRefCode"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "Job_ShortName"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "Job_XRefCode"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "ActualIn"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "ActualOut"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "AuthorizedManager"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "AuthorizedEmployee"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "PayAdjCode_ShortName"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "PayCategory_ShortName"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "Normal"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "Other"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "EmployeePaySummary_PayAmount"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "HashKey"
-          ],
-          "metadata": {
-            "inclusion": "automatic"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "SyncTimestampUtc"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        }
-      ]
-    },
-    {
-      "stream": "employee_raw_punches",
-      "tap_stream_id": "employee_raw_punches",
-      "schema": {
-        "type": [
-          "null",
-          "object"
-        ],
-        "additionalProperties": false,
-        "properties": {
-          "RawPunchXRefCode": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "PunchState": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "PayDate": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
-          },
-          "EmployeeXRefCode": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "EmployeeBadge": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "RawPunchTime": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
-          },
-          "WasOfflinePunch": {
-            "type": [
-              "null",
-              "boolean"
-            ]
-          },
-          "ExtraData": {
-            "type": [
-              "null",
-              "object"
-            ],
-            "properties": {
-              "DocketXRefCode": {
-                "type": [
-                  "null",
-                  "string"
-                ]
-              },
-              "ProjectXRefCode": {
-                "type": [
-                  "null",
-                  "string"
-                ]
-              },
-              "PositionXRefCode": {
-                "type": [
-                  "null",
-                  "string"
-                ]
-              },
-              "LocationXRefCode": {
-                "type": [
-                  "null",
-                  "string"
-                ]
-              },
-              "Quantity": {
-                "type": [
-                  "null",
-                  "number"
-                ]
-              },
-              "MealWaiver": {
-                "type": [
-                  "null",
-                  "string"
-                ]
-              },
-              "BreakAttestation": {
-                "type": [
-                  "null",
-                  "boolean"
-                ]
-              },
-              "BioFailure": {
-                "type": [
-                  "null",
-                  "boolean"
-                ]
-              },
-              "FaceVerificationFailure": {
-                "type": [
-                  "null",
-                  "boolean"
-                ]
-              },
-              "LaborMetrics": {
-                "type": [
-                  "null",
-                  "array"
-                ],
-                "items": {
-                  "type": [
-                    "null",
-                    "object"
-                  ],
-                  "properties": {
-                    "TypeXRefCode": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
-                    },
-                    "CodeXRefCode": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
-                    },
-                    "TypeClockTransferCode": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
-                    },
-                    "CodeClockTransferCode": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
-                    }
-                  }
-                }
-              },
-              "DocketClockTransferCode": {
-                "type": [
-                  "null",
-                  "string"
-                ]
-              },
-              "ProjectClockTransferCode": {
-                "type": [
-                  "null",
-                  "string"
-                ]
-              },
-              "PositionClockTransferCode": {
-                "type": [
-                  "null",
-                  "string"
-                ]
-              },
-              "LocationClockTransferCode": {
-                "type": [
-                  "null",
-                  "string"
-                ]
-              }
-            }
-          },
-          "PunchType": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "Comment": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "PunchDevice": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "SupervisorBadge": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "IsDuplicate": {
-            "type": [
-              "null",
-              "boolean"
-            ]
-          },
-          "RejectedReason": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "LocationXRefCode": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "PositionXRefCode": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "DepartmentXRefCode": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "JobXRefCode": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "IPAddress": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "PunchOrigin": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "Latitude": {
-            "type": [
-              "null",
-              "number"
-            ]
-          },
-          "Longitude": {
-            "type": [
-              "null",
-              "number"
-            ]
-          },
-          "Accuracy": {
-            "type": [
-              "null",
-              "integer"
-            ]
-          },
-          "SyncTimestampUtc": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
-          }
-        }
-      },
-      "metadata": [
-        {
-          "breadcrumb": [],
-          "metadata": {
-            "table-key-properties": [
-              "RawPunchXRefCode"
-            ],
-            "forced-replication-method": "INCREMENTAL",
-            "valid-replication-keys": "SyncTimestampUtc",
-            "inclusion": "available",
-            "selected": true
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "RawPunchXRefCode"
-          ],
-          "metadata": {
-            "inclusion": "automatic"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "PunchState"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "PayDate"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "EmployeeXRefCode"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "EmployeeBadge"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "RawPunchTime"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "WasOfflinePunch"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "ExtraData"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "PunchType"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "Comment"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "PunchDevice"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "SupervisorBadge"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "IsDuplicate"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "RejectedReason"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "LocationXRefCode"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "PositionXRefCode"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "DepartmentXRefCode"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "JobXRefCode"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "IPAddress"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "PunchOrigin"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "Latitude"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "Longitude"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "Accuracy"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "SyncTimestampUtc"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        }
-      ]
-    },
-    {
-      "stream": "employee_punches",
-      "tap_stream_id": "employee_punches",
-      "schema": {
-        "type": [
-          "null",
-          "object"
-        ],
-        "additionalProperties": false,
-        "properties": {
-          "PunchXRefCode": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "EmployeeXRefCode": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "PunchStatus": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "TimeStart": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
-          },
-          "TimeEnd": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
-          },
-          "TimeStartRaw": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
-          },
-          "TimeEndRaw": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
-          },
-          "NetHours": {
-            "type": [
-              "null",
-              "number"
-            ]
-          },
-          "LocationXRefCode": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "PositionXRefCode": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "DepartmentXRefCode": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "JobXRefCode": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "StartExceptionCode": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "EndExceptionCode": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "EmployeeComment": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "ManagerComment": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "BusinessDate": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
-          },
-          "IsDeleted": {
-            "type": [
-              "null",
-              "boolean"
-            ]
-          },
-          "IsOnCall": {
-            "type": [
-              "null",
-              "boolean"
-            ]
-          },
-          "FuturePunch": {
-            "type": [
-              "null",
-              "boolean"
-            ]
-          },
-          "AssumedTimeStart": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
-          },
-          "AssumedTimeEnd": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
-          },
-          "LastModifiedTimestampUtc": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
-          },
-          "MealBreaks": {
-            "type": [
-              "null",
-              "array"
-            ],
-            "items": {
-              "type": [
-                "null",
-                "object"
-              ],
-              "properties": {
-                "PunchXRefCode": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
-                },
-                "Type": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
-                },
-                "TimeStart": {
-                  "type": [
-                    "null",
-                    "string"
-                  ],
-                  "format": "date-time"
-                },
-                "TimeEnd": {
-                  "type": [
-                    "null",
-                    "string"
-                  ],
-                  "format": "date-time"
-                },
-                "TimeStartRaw": {
-                  "type": [
-                    "null",
-                    "string"
-                  ],
-                  "format": "date-time"
-                },
-                "TimeEndRaw": {
-                  "type": [
-                    "null",
-                    "string"
-                  ],
-                  "format": "date-time"
-                },
-                "NetHours": {
-                  "type": [
-                    "null",
-                    "number"
-                  ]
-                },
-                "StartExceptionCode": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
-                },
-                "EndExceptionCode": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
-                },
-                "IsAutoInjected": {
-                  "type": [
-                    "null",
-                    "boolean"
-                  ]
-                },
-                "LastModifiedTimestampUtc": {
-                  "type": [
-                    "null",
-                    "string"
-                  ],
-                  "format": "date-time"
-                }
-              }
-            }
-          },
-          "SyncTimestampUtc": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
-          }
-        }
-      },
-      "metadata": [
-        {
-          "breadcrumb": [],
-          "metadata": {
-            "table-key-properties": [
-              "PunchXRefCode"
-            ],
-            "forced-replication-method": "INCREMENTAL",
-            "valid-replication-keys": "SyncTimestampUtc",
-            "inclusion": "available",
-            "selected": true
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "PunchXRefCode"
-          ],
-          "metadata": {
-            "inclusion": "automatic"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "EmployeeXRefCode"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "PunchStatus"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "TimeStart"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "TimeEnd"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "TimeStartRaw"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "TimeEndRaw"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "NetHours"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "LocationXRefCode"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "PositionXRefCode"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "DepartmentXRefCode"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "JobXRefCode"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "StartExceptionCode"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "EndExceptionCode"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "EmployeeComment"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "ManagerComment"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "BusinessDate"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "IsDeleted"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "IsOnCall"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "FuturePunch"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "AssumedTimeStart"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "AssumedTimeEnd"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "LastModifiedTimestampUtc"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "MealBreaks"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        },
-        {
-          "breadcrumb": [
-            "properties",
-            "SyncTimestampUtc"
-          ],
-          "metadata": {
-            "inclusion": "available"
-          }
-        }
-      ]
-    },
-    {
       "stream": "employees",
       "tap_stream_id": "employees",
       "schema": {
@@ -5407,6 +4095,1491 @@
           "breadcrumb": [
             "properties",
             "LastModifiedTimestamp"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "SyncTimestampUtc"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        }
+      ]
+    },
+    {
+      "stream": "pay_summary_report",
+      "tap_stream_id": "pay_summary_report",
+      "schema": {
+        "type": [
+          "null",
+          "object"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "EmployeeEmploymentStatus_EmployeeNumber": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "Employee_DisplayName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "EmployeePaySummary_PayDate": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "OrgUnit_ShortName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "Department_ShortName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "Department_XRefCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "Job_ShortName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "Job_XrefCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "ActualIn": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "ActualOut": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "AuthorizedManager": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "AuthorizedEmployee": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "PayAdjCode_ShortName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "PayCategory_ShortName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "Normal": {
+            "type": [
+              "null",
+              "number"
+            ]
+          },
+          "Other": {
+            "type": [
+              "null",
+              "number"
+            ]
+          },
+          "EmployeePaySummary_PayAmount": {
+            "type": [
+              "null",
+              "number"
+            ]
+          }
+        }
+      },
+      "metadata": [
+        {
+          "breadcrumb": [],
+          "metadata": {
+            "table-key-properties": [],
+            "forced-replication-method": "FULL_TABLE",
+            "valid-replication-keys": [],
+            "inclusion": "available",
+            "selected": true
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "EmployeeEmploymentStatus_EmployeeNumber"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "Employee_DisplayName"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "EmployeePaySummary_PayDate"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "OrgUnit_ShortName"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "Department_ShortName"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "Department_XRefCode"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "Job_ShortName"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "Job_XrefCode"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "ActualIn"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "ActualOut"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "AuthorizedManager"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "AuthorizedEmployee"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "PayAdjCode_ShortName"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "PayCategory_ShortName"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "Normal"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "Other"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "EmployeePaySummary_PayAmount"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        }
+      ]
+    },
+    {
+      "stream": "employee_raw_punches",
+      "tap_stream_id": "employee_raw_punches",
+      "schema": {
+        "type": [
+          "null",
+          "object"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "RawPunchXRefCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "PunchState": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "PayDate": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "EmployeeXRefCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "EmployeeBadge": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "RawPunchTime": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "WasOfflinePunch": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          },
+          "ExtraData": {
+            "type": [
+              "null",
+              "object"
+            ],
+            "properties": {
+              "DocketXRefCode": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "ProjectXRefCode": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "PositionXRefCode": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "LocationXRefCode": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "Quantity": {
+                "type": [
+                  "null",
+                  "number"
+                ]
+              },
+              "MealWaiver": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "BreakAttestation": {
+                "type": [
+                  "null",
+                  "boolean"
+                ]
+              },
+              "BioFailure": {
+                "type": [
+                  "null",
+                  "boolean"
+                ]
+              },
+              "FaceVerificationFailure": {
+                "type": [
+                  "null",
+                  "boolean"
+                ]
+              },
+              "LaborMetrics": {
+                "type": [
+                  "null",
+                  "array"
+                ],
+                "items": {
+                  "type": [
+                    "null",
+                    "object"
+                  ],
+                  "properties": {
+                    "TypeXRefCode": {
+                      "type": [
+                        "null",
+                        "string"
+                      ]
+                    },
+                    "CodeXRefCode": {
+                      "type": [
+                        "null",
+                        "string"
+                      ]
+                    },
+                    "TypeClockTransferCode": {
+                      "type": [
+                        "null",
+                        "string"
+                      ]
+                    },
+                    "CodeClockTransferCode": {
+                      "type": [
+                        "null",
+                        "string"
+                      ]
+                    }
+                  }
+                }
+              },
+              "DocketClockTransferCode": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "ProjectClockTransferCode": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "PositionClockTransferCode": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "LocationClockTransferCode": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              }
+            }
+          },
+          "PunchType": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "Comment": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "PunchDevice": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "SupervisorBadge": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "IsDuplicate": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          },
+          "RejectedReason": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "LocationXRefCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "PositionXRefCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "DepartmentXRefCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "JobXRefCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "IPAddress": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "PunchOrigin": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "Latitude": {
+            "type": [
+              "null",
+              "number"
+            ]
+          },
+          "Longitude": {
+            "type": [
+              "null",
+              "number"
+            ]
+          },
+          "Accuracy": {
+            "type": [
+              "null",
+              "integer"
+            ]
+          },
+          "SyncTimestampUtc": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          }
+        }
+      },
+      "metadata": [
+        {
+          "breadcrumb": [],
+          "metadata": {
+            "table-key-properties": [
+              "RawPunchXRefCode"
+            ],
+            "forced-replication-method": "INCREMENTAL",
+            "valid-replication-keys": "SyncTimestampUtc",
+            "inclusion": "available",
+            "selected": true
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "RawPunchXRefCode"
+          ],
+          "metadata": {
+            "inclusion": "automatic"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "PunchState"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "PayDate"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "EmployeeXRefCode"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "EmployeeBadge"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "RawPunchTime"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "WasOfflinePunch"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "ExtraData"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "PunchType"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "Comment"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "PunchDevice"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "SupervisorBadge"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "IsDuplicate"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "RejectedReason"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "LocationXRefCode"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "PositionXRefCode"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "DepartmentXRefCode"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "JobXRefCode"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "IPAddress"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "PunchOrigin"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "Latitude"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "Longitude"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "Accuracy"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "SyncTimestampUtc"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        }
+      ]
+    },
+    {
+      "stream": "employee_punches",
+      "tap_stream_id": "employee_punches",
+      "schema": {
+        "type": [
+          "null",
+          "object"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "PunchXRefCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "EmployeeXRefCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "PunchStatus": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "TimeStart": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "TimeEnd": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "TimeStartRaw": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "TimeEndRaw": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "NetHours": {
+            "type": [
+              "null",
+              "number"
+            ]
+          },
+          "LocationXRefCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "PositionXRefCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "DepartmentXRefCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "JobXRefCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "DocketXRefCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "DocketQuantity": {
+            "type": [
+              "null",
+              "number"
+            ]
+          },
+          "ProjectXRefCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "PayAdjustmentXRefCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "StartExceptionCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "EndExceptionCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "EmployeeComment": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "ManagerComment": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "BusinessDate": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "IsDeleted": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          },
+          "IsOnCall": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          },
+          "FuturePunch": {
+            "type": [
+              "null",
+              "boolean"
+            ]
+          },
+          "AssumedTimeStart": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "AssumedTimeEnd": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "LastModifiedTimestampUtc": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          },
+          "MealBreaks": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": [
+                "null",
+                "object"
+              ],
+              "properties": {
+                "PunchXRefCode": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "Type": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "TimeStart": {
+                  "type": [
+                    "null",
+                    "string"
+                  ],
+                  "format": "date-time"
+                },
+                "TimeEnd": {
+                  "type": [
+                    "null",
+                    "string"
+                  ],
+                  "format": "date-time"
+                },
+                "TimeStartRaw": {
+                  "type": [
+                    "null",
+                    "string"
+                  ],
+                  "format": "date-time"
+                },
+                "TimeEndRaw": {
+                  "type": [
+                    "null",
+                    "string"
+                  ],
+                  "format": "date-time"
+                },
+                "NetHours": {
+                  "type": [
+                    "null",
+                    "number"
+                  ]
+                },
+                "StartExceptionCode": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "EndExceptionCode": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "IsAutoInjected": {
+                  "type": [
+                    "null",
+                    "boolean"
+                  ]
+                },
+                "LastModifiedTimestampUtc": {
+                  "type": [
+                    "null",
+                    "string"
+                  ],
+                  "format": "date-time"
+                }
+              }
+            }
+          },
+          "Transfers": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": [
+                "null",
+                "object"
+              ],
+              "properties": {
+                "TimeStart": {
+                  "type": [
+                    "null",
+                    "string"
+                  ],
+                  "format": "date-time"
+                },
+                "TimeStartRaw": {
+                  "type": [
+                    "null",
+                    "string"
+                  ],
+                  "format": "date-time"
+                },
+                "LocationXRefCode": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "PositionXRefCode": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "ProjectXRefCode": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "DocketXRefCode": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "DocketQuantity": {
+                  "type": [
+                    "null",
+                    "number"
+                  ]
+                },
+                "PayAdjustmentXRefCode": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "EmployeeComment": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "ManagerComment": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "LaborMetrics": {
+                  "type": [
+                    "null",
+                    "array"
+                  ],
+                  "items": {
+                    "type": [
+                      "null",
+                      "object"
+                    ],
+                    "properties": {
+                      "LaborMetricsTypeXRefCode": {
+                        "type": [
+                          "null",
+                          "string"
+                        ]
+                      },
+                      "LaborMetricsCodeXRefCode": {
+                        "type": [
+                          "null",
+                          "string"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "LaborMetrics": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "type": [
+                "null",
+                "object"
+              ],
+              "properties": {
+                "LaborMetricsTypeXRefCode": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "LaborMetricsCodeXRefCode": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                }
+              }
+            }
+          },
+          "SyncTimestampUtc": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "format": "date-time"
+          }
+        }
+      },
+      "metadata": [
+        {
+          "breadcrumb": [],
+          "metadata": {
+            "table-key-properties": [
+              "PunchXRefCode"
+            ],
+            "forced-replication-method": "INCREMENTAL",
+            "valid-replication-keys": "SyncTimestampUtc",
+            "inclusion": "available",
+            "selected": true
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "PunchXRefCode"
+          ],
+          "metadata": {
+            "inclusion": "automatic"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "EmployeeXRefCode"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "PunchStatus"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "TimeStart"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "TimeEnd"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "TimeStartRaw"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "TimeEndRaw"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "NetHours"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "LocationXRefCode"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "PositionXRefCode"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "DepartmentXRefCode"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "JobXRefCode"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "DocketXRefCode"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "DocketQuantity"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "ProjectXRefCode"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "PayAdjustmentXRefCode"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "StartExceptionCode"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "EndExceptionCode"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "EmployeeComment"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "ManagerComment"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "BusinessDate"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "IsDeleted"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "IsOnCall"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "FuturePunch"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "AssumedTimeStart"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "AssumedTimeEnd"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "LastModifiedTimestampUtc"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "MealBreaks"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "Transfers"
+          ],
+          "metadata": {
+            "inclusion": "available"
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "LaborMetrics"
           ],
           "metadata": {
             "inclusion": "available"

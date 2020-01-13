@@ -25,7 +25,7 @@ def test_get_schema_static_method(pt_stream, catalog):
     assert isinstance(schema, dict)
 
 
-@pytest.mark.parametrize('pt_stream', [EmployeesStream, EmployeeRawPunchesStream, EmployeePunchesStream, PaySummaryReportStream])
+@pytest.mark.parametrize('pt_stream', [EmployeesStream, EmployeeRawPunchesStream, EmployeePunchesStream])
 def test_get_bookmark_static_method(pt_stream, config, state):
     expected = state.get("bookmarks").get(pt_stream.tap_stream_id).get(pt_stream.bookmark_properties)
     bookmark = pt_stream.get_bookmark(config, pt_stream.tap_stream_id, state, pt_stream.bookmark_properties)

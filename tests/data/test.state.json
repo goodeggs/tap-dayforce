@@ -8,9 +8,6 @@
       },
       "employee_punches": {
         "SyncTimestampUtc": "2019-11-14T10:51:02.239Z"
-      },
-      "pay_summary_report": {
-        "SyncTimestampUtc": "2019-11-14T10:53:05.235Z"
       }
     },
   "currently_syncing": null
