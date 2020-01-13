@@ -75,7 +75,6 @@ def sync(args):
 
 def _main():
     args = parse_args(required_config_keys={"username", "password", "client_namespace", "start_date"})
-    raise RuntimeError
     if args.discover:
         discover(args, select_all=args.select_all)
     elif not args.catalog:
