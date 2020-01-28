@@ -189,6 +189,7 @@ class PaySummaryReportStream(DayforceStream):
     key_properties: ClassVar[List[str]] = []
     bookmark_properties: ClassVar[List[str]] = []
     replication_method: ClassVar[str] = 'FULL_TABLE'
+    date_param_fmt: ClassVar[str] = '%m/%d/%Y %I:%M:%S %p'
 
     @backoff.on_exception(backoff.expo,
                           requests.exceptions.HTTPError,
@@ -202,8 +203,8 @@ class PaySummaryReportStream(DayforceStream):
                           logger=LOGGER)
     def _transform_records(self, start: datetime, end: datetime, counter: singer.metrics.Counter, time_extracted: datetime):
         report_params = {
-            "003cd1ea-5f11-4fe8-ae9c-d7af1e3a95d6": singer.utils.strftime(start),
-            "b03cd1ea-5f11-4fe8-ae9c-d7af1e3a95d6": singer.utils.strftime(end)
+            "003cd1ea-5f11-4fe8-ae9c-d7af1e3a95d6": singer.utils.strftime(start, format_str=self.date_param_fmt),
+            "b03cd1ea-5f11-4fe8-ae9c-d7af1e3a95d6": singer.utils.strftime(end, format_str=self.date_param_fmt)
         }
         rows_returned = 0
         for _, row in self.client.get_report(xrefcode="pay_summary_report", **report_params).yield_report_rows(limit=(500, 3600)):
