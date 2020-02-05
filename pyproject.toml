@@ -21,7 +21,3 @@ exclude = '''
   )/
 )
 '''
-
-[tool.pytest]
-addopts = "-v"
-testpaths = "tests"

@@ -1,8 +1,9 @@
 [flake8]
-max-line-length = 120
 max-complexity = 15
 ignore =
+  E501
   E722
+  W503
 count = True
 statistics = True
 exclude =
