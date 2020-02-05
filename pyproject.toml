@@ -1,0 +1,9 @@
+[tool.black]
+line-length = 120
+target-version = ['py36', 'py37', 'py38']
+include = '.py$'
+exclude = '(.git,.tox,__pycache__,.mypy_cache,.pytest_cache,build,config,dist,*.pyc,*.egg-info,.cache,.eggs)'
+
+[tool.pytest]
+addopts = "-v"
+testpaths = "tests"

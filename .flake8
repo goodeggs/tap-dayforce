@@ -1,0 +1,20 @@
+[flake8]
+max-line-length = 120
+max-complexity = 15
+ignore =
+  E722
+count = True
+statistics = True
+exclude =
+    .tox,
+    .git,
+    __pycache__,
+    .mypy_cache,
+    .pytest_cache,
+    build,
+    config,
+    dist,
+    *.pyc,
+    *.egg-info,
+    .cache,
+    .eggs
