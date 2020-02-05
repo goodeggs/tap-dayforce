@@ -5,16 +5,10 @@ import sys
 import rollbar
 import singer
 
-from .streams import (EmployeePunchesStream, EmployeeRawPunchesStream,
-                      EmployeesStream, PaySummaryReportStream)
+from .streams import EmployeePunchesStream, EmployeeRawPunchesStream, EmployeesStream, PaySummaryReportStream
 from .utils import load_schema, parse_args
 
-AVAILABLE_STREAMS = {
-    EmployeePunchesStream,
-    EmployeeRawPunchesStream,
-    EmployeesStream,
-    PaySummaryReportStream
-}
+AVAILABLE_STREAMS = {EmployeePunchesStream, EmployeeRawPunchesStream, EmployeesStream, PaySummaryReportStream}
 
 LOGGER = singer.get_logger()
 
@@ -30,7 +24,7 @@ else:
 
 
 def discover(args, select_all=False):
-    LOGGER.info('Starting discovery..')
+    LOGGER.info("Starting discovery..")
 
     catalog = {"streams": []}
     for stream in AVAILABLE_STREAMS:
@@ -39,10 +33,12 @@ def discover(args, select_all=False):
             "stream": stream.tap_stream_id,
             "tap_stream_id": stream.tap_stream_id,
             "schema": schema,
-            "metadata": singer.metadata.get_standard_metadata(schema=schema,
-                                                              key_properties=stream.key_properties,
-                                                              valid_replication_keys=stream.bookmark_properties,
-                                                              replication_method=stream.replication_method)
+            "metadata": singer.metadata.get_standard_metadata(
+                schema=schema,
+                key_properties=stream.key_properties,
+                valid_replication_keys=stream.bookmark_properties,
+                replication_method=stream.replication_method,
+            ),
         }
 
         if select_all is True:
@@ -50,11 +46,11 @@ def discover(args, select_all=False):
         catalog["streams"].append(catalog_entry)
 
     print(json.dumps(catalog, indent=2))
-    LOGGER.info('Finished discovery..')
+    LOGGER.info("Finished discovery..")
 
 
 def sync(args):
-    LOGGER.info('Starting sync..')
+    LOGGER.info("Starting sync..")
 
     selected_streams = {catalog_entry.stream for catalog_entry in args.catalog.get_selected_streams(args.state)}
     LOGGER.info(f"Selected Streams: {selected_streams}")
@@ -65,9 +61,11 @@ def sync(args):
             LOGGER.info(f"Starting sync for Stream {stream.tap_stream_id}..")
             singer.bookmarks.set_currently_syncing(state=stream.state, tap_stream_id=stream.tap_stream_id)
             singer.write_state(stream.state)
-            singer.write_schema(stream_name=stream.tap_stream_id,
-                                schema=stream.get_schema(tap_stream_id=stream.tap_stream_id, catalog=stream.catalog),
-                                key_properties=stream.key_properties)
+            singer.write_schema(
+                stream_name=stream.tap_stream_id,
+                schema=stream.get_schema(tap_stream_id=stream.tap_stream_id, catalog=stream.catalog),
+                key_properties=stream.key_properties,
+            )
             stream.sync()
             singer.bookmarks.set_currently_syncing(state=stream.state, tap_stream_id=None)
             singer.write_state(stream.state)
@@ -78,7 +76,7 @@ def _main():
     if args.discover:
         discover(args, select_all=args.select_all)
     elif not args.catalog:
-        raise RuntimeError('Catalog file must be supplied during Sync.')
+        raise RuntimeError("Catalog file must be supplied during Sync.")
     else:
         sync(args)
 
