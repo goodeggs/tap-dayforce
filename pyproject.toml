@@ -2,7 +2,25 @@
 line-length = 120
 target-version = ['py36', 'py37', 'py38']
 include = '.py$'
-exclude = '(.git,.tox,__pycache__,.mypy_cache,.pytest_cache,build,config,dist,*.pyc,*.egg-info,.cache,.eggs)'
+exclude = '''
+
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.pytest_cache
+    | \.tox
+    | \.venv
+    | \*.egg-info
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+)
+'''
 
 [tool.pytest]
 addopts = "-v"
