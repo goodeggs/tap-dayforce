@@ -1,8 +1,10 @@
 import argparse
 import json
 import os
-from typing import Dict, Set
+import time
+from typing import Callable, Dict, Set
 
+from dayforce_client import DayforceResponse
 import requests
 import singer
 
@@ -89,3 +91,18 @@ def check_config(config: Dict, required_config_keys: Set[str]):
     missing_keys = [key for key in required_config_keys if key not in config]
     if missing_keys:
         raise Exception("Config is missing required keys: {}".format(missing_keys))
+
+
+def handle_rate_limit(func: Callable) -> DayforceResponse:
+    try:
+        response = func
+    except requests.exceptions.HTTPError as e:
+        if e.response.status_code == 429:
+            sleep_time = int(e.response.headers["Retry-After"]) + 1
+            LOGGER.info(f"Rate limit reached. Retrying in {sleep_time} seconds..")
+            time.sleep(sleep_time)
+            response = func
+        else:
+            raise
+    finally:
+        return response

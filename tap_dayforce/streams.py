@@ -1,5 +1,4 @@
 import os
-import time
 from datetime import datetime, timedelta
 from typing import ClassVar, Dict, List, Optional, Union
 
@@ -9,7 +8,7 @@ import requests
 import singer
 from dayforce_client import Dayforce
 
-from .utils import is_fatal_code
+from .utils import is_fatal_code, handle_rate_limit
 from .whitelisting import (WHITELISTED_COLLECTIONS, WHITELISTED_FIELDS,
                            WHITELISTED_PAY_POLICY_CODES)
 
@@ -153,22 +152,39 @@ class EmployeesStream(DayforceStream):
     def _transform_records(self, start, end, counter):
         for _, record in self.client.get_employees(filterUpdatedStartDate=singer.utils.strftime(start), filterUpdatedEndDate=singer.utils.strftime(end)).yield_records():
             if record:
-                try:
-                    response = self.client.get_employee_details(xrefcode=record.get("XRefCode"), expand="WorkAssignments,Contacts,EmploymentStatuses,Roles,EmployeeManagers,CompensationSummary,Locations,LastActiveManagers")
-                except requests.exceptions.HTTPError as e:
-                    if e.response.status_code == 429:
-                        sleep_time = int(e.response.headers["Retry-After"]) + 1
-                        LOGGER.info(f"Rate limit reached. Retrying in {sleep_time} seconds..")
-                        time.sleep(sleep_time)
-                        response = self.client.get_employee_details(xrefcode=record.get("XRefCode"), expand="WorkAssignments,Contacts,EmploymentStatuses,Roles,EmployeeManagers,CompensationSummary,Locations,LastActiveManagers")
-                    else:
-                        raise
-                finally:
-                    details = response.get("Data")
+                details = handle_rate_limit(func=self.client.get_employee_details(xrefcode=record.get("XRefCode"), expand="WorkAssignments,Contacts,EmploymentStatuses,Roles,EmployeeManagers,CompensationSummary,Locations,LastActiveManagers")).get("Data")
+                schedules = handle_rate_limit(func=self.client.get_employee_schedules(xrefcode=record.get("XRefCode"), expand="Activities,Breaks,Skills,LaborMetrics")).get("Data")
+                # try:
+                #     response = self.client.get_employee_details(xrefcode=record.get("XRefCode"), expand="WorkAssignments,Contacts,EmploymentStatuses,Roles,EmployeeManagers,CompensationSummary,Locations,LastActiveManagers")
+                # except requests.exceptions.HTTPError as e:
+                #     if e.response.status_code == 429:
+                #         sleep_time = int(e.response.headers["Retry-After"]) + 1
+                #         LOGGER.info(f"Rate limit reached. Retrying in {sleep_time} seconds..")
+                #         time.sleep(sleep_time)
+                #         response = self.client.get_employee_details(xrefcode=record.get("XRefCode"), expand="WorkAssignments,Contacts,EmploymentStatuses,Roles,EmployeeManagers,CompensationSummary,Locations,LastActiveManagers")
+                #     else:
+                #         raise
+                # finally:
+                #     details = response.get("Data")
+                #
+                # try:
+                #     response = self.client.get_employee_schedules(xrefcode=record.get("XRefCode"), expand="Activities,Breaks,Skills,LaborMetrics")
+                # except requests.exceptions.HTTPError as e:
+                #     if e.response.status_code == 429:
+                #         sleep_time = int(e.response.headers["Retry-After"]) + 1
+                #         LOGGER.info(f"Rate limit reached. Retrying in {sleep_time} seconds..")
+                #         time.sleep(sleep_time)
+                #         response = self.client.get_employee_schedules(xrefcode=record.get("XRefCode"), expand="Activities,Breaks,Skills,LaborMetrics")
+                #     else:
+                #         raise
+                # finally:
+                #     schedules = response.get("Data")
+
 
                 if details.get("XRefCode") is not None:
                     details["SyncTimestampUtc"] = self.get_bookmark(self.config, self.tap_stream_id, self.state, self.bookmark_properties)
                     details = self.whitelist_sensitive_info(data=details)
+                    details["Schedules"] = schedules
                     with singer.Transformer() as transformer:
                         transformed_record = transformer.transform(data=details, schema=self.get_schema(self.tap_stream_id, self.catalog))
                         singer.write_record(stream_name=self.tap_stream_id, time_extracted=singer.utils.now(), record=transformed_record)
