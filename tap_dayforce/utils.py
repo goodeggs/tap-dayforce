@@ -1,12 +1,13 @@
 import argparse
 import json
+import logging
 import os
 import time
 from typing import Callable, Dict, Set
 
 import requests
 import singer
-from dayforce_client import DayforceResponse
+from dayforce_client.response import DayforceResponse
 
 
 def get_abs_path(path: str) -> str:
@@ -82,13 +83,13 @@ def check_config(config: Dict, required_config_keys: Set[str]):
         raise Exception("Config is missing required keys: {}".format(missing_keys))
 
 
-def handle_rate_limit(func: Callable) -> DayforceResponse:
+def handle_rate_limit(func: Callable, logger: logging.Logger) -> DayforceResponse:
     try:
         response = func
     except requests.exceptions.HTTPError as e:
         if e.response.status_code == 429:
             sleep_time = int(e.response.headers["Retry-After"]) + 1
-            LOGGER.info(f"Rate limit reached. Retrying in {sleep_time} seconds..")
+            logger.info(f"Rate limit reached. Retrying in {sleep_time} seconds..")
             time.sleep(sleep_time)
             response = func
         else:

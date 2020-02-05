@@ -174,42 +174,21 @@ class EmployeesStream(DayforceStream):
             filterUpdatedStartDate=singer.utils.strftime(start), filterUpdatedEndDate=singer.utils.strftime(end)
         ).yield_records():
             if record:
+
                 details = handle_rate_limit(
                     func=self.client.get_employee_details(
                         xrefcode=record.get("XRefCode"),
                         expand="WorkAssignments,Contacts,EmploymentStatuses,Roles,EmployeeManagers,CompensationSummary,Locations,LastActiveManagers",
-                    )
+                    ),
+                    logger=LOGGER,
                 ).get("Data")
+
                 schedules = handle_rate_limit(
                     func=self.client.get_employee_schedules(
                         xrefcode=record.get("XRefCode"), expand="Activities,Breaks,Skills,LaborMetrics"
-                    )
+                    ),
+                    logger=LOGGER,
                 ).get("Data")
-                # try:
-                #     response = self.client.get_employee_details(xrefcode=record.get("XRefCode"), expand="WorkAssignments,Contacts,EmploymentStatuses,Roles,EmployeeManagers,CompensationSummary,Locations,LastActiveManagers")
-                # except requests.exceptions.HTTPError as e:
-                #     if e.response.status_code == 429:
-                #         sleep_time = int(e.response.headers["Retry-After"]) + 1
-                #         LOGGER.info(f"Rate limit reached. Retrying in {sleep_time} seconds..")
-                #         time.sleep(sleep_time)
-                #         response = self.client.get_employee_details(xrefcode=record.get("XRefCode"), expand="WorkAssignments,Contacts,EmploymentStatuses,Roles,EmployeeManagers,CompensationSummary,Locations,LastActiveManagers")
-                #     else:
-                #         raise
-                # finally:
-                #     details = response.get("Data")
-                #
-                # try:
-                #     response = self.client.get_employee_schedules(xrefcode=record.get("XRefCode"), expand="Activities,Breaks,Skills,LaborMetrics")
-                # except requests.exceptions.HTTPError as e:
-                #     if e.response.status_code == 429:
-                #         sleep_time = int(e.response.headers["Retry-After"]) + 1
-                #         LOGGER.info(f"Rate limit reached. Retrying in {sleep_time} seconds..")
-                #         time.sleep(sleep_time)
-                #         response = self.client.get_employee_schedules(xrefcode=record.get("XRefCode"), expand="Activities,Breaks,Skills,LaborMetrics")
-                #     else:
-                #         raise
-                # finally:
-                #     schedules = response.get("Data")
 
                 if details.get("XRefCode") is not None:
                     details["SyncTimestampUtc"] = self.get_bookmark(
