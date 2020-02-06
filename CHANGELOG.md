@@ -1,3 +1,8 @@
+## 0.3.0
+
+ - Added data from the [`/Schedules`](https://usr57-services.dayforcehcm.com/api/goodeggs/Swagger/) endpoint to `EmployeesStream`.
+ - Reformatted library according to [black](https://black.readthedocs.io/en/stable/) code style and added tox style checks.
+
 ## 0.2.0
 
  - Refactor to make tap more robust.
