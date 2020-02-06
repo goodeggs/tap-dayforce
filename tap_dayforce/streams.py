@@ -185,7 +185,10 @@ class EmployeesStream(DayforceStream):
 
                 schedules = handle_rate_limit(
                     func=self.client.get_employee_schedules(
-                        xrefcode=record.get("XRefCode"), expand="Activities,Breaks,Skills,LaborMetrics"
+                        xrefcode=record.get("XRefCode"),
+                        filterScheduleStartDate=singer.utils.strftime(start),
+                        filterScheduleEndDate=singer.utils.strftime(end),
+                        expand="Activities,Breaks,Skills,LaborMetrics"
                     ),
                     logger=LOGGER,
                 ).get("Data")
@@ -195,7 +198,8 @@ class EmployeesStream(DayforceStream):
                         self.config, self.tap_stream_id, self.state, self.bookmark_properties
                     )
                     details = self.whitelist_sensitive_info(data=details)
-                    details["Schedules"] = schedules
+                    if schedules is not None:
+                        details["Schedules"] = schedules
                     with singer.Transformer() as transformer:
                         transformed_record = transformer.transform(
                             data=details, schema=self.get_schema(self.tap_stream_id, self.catalog)
