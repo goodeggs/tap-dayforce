@@ -188,7 +188,7 @@ class EmployeesStream(DayforceStream):
                         xrefcode=record.get("XRefCode"),
                         filterScheduleStartDate=singer.utils.strftime(start),
                         filterScheduleEndDate=singer.utils.strftime(end),
-                        expand="Activities,Breaks,Skills,LaborMetrics"
+                        expand="Activities,Breaks,Skills,LaborMetrics",
                     ),
                     logger=LOGGER,
                 ).get("Data")
