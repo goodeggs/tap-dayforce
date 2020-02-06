@@ -37,7 +37,7 @@ setup(
     license="GPLv3",
     packages=find_packages(exclude=["tests"]),
     package_data={"tap_dayforce": ["schemas/*.json"]},
-    install_requires=["dayforce-client==0.1.0", "singer-python==5.9.0", "backoff==1.8.0", "rollbar==0.14.7"],
+    install_requires=["dayforce-client==0.2.0", "singer-python==5.9.0", "backoff==1.8.0", "rollbar==0.14.7"],
     python_requires=">=3.6",
     entry_points={"console_scripts": ["tap-dayforce = tap_dayforce:main"]},
 )
