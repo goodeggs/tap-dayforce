@@ -1894,93 +1894,73 @@
             "type": ["null", "boolean"]
           },
           "Breaks": {
-            "type": ["null", "object"],
-            "properties": {
-              "Items": {
-                "type": ["null", "array"],
-                "items": {
-                  "type": ["null", "object"],
-                  "properties": {
-                    "TimeStart": {
-                      "type": ["null", "string"],
-                      "format": "date-time"
-                    },
-                    "TimeEnd": {
-                      "type": ["null", "string"],
-                      "format": "date-time"
-                    },
-                    "NetHours": {
-                      "type": ["null", "number"]
-                    },
-                    "Type": {
-                      "type": ["null", "string"]
-                    }
-                  }
+            "type": ["null", "array"],
+            "items": {
+              "type": ["null", "object"],
+              "properties": {
+                "TimeStart": {
+                  "type": ["null", "string"],
+                  "format": "date-time"
+                },
+                "TimeEnd": {
+                  "type": ["null", "string"],
+                  "format": "date-time"
+                },
+                "NetHours": {
+                  "type": ["null", "number"]
+                },
+                "Type": {
+                  "type": ["null", "string"]
                 }
               }
             }
           },
           "Activities": {
-            "type": ["null", "object"],
-            "properties": {
-              "Items": {
-                "type": ["null", "array"],
-                "items": {
-                  "type": ["null", "object"],
-                  "properties": {
-                    "TimeStart": {
-                      "type": ["null", "string"],
-                      "format": "date-time"
-                    },
-                    "TimeEnd": {
-                      "type": ["null", "string"],
-                      "format": "date-time"
-                    },
-                    "XRefCode": {
-                      "type": ["null", "number"]
-                    }
-                  }
+            "type": ["null", "array"],
+            "items": {
+              "type": ["null", "object"],
+              "properties": {
+                "TimeStart": {
+                  "type": ["null", "string"],
+                  "format": "date-time"
+                },
+                "TimeEnd": {
+                  "type": ["null", "string"],
+                  "format": "date-time"
+                },
+                "XRefCode": {
+                  "type": ["null", "string"]
                 }
               }
             }
           },
           "Skills": {
-            "type": ["null", "object"],
-            "properties": {
-              "Items": {
-                "type": ["null", "array"],
-                "items": {
-                  "type": ["null", "object"],
-                  "properties": {
-                    "SkillXRefCode": {
-                      "type": ["null", "string"]
-                    },
-                    "SkillLevelXRefCode": {
-                      "type": ["null", "string"]
-                    },
-                    "IsMandatory": {
-                      "type": ["null", "boolean"]
-                    }
-                  }
+            "type": ["null", "array"],
+            "items": {
+              "type": ["null", "object"],
+              "properties": {
+                "SkillXRefCode": {
+                  "type": ["null", "string"]
+                },
+                "SkillLevelXRefCode": {
+                  "type": ["null", "string"]
+                },
+                "IsMandatory": {
+                  "type": ["null", "boolean"]
                 }
               }
             }
           },
           "LaborMetrics": {
-            "type": ["null", "object"],
-            "properties": {
-              "Items": {
-                "type": ["null", "array"],
-                "items": {
-                  "type": ["null", "object"],
-                  "properties": {
-                    "CodeXRefCode": {
-                      "type": ["null", "string"]
-                    },
-                    "TypeXRefCode": {
-                      "type": ["null", "string"]
-                    }
-                  }
+            "type": ["null", "array"],
+            "items": {
+              "type": ["null", "object"],
+              "properties": {
+                "CodeXRefCode": {
+                  "type": ["null", "string"]
+                },
+                "TypeXRefCode": {
+                  "type": ["null", "string"]
                 }
               }
             }
