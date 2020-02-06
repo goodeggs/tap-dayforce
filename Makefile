@@ -1,8 +1,15 @@
-isort:
-	isort --recursive
+.PHONY: clean fmt lint test dev_install sanity_check
 
-flake8:
-	flake8 . --ignore=E501,E722 --count --statistics
+clean:
+	@rm -rf .tox .mypy_cache .pytest_cache dist/ build/ *.egg-info */__pycache__/
+
+fmt:
+	black .
+	isort --apply
+
+lint:
+	flake8 . --count --statistics
+	mypy .
 
 dev_install:
 	pip3 install --upgrade pip

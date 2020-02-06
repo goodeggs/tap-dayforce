@@ -1,0 +1,21 @@
+[flake8]
+max-complexity = 15
+ignore =
+  E501
+  E722
+  W503
+count = True
+statistics = True
+exclude =
+    .tox,
+    .git,
+    __pycache__,
+    .mypy_cache,
+    .pytest_cache,
+    build,
+    config,
+    dist,
+    *.pyc,
+    *.egg-info,
+    .cache,
+    .eggs

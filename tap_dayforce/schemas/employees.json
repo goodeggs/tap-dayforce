@@ -1853,6 +1853,121 @@
     "SecondLastName": {
       "type": ["null", "string"]
     },
+    "Schedules": {
+      "type": ["null", "array"],
+      "items": {
+        "type": ["null", "object"],
+        "properties": {
+          "TimeStart": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "TimeEnd": {
+            "type": ["null", "string"],
+            "format": "date-time"
+          },
+          "NetHours": {
+            "type": ["null", "number"]
+          },
+          "DepartmentXRefCode": {
+            "type": ["null", "string"]
+          },
+          "JobXRefCode": {
+            "type": ["null", "string"]
+          },
+          "OrgUnitXRefCode": {
+            "type": ["null", "string"]
+          },
+          "OrgLocationTypeXRefCode": {
+            "type": ["null", "string"]
+          },
+          "PayAdjCodeXRefCode": {
+            "type": ["null", "string"]
+          },
+          "DocketXRefCode": {
+            "type": ["null", "string"]
+          },
+          "ProjectXRefCode": {
+            "type": ["null", "string"]
+          },
+          "Published": {
+            "type": ["null", "boolean"]
+          },
+          "Breaks": {
+            "type": ["null", "array"],
+            "items": {
+              "type": ["null", "object"],
+              "properties": {
+                "TimeStart": {
+                  "type": ["null", "string"],
+                  "format": "date-time"
+                },
+                "TimeEnd": {
+                  "type": ["null", "string"],
+                  "format": "date-time"
+                },
+                "NetHours": {
+                  "type": ["null", "number"]
+                },
+                "Type": {
+                  "type": ["null", "string"]
+                }
+              }
+            }
+          },
+          "Activities": {
+            "type": ["null", "array"],
+            "items": {
+              "type": ["null", "object"],
+              "properties": {
+                "TimeStart": {
+                  "type": ["null", "string"],
+                  "format": "date-time"
+                },
+                "TimeEnd": {
+                  "type": ["null", "string"],
+                  "format": "date-time"
+                },
+                "XRefCode": {
+                  "type": ["null", "string"]
+                }
+              }
+            }
+          },
+          "Skills": {
+            "type": ["null", "array"],
+            "items": {
+              "type": ["null", "object"],
+              "properties": {
+                "SkillXRefCode": {
+                  "type": ["null", "string"]
+                },
+                "SkillLevelXRefCode": {
+                  "type": ["null", "string"]
+                },
+                "IsMandatory": {
+                  "type": ["null", "boolean"]
+                }
+              }
+            }
+          },
+          "LaborMetrics": {
+            "type": ["null", "array"],
+            "items": {
+              "type": ["null", "object"],
+              "properties": {
+                "CodeXRefCode": {
+                  "type": ["null", "string"]
+                },
+                "TypeXRefCode": {
+                  "type": ["null", "string"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "Suffix": {
       "type": ["null", "string"]
     },
