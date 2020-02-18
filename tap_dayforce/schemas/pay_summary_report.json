@@ -53,6 +53,9 @@
     },
     "EmployeePaySummary_PayAmount": {
       "type": ["null", "number"]
+    },
+    "OrgUnit_XRefCode": {
+      "type": ["null", "string"]
     }
   }
 }
