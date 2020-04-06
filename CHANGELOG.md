@@ -1,3 +1,7 @@
+## 0.3.1
+
+ - Added optional `dayforce_release` and `api_version` parameters to the `DayforceStream` class method.
+
 ## 0.3.0
 
  - Added data from the [`/Schedules`](https://usr57-services.dayforcehcm.com/api/goodeggs/Swagger/) endpoint to `EmployeesStream`.
