@@ -37,7 +37,7 @@ class DayforceStream(object):
                 client_namespace=args.config.get("client_namespace"),
                 dayforce_release=args.config.get("dayforce_release", 57),
                 api_version=args.config.get("api_version", "V1"),
-                test=args.config.get("test", False)
+                test=args.config.get("test", False),
             ),
             config=args.config,
             config_path=args.config_path,
