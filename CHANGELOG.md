@@ -1,10 +1,8 @@
-## 0.3.2
-
- - Added ability to target a Dayforce test environment via config file. Bumped `dayforce-client` requirement from `0.2.0` to `0.2.1`.
-
 ## 0.3.1
 
  - Added optional `dayforce_release` and `api_version` parameters to the `DayforceStream` class method.
+ - Added ability to target a Dayforce test environment via config file.
+ - Bumped `dayforce-client` requirement from `0.2.0` to `0.2.1`.
 
 ## 0.3.0
 
