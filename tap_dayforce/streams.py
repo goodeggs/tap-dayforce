@@ -9,7 +9,7 @@ import singer
 from dayforce_client import Dayforce
 
 from .utils import handle_rate_limit, is_fatal_code
-from .whitelisting import WHITELISTED_COLLECTIONS, WHITELISTED_FIELDS, WHITELISTED_PAY_POLICY_CODES
+from .whitelisting import WHITELISTED_COLLECTIONS, WHITELISTED_FIELDS, WHITELISTED_PAY_CLASS_CODES, WHITELISTED_PAY_POLICY_CODES
 
 LOGGER = singer.get_logger()
 
@@ -160,6 +160,8 @@ class EmployeesStream(DayforceStream):
                     if (
                         item.get("PayPolicy") is None
                         or item.get("PayPolicy").get("XRefCode") not in WHITELISTED_PAY_POLICY_CODES
+                        or item.get("PayClass") is None
+                        or item.get("PayClass").get("XRefCode") not in WHITELISTED_PAY_CLASS_CODES
                     ):
                         for field in WHITELISTED_FIELDS:
                             data[collection]["Items"][i].pop(field, None)
