@@ -1,3 +1,7 @@
+## 1.0.0
+
+ - Whitelist PayClass
+
 ## 0.3.1
 
  - Added optional `dayforce_release`, `api_version`, and `test` parameters to the `DayforceStream` class method.
