@@ -3,13 +3,14 @@ from datetime import datetime, timedelta
 from typing import ClassVar, Dict, List, Optional, Union
 
 import attr
+
 import backoff
 import requests
 import singer
 from dayforce_client import Dayforce
 
 from .utils import handle_rate_limit, is_fatal_code
-from .whitelisting import WHITELISTED_COLLECTIONS, WHITELISTED_FIELDS, WHITELISTED_PAY_CLASS_CODES, WHITELISTED_PAY_POLICY_CODES
+from .whitelisting import WHITELISTED_COLLECTIONS, WHITELISTED_PAY_CLASS_CODES, WHITELISTED_PAY_POLICY_CODES
 
 LOGGER = singer.get_logger()
 
@@ -156,15 +157,14 @@ class EmployeesStream(DayforceStream):
     def whitelist_sensitive_info(self, data: Dict) -> Dict:
         for collection in WHITELISTED_COLLECTIONS:
             if data.get(collection, {}).get("Items") is not None:
+                filtered_items = []
                 for i, item in enumerate(data.get(collection, {}).get("Items")):
                     if (
-                        item.get("PayPolicy") is None
-                        or item.get("PayPolicy").get("XRefCode") not in WHITELISTED_PAY_POLICY_CODES
-                        or item.get("PayClass") is None
-                        or item.get("PayClass").get("XRefCode") not in WHITELISTED_PAY_CLASS_CODES
+                        item.get("PayPolicy", {}).get("XRefCode") in WHITELISTED_PAY_POLICY_CODES
+                        and item.get("PayClass", {}).get("XRefCode") in WHITELISTED_PAY_CLASS_CODES
                     ):
-                        for field in WHITELISTED_FIELDS:
-                            data[collection]["Items"][i].pop(field, None)
+                        filtered_items.append(item)
+                data[collection]["Items"] = filtered_items
 
         return data
 
