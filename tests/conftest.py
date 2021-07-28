@@ -2,9 +2,9 @@ import argparse
 import json
 
 import pytest
+
 from dayforce_client import Dayforce
 from singer.catalog import Catalog
-
 from tap_dayforce.streams import (
     EmployeePunchesStream,
     EmployeeRawPunchesStream,
