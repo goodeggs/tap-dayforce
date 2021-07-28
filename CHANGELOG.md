@@ -1,3 +1,7 @@
+## 2.0.0
+
+ - If an Item does not pass the whitelist, the entire Item will be omitted (where previously we only omitted certain fields).
+
 ## 1.0.0
 
  - Whitelist PayClass
