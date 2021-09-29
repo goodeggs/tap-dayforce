@@ -3,14 +3,18 @@ from datetime import datetime, timedelta
 from typing import ClassVar, Dict, List, Optional, Union
 
 import attr
-
 import backoff
 import requests
 import singer
 from dayforce_client import Dayforce
 
 from .utils import handle_rate_limit, is_fatal_code
-from .whitelisting import WHITELISTED_COLLECTIONS, WHITELISTED_FIELDS, WHITELISTED_PAY_CLASS_CODES, WHITELISTED_PAY_POLICY_CODES
+from .whitelisting import (
+    WHITELISTED_COLLECTIONS,
+    WHITELISTED_FIELDS,
+    WHITELISTED_PAY_CLASS_CODES,
+    WHITELISTED_PAY_POLICY_CODES,
+)
 
 LOGGER = singer.get_logger()
 
@@ -36,7 +40,7 @@ class DayforceStream(object):
                 username=args.config.get("username"),
                 password=args.config.get("password"),
                 client_namespace=args.config.get("client_namespace"),
-                dayforce_release=args.config.get("dayforce_release", 57),
+                dayforce_release=args.config.get("dayforce_release", "61"),
                 api_version=args.config.get("api_version", "V1"),
                 test=args.config.get("test", False),
             ),
@@ -165,7 +169,7 @@ class EmployeesStream(DayforceStream):
                     ):
                         items.append(item)
                     else:
-                        safe_item = { field: item.get(field, None) for field in WHITELISTED_FIELDS }
+                        safe_item = {field: item.get(field, None) for field in WHITELISTED_FIELDS}
                         items.append(safe_item)
                 data[collection]["Items"] = items
 
