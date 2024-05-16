@@ -36,7 +36,7 @@ setup(
     packages=find_packages(exclude=["tests"]),
     package_data={"tap_dayforce": ["schemas/*.json"]},
     install_requires=[
-        "dayforce-client @ git+https://github.com/goodeggs/dayforce-client@master",
+        "dayforce-client @ git+https://github.com/goodeggs/dayforce-client@v2.0.1",
         "singer-python==5.9.0",
         "backoff==1.8.0",
         "rollbar==0.14.7",
