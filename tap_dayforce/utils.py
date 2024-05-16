@@ -23,8 +23,6 @@ def is_fatal_code(e: requests.exceptions.RequestException) -> bool:
     """Helper function to determine if a Requests reponse status code
     is a "fatal" status code. If it is, the backoff decorator will giveup
     instead of attemtping to backoff."""
-    if e.response.status_code == 401:
-        return True
     return 400 <= e.response.status_code < 500 and e.response.status_code != 429
 
 
@@ -98,19 +96,3 @@ def handle_rate_limit(func: Callable, logger: logging.Logger) -> DayforceRespons
             raise
     finally:
         return response
-
-
-def handle_unauthorized(func: Callable, xrefcode: str, logger: logging.Logger) -> Dict:
-    """Handle unauthorized access to Dayforce API so not to break the tap.
-    401 Responses can occur for certain xrefcodes/employees which will return null.
-    """
-    try:
-        response = func()
-        return response.resp.json()
-    except requests.exceptions.HTTPError as e:
-        if e.response.status_code != 401:
-            logger.warn(f"HTTP error for XRefCode: {xrefcode}. Error: {e}")
-            raise
-        else:
-            logger.debug(f"Unauthorized access for XRefCode: {xrefcode}; returning null.")
-            return {"error": None}
