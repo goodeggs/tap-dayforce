@@ -1,3 +1,9 @@
+## 3.1.0
+
+ - Added helper to handle 401 responses so entire call will not break.
+
+## 3.0.0
+
 ## 2.0.0
 
  - If an Item does not pass the whitelist, the entire Item will be omitted (where previously we only omitted certain fields).
