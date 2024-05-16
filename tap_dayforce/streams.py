@@ -6,9 +6,10 @@ import attr
 import backoff
 import requests
 import singer
+from singer.transform import SchemaMismatch
 from dayforce_client import Dayforce
 
-from .utils import handle_rate_limit, is_fatal_code
+from .utils import handle_rate_limit, handle_unauthorized, is_fatal_code
 from .whitelisting import (
     WHITELISTED_COLLECTIONS,
     WHITELISTED_FIELDS,
@@ -195,30 +196,43 @@ class EmployeesStream(DayforceStream):
                     logger=LOGGER,
                 ).get("Data")
 
-                schedules = handle_rate_limit(
-                    func=self.client.get_employee_schedules(
+                try:
+                    schedules = handle_unauthorized(
+                        func=lambda: self.client.get_employee_schedules(
+                            xrefcode=record.get("XRefCode"),
+                            filterScheduleStartDate=singer.utils.strftime(start),
+                            filterScheduleEndDate=singer.utils.strftime(end),
+                            expand="Activities,Breaks,Skills,LaborMetrics",
+                        ),
                         xrefcode=record.get("XRefCode"),
-                        filterScheduleStartDate=singer.utils.strftime(start),
-                        filterScheduleEndDate=singer.utils.strftime(end),
-                        expand="Activities,Breaks,Skills,LaborMetrics",
-                    ),
-                    logger=LOGGER,
-                ).get("Data")
+                        logger=LOGGER,
+                    )
+                except requests.exceptions.HTTPError as e:
+                    LOGGER.warn(f"HTTP Error occurred on xrefcode: {record.get('XRefCode')} with error {e}")
 
                 if details.get("XRefCode") is not None:
                     details["SyncTimestampUtc"] = self.get_bookmark(
                         self.config, self.tap_stream_id, self.state, self.bookmark_properties
                     )
                     details = self.whitelist_sensitive_info(data=details)
-                    if schedules is not None:
-                        details["Schedules"] = schedules
+
+                    if schedules.get("error", False):
+                        details["Schedules"] = schedules.get("error")
+                    else:
+                        details["Schedules"] = schedules.get("Data")
+
                     with singer.Transformer() as transformer:
-                        transformed_record = transformer.transform(
-                            data=details, schema=self.get_schema(self.tap_stream_id, self.catalog)
-                        )
-                        singer.write_record(
-                            stream_name=self.tap_stream_id, time_extracted=singer.utils.now(), record=transformed_record
-                        )
+                        try:
+                            transformed_record = transformer.transform(
+                                data=details, schema=self.get_schema(self.tap_stream_id, self.catalog)
+                            )
+                        except SchemaMismatch as e:
+                            LOGGER.warn(f"Schema mismatch error: {str(e)} with record: {details}")
+                        else:
+                            LOGGER.debug(f"Writing record for XRefCode: {record.get('XRefCode')}")
+                            singer.write_record(
+                                stream_name=self.tap_stream_id, time_extracted=singer.utils.now(), record=transformed_record
+                            )
                         counter.increment()
 
     def sync(self):
