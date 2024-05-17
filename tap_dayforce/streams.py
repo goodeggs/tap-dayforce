@@ -6,8 +6,8 @@ import attr
 import backoff
 import requests
 import singer
-from singer.transform import SchemaMismatch
 from dayforce_client import Dayforce
+from singer.transform import SchemaMismatch
 
 from .utils import handle_rate_limit, handle_unauthorized, is_fatal_code
 from .whitelisting import (
@@ -231,7 +231,9 @@ class EmployeesStream(DayforceStream):
                         else:
                             LOGGER.debug(f"Writing record for XRefCode: {record.get('XRefCode')}")
                             singer.write_record(
-                                stream_name=self.tap_stream_id, time_extracted=singer.utils.now(), record=transformed_record
+                                stream_name=self.tap_stream_id,
+                                time_extracted=singer.utils.now(),
+                                record=transformed_record,
                             )
                         counter.increment()
 
