@@ -29,6 +29,9 @@ setup(
         "Intended Audience :: Developers",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
     ],
     keywords="singer tap python dayforce",
@@ -42,6 +45,6 @@ setup(
         "rollbar==0.14.7",
         "requests",
     ],
-    python_requires=">=3.9",
+    python_requires=">=3.6",
     entry_points={"console_scripts": ["tap-dayforce = tap_dayforce:main"]},
 )

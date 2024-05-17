@@ -1,4 +1,8 @@
-## 3.1.0
+## 4.1.1
+
+ - Fix breaking changes
+
+## 4.1.0
 
  - Added helper to handle 401 responses so entire call will not break.
 
